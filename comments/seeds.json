@@ -1,0 +1,22 @@
+[
+{
+  "model": "comments.comment",
+  "pk": 3,
+  "fields": {
+    "text": "Bloody Brilliant!",
+    "image": "mypic.jpg",
+    "created_at": "2022-12-04T14:39:25.640Z",
+    "mountaineering_route": 1
+  }
+},
+{
+  "model": "comments.comment",
+  "pk": 5,
+  "fields": {
+    "text": "Great!",
+    "image": "mypic.jpg",
+    "created_at": "2022-12-05T14:28:07.383Z",
+    "mountaineering_route": 1
+  }
+}
+]

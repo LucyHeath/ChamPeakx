@@ -1,0 +1,37 @@
+[
+{
+  "model": "difficulty.difficulty",
+  "pk": 1,
+  "fields": {
+    "name": "Acclimatisation"
+  }
+},
+{
+  "model": "difficulty.difficulty",
+  "pk": 2,
+  "fields": {
+    "name": "Easy"
+  }
+},
+{
+  "model": "difficulty.difficulty",
+  "pk": 3,
+  "fields": {
+    "name": "Mid-Grade"
+  }
+},
+{
+  "model": "difficulty.difficulty",
+  "pk": 4,
+  "fields": {
+    "name": "Hard"
+  }
+},
+{
+  "model": "difficulty.difficulty",
+  "pk": 5,
+  "fields": {
+    "name": "Extreme"
+  }
+}
+]

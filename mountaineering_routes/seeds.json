@@ -1,0 +1,294 @@
+[
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 12,
+  "fields": {
+    "peak": "The Petite Aiguille Verte",
+    "route": "North West Ridge",
+    "height": 3512,
+    "grade": "F+/PD-",
+    "descripton": "A lovely little peak situated near the top station of the Grand Montets lift. The approach is across a short and straightforward glacier, but once across the bergschrund things do get steeper. The route then winds it’s way up a snowy ridge, through rocks and icy sections to the summit.",
+    "hut": true,
+    "created_at": "2022-12-07T14:32:21.012Z",
+    "difficulty": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 13,
+  "fields": {
+    "peak": "L’Index",
+    "route": "South Ridge.",
+    "height": 2595,
+    "grade": "F+/PD-",
+    "descripton": "A classic rock peak in the Aiguilles Rouge, accessed from the Index/Brevent telepherique. The approach is non glacial and the climbing is relatively easy. The top offers superb views of the Massif and the Aiguille Verte and Grandes Jorasses are particularly clear.",
+    "hut": false,
+    "created_at": "2022-12-07T14:33:05.820Z",
+    "difficulty": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 14,
+  "fields": {
+    "peak": "Mont Tondu",
+    "route": "North West Ridge",
+    "height": 3196,
+    "grade": "F+/PD-",
+    "descripton": "An ideal introductory snow peak at the far end of the Mont Blanc Massif. The peak can be climbed from either the Refuge Tre La Tete or the higher Refuge Conscrits. It involves a simple glacial approach, followed by a steady climb on snow to the summit.",
+    "hut": true,
+    "created_at": "2022-12-07T14:33:57.949Z",
+    "difficulty": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 15,
+  "fields": {
+    "peak": "Aiguille du Tour",
+    "route": "East Flank",
+    "height": 3544,
+    "grade": "F",
+    "descripton": "A nice peak at the Eastern end of the Massif. This peak is usually climbed from the Albert Premier Refuge or the Trient Refuge. A glacial approach is followed by a snow slope and a rocky scramble to the top. This route can be exceptionally busy in the summer months.",
+    "hut": true,
+    "created_at": "2022-12-07T14:35:04.482Z",
+    "difficulty": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 16,
+  "fields": {
+    "peak": "Aiguille du Midi",
+    "route": "Cosmiques Arete",
+    "height": 3842,
+    "grade": "AD-",
+    "descripton": "A highly enjoyable route and an excellent introduction to alpine mixed climbing. This route is rapidly approached from the Midi telepherique station, and finishes back in the station itself ! Hence it is ideal for a short day. The route follows a series of snowy gullies and ramps, interspersed by rocky sections. There is an abseil part way along the route, so your rope must be at least 50m long. Equipment required: Lightweight rock rack, helmet, harness, axe, ice screws, slings.",
+    "hut": true,
+    "created_at": "2022-12-07T14:36:28.545Z",
+    "difficulty": [
+      3
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 17,
+  "fields": {
+    "peak": "Aiguille du Midi",
+    "route": "Midi-Plan Traverse",
+    "height": 3673,
+    "grade": "AD-",
+    "descripton": "This classic outing gives breath-taking views off the Massif. The route is mostly on snow, with rocky steps, and begins from the Midi Telepherique station. Many parties now reverse the route from the summit of the Aiguille Plan to the Midi, but some may prefer to descend to the Refuge Requin, thus completing a full traverse. Note that the seriousness of this route will vary massively depending on snow conditions underfoot.",
+    "hut": true,
+    "created_at": "2022-12-07T14:37:11.964Z",
+    "difficulty": [
+      3
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 18,
+  "fields": {
+    "peak": "Aiguille Rochefort",
+    "route": "Rochefort Arete",
+    "height": 4001,
+    "grade": "AD",
+    "descripton": "A superb excursion from the Torino Refuge involving a glacial approach, mixed ground, and a memorable snow ridge that twists and turns along the border between France and Italy. The Aiguille stands at the far end of the ridge, and in good conditions it does not present a difficult climb.",
+    "hut": true,
+    "created_at": "2022-12-07T14:38:04.238Z",
+    "difficulty": [
+      3
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 19,
+  "fields": {
+    "peak": "Aiguille du Chardonnet",
+    "route": "Forbes Arete",
+    "height": 3824,
+    "grade": "AD",
+    "descripton": "This is one of the best ridges of its kind in the Massif, if not in the whole of the Alps. The route is normally climbed from the Albert Premier Refuge, but it can equally be climbed from the Trient or Saleina Refuges. After a glacial approach the ridge itself is gained and more or less followed to the summit, climbing some rock obstacles on the way, and turning others.",
+    "hut": false,
+    "created_at": "2022-12-07T14:38:52.831Z",
+    "difficulty": [
+      3
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 20,
+  "fields": {
+    "peak": "Mont Blanc",
+    "route": "Traverse of the three Monts",
+    "height": 4807,
+    "grade": "PD",
+    "descripton": "A classic high altitude excursion amongst spectacular scenery. This long route begins from the Refuge Cosmiques and traverses over Mont Blanc du Tacul and Mont Maudit before reaching the highest point in Western Europe. Although most of the route is not particularly serious there are two main areas of danger to note. The slopes of Mont Blanc du Tacul are a potential avalanche zone after fresh snow, and are also prone to serac collapses. The Mont Maudit headwall is steep and has in recent years become adorned with fixed ropes. This natural choke-point regularly sees groups trying to clamber over each other – you have been warned !",
+    "hut": true,
+    "created_at": "2022-12-07T14:39:43.939Z",
+    "difficulty": [
+      3
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 21,
+  "fields": {
+    "peak": "Aiguille du Midi",
+    "route": "Frendo Spur",
+    "height": 3650,
+    "grade": "D+",
+    "descripton": "A fantastic route with enjoyable climbing both on rock and ice. The spur drops 1100m down the North Face of the Midi and is a compelling line. Traditionally most people climb the rock buttress on the first day and bivouac for the night before finishing up the ice slopes above early the nest morning. Although a fast team could do the route in a day, why not enjoy the experience and the palatial bivouac ledges ?",
+    "hut": false,
+    "created_at": "2022-12-07T14:40:38.506Z",
+    "difficulty": [
+      4
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 22,
+  "fields": {
+    "peak": "Grandes Jorasses",
+    "route": "Traverse",
+    "height": 4208,
+    "grade": "D+.",
+    "descripton": "This serious and committing route starts at the Torino Refuge and first traverses the Rochefort Arete and Aiguille Rochefort all the way to the Canzio Bivouac Hut. The second day is a much more technical undertaking, mostly on rock, that traverses right across the Grandes Jorasses to Point Walker. From there you have a choice whether to descend the Hirondelles Ridge to the Leschaux Refuge or turn South and follow the voie normale down to the Boccalatte Refugio (far easier and safer).",
+    "hut": true,
+    "created_at": "2022-12-07T14:41:34.707Z",
+    "difficulty": [
+      4
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 23,
+  "fields": {
+    "peak": "Mont Maudit",
+    "route": "Frontier Ridge (Kuffner Arete)",
+    "height": 4465,
+    "grade": "D",
+    "descripton": "A long and sustained mixed route at high altitude. This climb is thoroughly deserving of its classic status, and travels through exceptionally impressive surroundings. Traditionally people start from the Fourche Bivouac, but this can often be very overcrowded and unpleasant. As a result it is sometimes better to start from the Torino Hut and allow an extra couple of hours. At least that way you will probably have had a decent nights sleep and not had to endure the noise of the late arrivals that always turn up.",
+    "hut": false,
+    "created_at": "2022-12-07T14:42:35.846Z",
+    "difficulty": [
+      4
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 24,
+  "fields": {
+    "peak": "Grand Capucin",
+    "route": "Swiss Direct",
+    "height": 3838,
+    "grade": "TD",
+    "descripton": "This immaculate route on fine rock makes its way up the Grand Capucin via a line of weakness on the left hand side. The climbing is never particularly difficult and some feel that it is low in the grade. From the summit the standard way of getting down is to initially rappel the line of “O Sole Mio” before rejoining the original line lower down. Be aware that the approach couloir can turn to rubble later in the season.",
+    "hut": false,
+    "created_at": "2022-12-07T14:43:23.341Z",
+    "difficulty": [
+      4
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 25,
+  "fields": {
+    "peak": "Aiguilles Dorees",
+    "route": "Traverse",
+    "height": 3519,
+    "grade": "D-.",
+    "descripton": "This granite peak offers a fine traverse approximately 1300m long. The Trient Hut is the best start point but the Saleina Hut can also be used. After a glacial approach the route weaves along the ridge, up and down couloirs and around gendarmes. The climbing is never extreme, but it is a long route and many choose not to traverse the full ridge.",
+    "hut": false,
+    "created_at": "2022-12-07T14:44:03.201Z",
+    "difficulty": [
+      4
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 26,
+  "fields": {
+    "peak": "Grandes Jorasses",
+    "route": "Walker Spur",
+    "height": 4208,
+    "grade": "TD+/ED1",
+    "descripton": "Perhaps one of the most famous alpine routes in the world ! This striking line up the North Face of the Jorasses goes straight to the true summit. Approached from the Leschaux hut which offers a fine view of the route the night before your ascent. Although traditionally a mixed climb this has at times in recent years been completely dry and allowed ascents in rock shoes. Despite this most teams still require a bivouac on the route.",
+    "hut": true,
+    "created_at": "2022-12-07T14:45:16.461Z",
+    "difficulty": [
+      5
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 27,
+  "fields": {
+    "peak": "Mont Blanc",
+    "route": "Central Pillar of Freney",
+    "height": 4810,
+    "grade": "TD+/ED1",
+    "descripton": "The scene of a famous race between the French team (led by Rene Desmaison) and Bonington’s team of British All Stars (Whillans, Clough and Duglosz). Needless to say the British reached the summit first but the French still claim it was a joint ascent !! Regardless of the history this is a fine piece of rock, high on the Massif, with a very long approach and requiring a high level of commitment. It has unfortunately been festooned with pitons in recent years, but is still not to be underestimated.",
+    "hut": false,
+    "created_at": "2022-12-07T14:46:11.265Z",
+    "difficulty": [
+      5
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 28,
+  "fields": {
+    "peak": "Les Drus",
+    "route": "North Face Original Route",
+    "height": 3754,
+    "grade": "TD/ED1+",
+    "descripton": "Few people can stand in Les Praz and not marvel at the sight of Les Drus towering above. Its sheer granite faces catch the evening light and show it at its best. The line of the route follows natural weaknesses and there are several possible bivouac areas both on the route and below it. Although once very popular, this route seems to be slightly out of vogue at the moment, with some citing stone-fall risk as the reason. So, do you feel lucky ?",
+    "hut": false,
+    "created_at": "2022-12-07T14:47:34.137Z",
+    "difficulty": [
+      5
+    ]
+  }
+},
+{
+  "model": "mountaineering_routes.mountaineering_route",
+  "pk": 29,
+  "fields": {
+    "peak": "Les Droites",
+    "route": "North East Spur (aka Tournier Spur)",
+    "height": 4000,
+    "grade": "TD+/ED1.",
+    "descripton": "A classic mixed climb of the Alps, soaring over 1000m above the Argentiere basin. The choice of either the original start or the direct is usually dependant on temperature – in summer the rock of the direct start gives a superb outing, but if icy the classic start allows fairly rapid progress to the Breche.",
+    "hut": false,
+    "created_at": "2022-12-07T14:48:16.206Z",
+    "difficulty": [
+      5
+    ]
+  }
+}
+]
