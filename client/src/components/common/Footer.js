@@ -1,17 +1,3 @@
-// /* eslint-disable no-unused-vars */
-// import { Box } from '@chakra-ui/react'
-
-// const Footer = () => {
-//   return (
-//     <Box as="div">
-//       <p>
-//         <span>&copy;</span>Lucy Heath Production
-//       </p>
-//     </Box>
-//   )
-// }
-// export default Footer
-
 import {
   Box,
   chakra,

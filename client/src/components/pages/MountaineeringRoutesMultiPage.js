@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import MultiCard from '../common/MultiCard'
 import SpinnerItem from '../common/SpinnerItem'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { REACT_APP_BASE_URL } from '../../environment'
+import Difficulty from '../helpers/Difficulty'
+import { BsHouse } from 'react-icons/bs'
 
 import {
   SimpleGrid,
@@ -18,9 +19,10 @@ import {
   Image,
   Text,
   CardBody,
-  CardFooter
+  CardFooter,
+  HStack,
+  Icon
 } from '@chakra-ui/react'
-import { BsThreeDotsVertical } from 'react-icons/bs'
 
 import FilterSearch from '../common/FilterSearch'
 
@@ -58,12 +60,11 @@ const MountaineeringRoutesMultiPage = () => {
           spacing={3}
           templateColumns="repeat(auto-fill, minmax(450px, 1fr))"
         >
-          <MultiCard />
           {filteredMountaineeringRoutes.map((m) => {
-            const { peak, description, route, images, id } = m
+            const { peak, descripton, route, images, pk, height } = m
             return (
               <>
-                <Link to={`/mountaineeringRoutes/${id}`}>
+                <Link to={`/mountaineeringRoutes/${pk}`}>
                   <Card maxW="md">
                     <CardHeader>
                       <Flex spacing="4">
@@ -74,20 +75,23 @@ const MountaineeringRoutesMultiPage = () => {
                           flexWrap="wrap"
                         >
                           <Box>
-                            <Heading size="lg">{peak}</Heading>
-                            <Text fontSize="lg">{route}</Text>
+                            <HStack>
+                              <Heading pt="1rem" size="lg">
+                                {peak}
+                              </Heading>
+                              <Text>{`(${height}m)`}</Text>
+                            </HStack>
+                            <Text pt="2rem" fontSize="lg">
+                              {route}
+                            </Text>
                           </Box>
                         </Flex>
-                        <IconButton
-                          variant="ghost"
-                          colorScheme="gray"
-                          aria-label="See menu"
-                          icon={<BsThreeDotsVertical />}
-                        />
                       </Flex>
                     </CardHeader>
                     <CardBody>
-                      <Text noOfLines={[1, 4]}>{description}</Text>
+                      <HStack>
+                        <Difficulty />
+                      </HStack>
                     </CardBody>
                     <Image
                       objectFit="cover"
@@ -109,9 +113,6 @@ const MountaineeringRoutesMultiPage = () => {
                       <Button flex="1" variant="ghost">
                         Comment
                       </Button>
-                      <Button flex="1" variant="ghost">
-                        Save
-                      </Button>
                     </CardFooter>
                   </Card>
                 </Link>
@@ -128,29 +129,3 @@ const MountaineeringRoutesMultiPage = () => {
   )
 }
 export default MountaineeringRoutesMultiPage
-
-// return (
-//   <Box>
-//     <Heading>Mountaineering Routes in Chamonix</Heading>
-//     <FilterSearch />
-//     <SimpleGrid
-//       spacing={3}
-//       templateColumns="repeat(auto-fill, minmax(450px, 1fr))"
-//     >
-//       <MultiCard />
-//       <MultiCard />
-//       <MultiCard />
-//       <MultiCard />
-//       <MultiCard />
-//       <MultiCard />
-//       <MultiCard />
-//       <MultiCard />
-
-//     </SimpleGrid>
-//     : errors ?<h2>Something has gone wrong....</h2>
-//     :
-//     <SpinnerItem />
-//   </Box>
-// )
-// }
-// export default MountaineeringRoutesMultiPage

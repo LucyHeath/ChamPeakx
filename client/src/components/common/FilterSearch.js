@@ -15,7 +15,7 @@ const FilterSearch = ({
     const regex = new RegExp(input.search, 'i')
     const filteredArr = mountaineeringRoutes.filter((m) => {
       return (
-        regex.test(m.peak) &&
+        (regex.test(m.peak) || regex.test(m.route)) &&
         (m.difficulty === input.difficulty || input.difficulty === 'All')
       )
     })
@@ -38,9 +38,12 @@ const FilterSearch = ({
       <select
         onChange={handleChange}
         name="difficulty"
-        value={input.countryCode}
-        placeholder="Select Difficulty Level"
+        value={input.difficulty}
+        placeholder="Select Difficulty"
       >
+        <option value="" disabled={true}>
+          Select Difficulty
+        </option>
         <option value="All">All</option>
         <option value="Acclimatisation">Acclimatisation</option>
         <option value="Easy">Easy</option>

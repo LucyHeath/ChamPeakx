@@ -1,12 +1,3 @@
-// const NavBar = () => {
-//   return (
-//     <div>
-//       <h1>NavBar</h1>
-//     </div>
-//   )
-// }
-// export default NavBar
-
 import {
   Box,
   Flex,
@@ -16,20 +7,25 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
   Popover,
+  Link,
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
+  // useBreakpointValue,
   useDisclosure
 } from '@chakra-ui/react'
+
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon
 } from '@chakra-ui/icons'
+
+import { Link as ReachLink } from '@reach/router'
+
+import Svg from './Svg'
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
@@ -62,14 +58,9 @@ export default function WithSubnavigation() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}
-          >
-            Logo
-          </Text>
-
+          <Link as={ReachLink} to="/">
+            <Svg h={'60px'} w={'60px'} />
+          </Link>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
@@ -86,7 +77,7 @@ export default function WithSubnavigation() {
             fontSize={'sm'}
             fontWeight={400}
             variant={'link'}
-            href={'#'}
+            href={'/login/'}
           >
             Sign In
           </Button>
@@ -96,7 +87,7 @@ export default function WithSubnavigation() {
             fontWeight={600}
             color={'white'}
             bg={'blue.400'}
-            href={'#'}
+            href={'/register/'}
             _hover={{
               bg: 'blue.300'
             }}
@@ -119,7 +110,12 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack
+      direction={'row'}
+      alignContent={'space-around'}
+      flexWrap={'wrap'}
+      spacing={4}
+    >
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -273,36 +269,17 @@ const NAV_ITEMS = [
       {
         label: 'Explore World Class Mountaineering',
         subLabel: 'Find ',
-        href: '#'
+        href: '/mountaineeringRoutes'
       },
       {
-        label: 'New & Noteworthy',
-        subLabel: 'Up-and-coming Designers',
-        href: '#'
+        label: 'Recently Reviewed Routes',
+        subLabel: 'Find out the lates info',
+        href: '/updatedMountaineeringRoutes'
       }
     ]
   },
   {
-    label: 'Find Work',
-    children: [
-      {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#'
-      },
-      {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#'
-      }
-    ]
-  },
-  {
-    label: 'Learn Design',
-    href: '#'
-  },
-  {
-    label: 'Hire Designers',
-    href: '#'
+    label: 'My Profile',
+    href: '/profile/:userId'
   }
 ]

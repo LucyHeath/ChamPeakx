@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Box, ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import NavBar from './components/common/NavBar'
@@ -11,8 +11,7 @@ import NotFound from './components/pages/NotFound'
 import LoginPage from './components/pages/LoginPage'
 import RegisterPage from './components/pages/RegisterPage'
 import UserProfilePage from './components/pages/UserProfilePage.js'
-// import AddMountaineeringRoute from './components/pages/AddLocation'
-// import EditMountaineeringRoute from './components/pages/EditLocation'
+import UpdatedMountaineeringRoutesPage from './components/pages/UpdatedMountaineeringRoutesPage'
 
 const App = () => {
   return (
@@ -26,13 +25,15 @@ const App = () => {
             element={<MountaineeringRoutesMultiPage />}
           />
           <Route
+            path="/updatedMountaineeringRoutes"
+            element={<UpdatedMountaineeringRoutesPage />}
+          />
+          <Route
             path="/mountaineeringRoutes/:mountaineeringRouteId"
             element={<MountaineeringRouteSinglePage />}
           />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          {/* <Route path="/mountaineeringRoutes/add" element={<AddMountaineeringRoute />} /> */}
-          {/* <Route path="/mountaineeringRoutes/:mountaineeringRouteId/edit" element={<EditMountaineeringRoute />}/> */}
           <Route path="/profile/:userId" element={<UserProfilePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
