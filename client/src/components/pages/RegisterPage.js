@@ -11,10 +11,13 @@ import {
   Heading,
   Input,
   Stack,
-  Image
+  Image,
+  Text,
+  Textarea
 } from '@chakra-ui/react'
 
 import registerImg from '../images/register.jpeg'
+import UploadImage from '../helpers/UploadImage'
 
 const RegisterPage = () => {
   // ! Location Variables
@@ -109,6 +112,17 @@ const RegisterPage = () => {
                 onChange={handleChange}
                 value={formFields.passwordConfirmation}
               />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Bio</FormLabel>
+              <Textarea max="500" id="desc" placeholder="About you" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Image Upload</FormLabel>
+              <Text color="gray.600" pb="1rem">
+                Add a profile image
+              </Text>
+              <UploadImage />
             </FormControl>
             <FormErrorMessage>
               {/* {error && <small className="text-danger">{error}</small>} */}

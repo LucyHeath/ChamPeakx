@@ -11,7 +11,6 @@ import NotFound from './components/pages/NotFound'
 import LoginPage from './components/pages/LoginPage'
 import RegisterPage from './components/pages/RegisterPage'
 import UserProfilePage from './components/pages/UserProfilePage.js'
-import UpdatedMountaineeringRoutesPage from './components/pages/UpdatedMountaineeringRoutesPage'
 
 const App = () => {
   return (
@@ -25,17 +24,12 @@ const App = () => {
             element={<MountaineeringRoutesMultiPage />}
           />
           <Route
-            path="/updatedMountaineeringRoutes"
-            element={<UpdatedMountaineeringRoutesPage />}
-          />
-          <Route
             path="/mountaineeringRoutes/:mountaineeringRouteId"
             element={<MountaineeringRouteSinglePage />}
           />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          {/* <Route path="/profile/:userId" element={<UserProfilePage />} /> */}
-          <Route path="/profile" element={<UserProfilePage />} />
+          <Route path="/profile/:userId" element={<UserProfilePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

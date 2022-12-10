@@ -34,7 +34,12 @@ import { GiMuscleUp } from 'react-icons/gi'
 import { BsBarChartSteps } from 'react-icons/bs'
 import { FaMountain } from 'react-icons/fa'
 import CommentDrawer from '../common/CommentDrawer'
+
+
+
 const MountaineeringRouteSinglePage = () => {
+
+  
   const [isHovering, setIsHovering] = useState(false)
   const [mountaineeringRoute, setmountaineeringRoute] = useState(null)
   const [errors, setErrors] = useState(null)

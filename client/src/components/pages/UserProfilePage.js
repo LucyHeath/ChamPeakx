@@ -1,109 +1,270 @@
-
+/* eslint-disable no-unused-vars */
 import CommentDisplay from '../common/CommentDisplay'
-import { HStack, VStack, Heading } from '@chakra-ui/layout'
 import {
   Button,
   Flex,
-  FormControl,
   FormLabel,
   Stack,
   useColorModeValue,
-  Avatar,
-  AvatarBadge,
-  IconButton,
+  Image,
   Center,
   Text,
-  Textarea
+  Textarea,
+  Box,
+  Heading,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
+  HStack,
+  VStack
 } from '@chakra-ui/react'
-import { SmallCloseIcon } from '@chakra-ui/icons'
+import { useDisclosure } from '@chakra-ui/react-use-disclosure'
+import { AddIcon } from '@chakra-ui/icons'
+import React from 'react'
+import { REACT_APP_BASE_URL } from '../../environment'
 
-import avatarImg from '../images/avatar.png'
-export default function UserProfileEdit() {
+// import avatarImg from '../images/avatar.png'
+
+import { useState, useEffect } from 'react'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { getToken } from '../common/Auth.js'
+import UploadImage from '../helpers/UploadImage'
+import { handleLogout } from '../common/Auth.js'
+
+const UserProfilePage = () => {
+  // ! State
+  const [user, setUser] = useState([])
+  const [errors, setErrors] = useState(false)
+  const [formData, setFormData] = useState({
+    image: '',
+    bio: ''
+  })
+
+  // ! Location
+  const { userId } = useParams()
+
+  // ! Navigation
+  const navigate = useNavigate()
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const firstField = React.useRef()
+
+  // ! Execution
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const { data } = await axios.get(
+          `${REACT_APP_BASE_URL}/users/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${getToken()}`
+            }
+          }
+        )
+        setUser(data)
+      } catch (err) {
+        console.log(err)
+        setErrors(true)
+      }
+    }
+    getUser()
+  }, [userId])
+
+  const handleChange = async (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value })
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      await axios.put(`/users/${userId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      const { data } = await axios.get(
+        `${REACT_APP_BASE_URL}/users/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`
+          }
+        }
+      )
+      setUser(data)
+      setFormData({ ...formData, [event.target.name]: event.target.value })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const deleteComment = async (mountaineeringRouteId, commentId) => {
+    try {
+      console.log('mountaineeringRouteId -> ', mountaineeringRouteId)
+      console.log('commentId -> ', commentId)
+      console.log('user Id ->', user.id)
+      const response = await axios.delete(
+        `${REACT_APP_BASE_URL}/mountaineeringRoutes/${mountaineeringRouteId}/comment/${commentId}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`
+          }
+        }
+      )
+      const { data } = await axios.get(
+        `${REACT_APP_BASE_URL}/users/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`
+          }
+        }
+      )
+      setUser(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <>
       <HStack alignItems="flex-start">
         <VStack>
           <Heading>Your Profile</Heading>
-          return (
-          <>
-            <Flex
-              minH={'100vh'}
-              align={'center'}
-              alignItems={'flex-start'}
-              bg={useColorModeValue('gray.50', 'gray.800')}
+          <Flex
+            minH={'100vh'}
+            width="30vw"
+            align={'center'}
+            alignItems={'flex-start'}
+          >
+            <Stack
+              spacing={4}
+              w={'full'}
+              maxW={'md'}
+              bg={useColorModeValue('white', 'gray.700')}
+              rounded={'xl'}
+              boxShadow={'lg'}
+              p={10}
+              my={12}
+              mx={8}
             >
-              <Stack
-                spacing={4}
-                w={'full'}
-                maxW={'md'}
-                bg={useColorModeValue('white', 'gray.700')}
-                rounded={'xl'}
-                boxShadow={'lg'}
-                p={10}
-                my={12}
-                mx={8}
-              >
-                <FormControl id="userName">
-                  <FormLabel>User Icon</FormLabel>
-                  <Stack direction={['column', 'row']} spacing={6}>
-                    <Center>
-                      <Avatar size="xl" src={avatarImg}>
-                        <AvatarBadge
-                          as={IconButton}
-                          size="sm"
-                          rounded="full"
-                          top="-10px"
-                          colorScheme="red"
-                          aria-label="remove Image"
-                          icon={<SmallCloseIcon />}
-                        />
-                      </Avatar>
-                    </Center>
-                    <Center w="full">
-                      <Button w="full">Change Icon</Button>
-                    </Center>
-                  </Stack>
-                </FormControl>
-                <Text>Joe Bloggs</Text>
-                <FormControl id="email" isRequired>
-                  <FormLabel>Bio</FormLabel>
-                  <Textarea
-                    placeholder="About you..."
-                    _placeholder={{ color: 'gray.500' }}
+              <VStack>
+                <Center>
+                  <Text>{`Welcome ${user.first_name} ${user.last_name}`}</Text>
+                </Center>
+                <Center>
+                  <Image
+                    borderRadius="full"
+                    boxSize="150px"
+                    src={`${user.image}`}
+                    alt={`${user.first_name}'s profile picture`}
                   />
-                </FormControl>
-                <Stack spacing={6} direction={['column', 'row']}>
-                  <Button
-                    bg={'red.400'}
-                    color={'white'}
-                    w="full"
-                    _hover={{
-                      bg: 'red.500'
-                    }}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    bg={'blue.400'}
-                    color={'white'}
-                    w="full"
-                    _hover={{
-                      bg: 'blue.500'
-                    }}
-                  >
-                    Submit
-                  </Button>
-                </Stack>
-              </Stack>
-            </Flex>
-          </>
-          )
+                </Center>
+                <Center>
+                  <Text>{user.bio}</Text>
+                </Center>
+                <Button
+                  leftIcon={<AddIcon />}
+                  colorScheme="blue"
+                  onClick={onOpen}
+                  bg={'blue.400'}
+                  color={'white'}
+                  _hover={{
+                    bg: 'blue.500'
+                  }}
+                >
+                  Update Profile
+                </Button>
+                <Drawer
+                  isOpen={isOpen}
+                  placement="left"
+                  initialFocusRef={firstField}
+                  onClose={onClose}
+                  size="sm"
+                >
+                  <DrawerOverlay />
+                  <DrawerContent>
+                    <DrawerCloseButton />
+                    <DrawerHeader borderBottomWidth="1px">
+                      Update Your Profile
+                    </DrawerHeader>
+                    <DrawerBody>
+                      <Stack spacing="24px">
+                        <Box>
+                          <FormLabel htmlFor="desc">Bio</FormLabel>
+                          <Textarea id="desc" placeholder="About you" />
+                        </Box>
+                        <Box>
+                          <FormLabel>Profile Image Upload</FormLabel>
+                          <UploadImage
+                            imageFormData={formData}
+                            setFormData={setFormData}
+                            handleSubmit={handleSubmit}
+                          />
+                        </Box>
+                      </Stack>
+                    </DrawerBody>
+                    <DrawerFooter pb="100px" borderTopWidth="1px">
+                      <Button variant="outline" mr={3} onClick={onClose}>
+                        Cancel
+                      </Button>
+                      <Button
+                        bg={'blue.400'}
+                        color={'white'}
+                        _hover={{
+                          bg: 'blue.500'
+                        }}
+                        type="submit"
+                        onClick={handleSubmit}
+                      >
+                        Submit
+                      </Button>
+                    </DrawerFooter>
+                  </DrawerContent>
+                </Drawer>
+              </VStack>
+            </Stack>
+          </Flex>
         </VStack>
         <VStack>
-          <Heading>Your Comments: </Heading>
-          <CommentDisplay />
+          <Heading>Your Reviews</Heading>
+          <Flex
+            minH={'100vh'}
+            width="60vw"
+            align={'center'}
+            alignItems={'flex-start'}
+          >
+            <Stack
+              spacing={4}
+              w={'full'}
+              maxW={'md'}
+              bg={useColorModeValue('white', 'gray.700')}
+              rounded={'xl'}
+              boxShadow={'lg'}
+              p={10}
+              my={12}
+              mx={8}
+            >
+              <VStack>
+                <CommentDisplay
+                // key={c.id}
+                // owner={c.owner}
+                // text={c.text}
+                // created_at={c.created_at}
+                // id={c.id}
+                // rating={c.rating}
+                // header={c.header}
+                />
+              </VStack>
+            </Stack>
+          </Flex>
         </VStack>
       </HStack>
     </>
   )
 }
+
+export default UserProfilePage

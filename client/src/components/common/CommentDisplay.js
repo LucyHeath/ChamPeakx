@@ -39,7 +39,6 @@ const CommentDisplay = ({
         size="lg"
         direction={{ base: 'column', sm: 'row' }}
         overflow="hidden"
-        variant="outline"
         paddingX="50px"
         alignItems="flex-start"
       >

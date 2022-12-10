@@ -13,15 +13,12 @@ import {
   Card,
   CardHeader,
   Flex,
-  Button,
   Link,
-  IconButton,
   Image,
   Text,
   CardBody,
   CardFooter,
-  HStack,
-  Icon
+  HStack
 } from '@chakra-ui/react'
 
 import FilterSearch from '../common/FilterSearch'
@@ -48,6 +45,10 @@ const MountaineeringRoutesMultiPage = () => {
     }
     getData()
   }, [])
+
+  // const navigateToMountaineeringRouteId = () => {
+  //   navigate(`/mountaineering_routes/${id}`)
+  // }
 
   return (
     <Box>
