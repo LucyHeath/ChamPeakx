@@ -27,17 +27,27 @@ import {
   ButtonGroup,
   HStack
 } from '@chakra-ui/react'
-import Difficulty from '../helpers/Difficulty'
 import { BsHouse } from 'react-icons/bs'
-import CommentForm from '../common/CommentForm'
-
+import { TbRoute } from 'react-icons/tb'
+import { GiMountainClimbing } from 'react-icons/gi'
+import { GiMuscleUp } from 'react-icons/gi'
+import { BsBarChartSteps } from 'react-icons/bs'
+import { FaMountain } from 'react-icons/fa'
+import CommentDrawer from '../common/CommentDrawer'
 const MountaineeringRouteSinglePage = () => {
+  const [isHovering, setIsHovering] = useState(false)
   const [mountaineeringRoute, setmountaineeringRoute] = useState(null)
   const [errors, setErrors] = useState(null)
 
   const { mountaineeringRouteId } = useParams()
   const navigate = useNavigate()
 
+  const handleMouseOver = () => {
+    setIsHovering(true)
+  }
+  const handleMouseOut = () => {
+    setIsHovering(false)
+  }
   useEffect(() => {
     const getMountaineeringRoute = async () => {
       try {
@@ -58,15 +68,20 @@ const MountaineeringRouteSinglePage = () => {
       {mountaineeringRoute ? (
         <>
           <Box>
-            <HStack justifyContent="space-around">
+            <HStack justifyContent="space-evenly">
               <HStack>
-                <Heading pt="1rem" size="lg">
+                <FaMountain />
+                <Heading pt="1rem" size="xl">
                   {mountaineeringRoute.peak}
                 </Heading>
                 <Text>{`(${mountaineeringRoute.height}m)`}</Text>
               </HStack>
-              <Heading>{mountaineeringRoute.route}</Heading>
-              <Difficulty />
+              <HStack>
+                <TbRoute />
+                <Heading pt="1rem" size="xl">
+                  {mountaineeringRoute.route}
+                </Heading>
+              </HStack>
             </HStack>
             <Card alignItems="center" size="lg">
               <CardBody display="flex" flexDirection="column" flexWrap="wrap">
@@ -76,28 +91,44 @@ const MountaineeringRouteSinglePage = () => {
                   alt="Mountain"
                 />
                 <Stack mt="6" spacing="3">
-                  <HStack>
-                    <Text>{mountaineeringRoute.grade}</Text>
-                    {mountaineeringRoute.hut} === true ? (
-                    <Icon as={BsHouse} w={8} h={8} color="blue.900" />) : (<></>
-                    )
+                  <Divider orientation="horizontal" />
+                  <HStack justifyContent="space-evenly">
+                    <HStack>
+                      <GiMountainClimbing
+                        onMouseOver={handleMouseOver}
+                        onMouseOut={handleMouseOut}
+                      />
+                      {isHovering && <Text p="8">Technical Grade</Text>}
+                      <Text>{mountaineeringRoute.grade}</Text>
+                    </HStack>
+                    <HStack>
+                      <GiMuscleUp
+                        onMouseOver={handleMouseOver}
+                        onMouseOut={handleMouseOut}
+                      />
+                      {isHovering && <Text p="8">Route Difficulty</Text>}
+                      <Text>Hard</Text>
+                    </HStack>
+                    <HStack>
+                      <BsHouse />
+                      {mountaineeringRoute.hut === 'true' ? (
+                        <Text>Hut on Route</Text>
+                      ) : (
+                        <Text>No Hut</Text>
+                      )}
+                    </HStack>
                   </HStack>
-                  <Text color="blue.600" fontSize="2xl">
-                    {mountaineeringRoute.description}
-                  </Text>
+                  <Divider orientation="horizontal" />
+                  <Text fontSize="2xl">{mountaineeringRoute.descripton}</Text>
                 </Stack>
               </CardBody>
               <Divider />
               <CardFooter>
-                <Button variant="solid" colorScheme="blue">
-                  Add Review
-                </Button>
+                <CommentDrawer />
               </CardFooter>
             </Card>
             <Box></Box>
           </Box>
-          <Divider orientation="horizontal" />
-          <CommentForm />
           {mountaineeringRoute.comments.map((c) => (
             <CommentDisplay
               key={c.id}

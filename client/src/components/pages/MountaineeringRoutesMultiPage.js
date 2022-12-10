@@ -8,13 +8,13 @@ import { BsHouse } from 'react-icons/bs'
 
 import {
   SimpleGrid,
-  Link,
   Box,
   Heading,
   Card,
   CardHeader,
   Flex,
   Button,
+  Link,
   IconButton,
   Image,
   Text,
@@ -25,6 +25,8 @@ import {
 } from '@chakra-ui/react'
 
 import FilterSearch from '../common/FilterSearch'
+
+import { Link as ReachLink } from '@reach/router'
 
 const MountaineeringRoutesMultiPage = () => {
   const [mountaineeringRoutes, setMountaineeringRoutes] = useState([])
@@ -61,10 +63,10 @@ const MountaineeringRoutesMultiPage = () => {
           templateColumns="repeat(auto-fill, minmax(450px, 1fr))"
         >
           {filteredMountaineeringRoutes.map((m) => {
-            const { peak, descripton, route, images, pk, height } = m
+            const { peak, descripton, route, images, id, height } = m
             return (
               <>
-                <Link to={`/mountaineeringRoutes/${pk}`}>
+                <Link as={ReachLink} to={`/mountaineering_routes/${id}`}>
                   <Card maxW="md">
                     <CardHeader>
                       <Flex spacing="4">
@@ -76,12 +78,16 @@ const MountaineeringRoutesMultiPage = () => {
                         >
                           <Box>
                             <HStack>
-                              <Heading pt="1rem" size="lg">
+                              <Heading
+                                textDecoration="none"
+                                pt="1rem"
+                                size="lg"
+                              >
                                 {peak}
                               </Heading>
-                              <Text>{`(${height}m)`}</Text>
+                              <Text textDecoration="none">{`(${height}m)`}</Text>
                             </HStack>
-                            <Text pt="2rem" fontSize="lg">
+                            <Text textDecoration="none" pt="2rem" fontSize="lg">
                               {route}
                             </Text>
                           </Box>
@@ -98,21 +104,8 @@ const MountaineeringRoutesMultiPage = () => {
                       src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg"
                       alt="Mountain"
                     />
-                    <CardFooter
-                      justify="space-between"
-                      flexWrap="wrap"
-                      sx={{
-                        '& > button': {
-                          minW: '136px'
-                        }
-                      }}
-                    >
-                      <Button flex="1" variant="ghost">
-                        View
-                      </Button>
-                      <Button flex="1" variant="ghost">
-                        Comment
-                      </Button>
+                    <CardFooter justify="center">
+                      <Text textDecoration="none">Difficulty Level</Text>
                     </CardFooter>
                   </Card>
                 </Link>

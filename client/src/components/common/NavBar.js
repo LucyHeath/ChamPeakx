@@ -23,12 +23,23 @@ import {
   ChevronRightIcon
 } from '@chakra-ui/icons'
 
-import { Link as ReachLink } from '@reach/router'
+import { useNavigate } from 'react-router-dom'
+
+// import { Link as ReachLink } from '@reach/router'
 
 import Svg from './Svg'
 
-export default function WithSubnavigation() {
+const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure()
+  const navigate = useNavigate()
+
+  const navigateToRegister = () => {
+    navigate('/register')
+  }
+
+  const navigateToLandingPage = () => {
+    navigate('/')
+  }
 
   return (
     <Box>
@@ -58,9 +69,9 @@ export default function WithSubnavigation() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Link as={ReachLink} to="/">
+          <Box onClick={() => navigateToLandingPage()}>
             <Svg h={'60px'} w={'60px'} />
-          </Link>
+          </Box>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
@@ -91,6 +102,7 @@ export default function WithSubnavigation() {
             _hover={{
               bg: 'blue.300'
             }}
+            onClick={() => navigateToRegister()}
           >
             Sign Up
           </Button>
@@ -249,14 +261,7 @@ const MobileNavItem = ({ label, children, href }) => {
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.700')}
           align={'start'}
-        >
-          {children &&
-            children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Link>
-            ))}
-        </Stack>
+        ></Stack>
       </Collapse>
     </Stack>
   )
@@ -265,21 +270,13 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: 'Get Inspiration',
-    children: [
-      {
-        label: 'Explore World Class Mountaineering',
-        subLabel: 'Find ',
-        href: '/mountaineeringRoutes'
-      },
-      {
-        label: 'Recently Reviewed Routes',
-        subLabel: 'Find out the lates info',
-        href: '/updatedMountaineeringRoutes'
-      }
-    ]
+    href: '/mountaineeringRoutes'
   },
   {
     label: 'My Profile',
-    href: '/profile/:userId'
+    // href: '/profile/:userId'
+    href: '/profile'
   }
 ]
+
+export default NavBar
