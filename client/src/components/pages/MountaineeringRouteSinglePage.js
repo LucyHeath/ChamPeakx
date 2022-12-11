@@ -33,13 +33,10 @@ import { GiMountainClimbing } from 'react-icons/gi'
 import { GiMuscleUp } from 'react-icons/gi'
 import { BsBarChartSteps } from 'react-icons/bs'
 import { FaMountain } from 'react-icons/fa'
-import CommentDrawer from '../common/CommentDrawer'
-
-
+import AddCommentDrawer from '../common/AddCommentDrawer'
+import Difficulty from '../helpers/Difficulty'
 
 const MountaineeringRouteSinglePage = () => {
-
-  
   const [isHovering, setIsHovering] = useState(false)
   const [mountaineeringRoute, setmountaineeringRoute] = useState(null)
   const [errors, setErrors] = useState(null)
@@ -113,6 +110,7 @@ const MountaineeringRouteSinglePage = () => {
                       />
                       {isHovering && <Text p="8">Route Difficulty</Text>}
                       <Text>Hard</Text>
+                      {/* <Difficulty /> */}
                     </HStack>
                     <HStack>
                       <BsHouse />
@@ -129,7 +127,7 @@ const MountaineeringRouteSinglePage = () => {
               </CardBody>
               <Divider />
               <CardFooter>
-                <CommentDrawer />
+                <AddCommentDrawer />
               </CardFooter>
             </Card>
             <Box></Box>

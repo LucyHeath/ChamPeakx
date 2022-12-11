@@ -1,55 +1,48 @@
 /* eslint-disable no-unused-vars */
 import {
-  Box,
   Stack,
-  Flex,
-  Heading,
   FormControl,
   Input,
   FormLabel,
   Button,
   Text,
   Textarea,
-  RangeSlider,
-  RangeSliderTrack,
-  RangeSliderFilledTrack,
-  RangeSliderThumb,
-  RangeSliderMark,
   Drawer,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
-  InputGroup,
-  InputRightAddon,
-  InputLeftAddon,
-  Select,
-  DrawerFooter
+  DrawerFooter,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
-import { AddIcon } from '@chakra-ui/icons'
+import { EditIcon } from '@chakra-ui/icons'
 
 import React from 'react'
 import UploadImage from '../helpers/UploadImage'
 
-const CommentDrawer = () => {
+const EditCommentDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const firstField = React.useRef()
 
   return (
     <>
       <Button
-        leftIcon={<AddIcon />}
+        leftIcon={<EditIcon />}
         colorScheme="blue"
         onClick={onOpen}
-        bg={'blue.400'}
-        color={'white'}
+        w="full"
         _hover={{
           bg: 'blue.500'
         }}
+        bg={'blue.400'}
       >
-        Add Review
+        Edit Review
       </Button>
       <Drawer
         isOpen={isOpen}
@@ -61,11 +54,10 @@ const CommentDrawer = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth="1px">Add a review</DrawerHeader>
-
+          <DrawerHeader borderBottomWidth="1px">Edit a review</DrawerHeader>
           <DrawerBody>
             <Stack spacing="24px">
-              <Box>
+              <FormControl isRequired>
                 <FormLabel htmlFor="username">Title</FormLabel>
                 <Input
                   ref={firstField}
@@ -73,17 +65,23 @@ const CommentDrawer = () => {
                   placeholder="Give your review a great title!"
                   isRequired
                 />
-              </Box>
-
-              <Box>
-                <FormLabel htmlFor="desc">Description</FormLabel>
-                <Textarea id="desc" placeholder="Write about the route" />
-              </Box>
-              <Box>
-                <FormLabel htmlFor="desc" placeholder="Write about the route">
-                  Rating
-                </FormLabel>
-                <RangeSlider
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel>Description</FormLabel>
+                <Textarea id="desc" placeholder="Write about the route..." />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel>Rating</FormLabel>
+                <Text>How many stars out of 5 would you give this route?</Text>
+                <NumberInput size="md" maxW={24} min={0} max={5}>
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
+              {/* <RangeSlider
                   aria-label={['min', 'max']}
                   colorScheme="blue"
                   defaultValue={[0, 5]}
@@ -111,15 +109,13 @@ const CommentDrawer = () => {
                     <RangeSliderThumb index={0} />
                     <RangeSliderThumb index={1} />
                   </RangeSliderTrack>
-                </RangeSlider>
-              </Box>
-              <Box>
-                <FormLabel>Image Upload</FormLabel>
-                <Text color="gray.600" pb="1rem">
-                  Add up to 10 images
-                </Text>
-                <UploadImage />
-              </Box>
+                </RangeSlider> */}
+
+              <FormLabel>Image Upload</FormLabel>
+              <Text color="gray.600" pb="1rem">
+                Add up to 10 images
+              </Text>
+              <UploadImage />
             </Stack>
           </DrawerBody>
 
@@ -143,4 +139,4 @@ const CommentDrawer = () => {
   )
 }
 
-export default CommentDrawer
+export default EditCommentDrawer

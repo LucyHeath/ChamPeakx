@@ -33,7 +33,7 @@ export const isAuthenticated = () => {
 export const handleLogout = (navigate) => {
   console.log(tokenName)
   localStorage.removeItem(tokenName)
-  navigate('/login/')
+  navigate('/auth/login/')
 }
 
 export const isOwner = (token1) => {

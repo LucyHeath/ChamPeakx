@@ -10,7 +10,7 @@ import MountaineeringRouteSinglePage from './components/pages/MountaineeringRout
 import NotFound from './components/pages/NotFound'
 import LoginPage from './components/pages/LoginPage'
 import RegisterPage from './components/pages/RegisterPage'
-import UserProfilePage from './components/pages/UserProfilePage.js'
+// import UserProfilePage from './components/pages/UserProfilePage.js'
 
 const App = () => {
   return (
@@ -27,9 +27,9 @@ const App = () => {
             path="/mountaineeringRoutes/:mountaineeringRouteId"
             element={<MountaineeringRouteSinglePage />}
           />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/profile/:userId" element={<UserProfilePage />} />
+          <Route path="/auth/login" element={<LoginPage />} />
+          <Route path="/auth/register" element={<RegisterPage />} />
+          {/* <Route path="/profile/:userId" element={<UserProfilePage />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

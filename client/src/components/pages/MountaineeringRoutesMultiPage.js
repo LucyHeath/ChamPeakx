@@ -3,7 +3,6 @@ import SpinnerItem from '../common/SpinnerItem'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { REACT_APP_BASE_URL } from '../../environment'
-import Difficulty from '../helpers/Difficulty'
 import { BsHouse } from 'react-icons/bs'
 
 import {
@@ -13,17 +12,18 @@ import {
   Card,
   CardHeader,
   Flex,
-  Link,
   Image,
   Text,
   CardBody,
   CardFooter,
-  HStack
+  HStack,
+  VStack
 } from '@chakra-ui/react'
 
+import Difficulty from '../helpers/Difficulty'
 import FilterSearch from '../common/FilterSearch'
 
-import { Link as ReachLink } from '@reach/router'
+import { Link } from 'react-router-dom'
 
 const MountaineeringRoutesMultiPage = () => {
   const [mountaineeringRoutes, setMountaineeringRoutes] = useState([])
@@ -46,13 +46,11 @@ const MountaineeringRoutesMultiPage = () => {
     getData()
   }, [])
 
-  // const navigateToMountaineeringRouteId = () => {
-  //   navigate(`/mountaineering_routes/${id}`)
-  // }
-
   return (
     <Box>
-      <Heading>Mountaineering Routes in Chamonix</Heading>
+      <Box display="flex" justifyContent="center">
+        <Heading py="2rem">Mountaineering Routes in Chamonix</Heading>
+      </Box>
       <FilterSearch
         mountaineeringRoutes={mountaineeringRoutes}
         filteredMountaineeringRoutes={filteredMountaineeringRoutes}
@@ -60,6 +58,7 @@ const MountaineeringRoutesMultiPage = () => {
       />
       {filteredMountaineeringRoutes.length ? (
         <SimpleGrid
+          pt="2rem"
           spacing={3}
           templateColumns="repeat(auto-fill, minmax(450px, 1fr))"
         >
@@ -67,7 +66,7 @@ const MountaineeringRoutesMultiPage = () => {
             const { peak, descripton, route, images, id, height } = m
             return (
               <>
-                <Link as={ReachLink} to={`/mountaineering_routes/${id}`}>
+                <Link to={`/mountaineeringRoutes/${id}`}>
                   <Card maxW="md">
                     <CardHeader>
                       <Flex spacing="4">

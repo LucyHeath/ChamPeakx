@@ -20,18 +20,31 @@ import commentImg from '../images/comment.jpeg'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { AiOutlineCalendar } from 'react-icons/ai'
 import { GiAlliedStar } from 'react-icons/gi'
+import EditCommentDrawer from './EditCommentDrawer'
+import { DeleteIcon } from '@chakra-ui/icons'
+import axios from 'axios'
+import { REACT_APP_BASE_URL } from '../../environment'
+import { getToken } from '../common/Auth'
 
-const CommentDisplay = ({
-  owner,
-  text,
-  created_at,
-  id,
-  first_name,
-  last_name,
-  header,
-  rating
-}) => {
+const CommentDisplay = ({ owner, text, created_at, header, rating, id }) => {
   const date = new Date(created_at).toLocaleDateString()
+
+  const deleteComment = async (commentId) => {
+    try {
+      console.log('commentId -> ', commentId)
+      const response = await axios.delete(
+        `${REACT_APP_BASE_URL}/comments/${commentId}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`
+          }
+        }
+      )
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <Box overflowY="scroll" sx={{ '::-webkit-scrollbar': { display: 'none' } }}>
       <Card
@@ -51,7 +64,7 @@ const CommentDisplay = ({
               </HStack>
               <HStack pl="2rem">
                 <BsFillPersonFill />
-                <Text>{`${owner.first_name} ${owner.last_name}`}</Text>
+                <Text>{owner.username}</Text>
               </HStack>
             </HStack>
           </CardHeader>
@@ -82,23 +95,16 @@ const CommentDisplay = ({
           </CardBody>
           <CardFooter>
             <ButtonGroup spacing="2">
+              <EditCommentDrawer />
               <Button
-                bg={'blue.400'}
-                color={'white'}
-                w="full"
-                _hover={{
-                  bg: 'blue.500'
-                }}
-              >
-                Edit Review
-              </Button>
-              <Button
+                leftIcon={<DeleteIcon />}
                 bg={'red.400'}
                 color={'white'}
                 w="full"
                 _hover={{
                   bg: 'red.500'
                 }}
+                onClick={() => deleteComment(id)}
               >
                 Delete Review
               </Button>

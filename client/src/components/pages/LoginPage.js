@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import SpinnerItem from '../common/SpinnerItem'
 import { REACT_APP_BASE_URL } from '../../environment'
 import {
@@ -11,21 +12,17 @@ import {
   Image,
   FormErrorMessage
 } from '@chakra-ui/react'
-
 import loginImg from '../images/login.jpeg'
-
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-import { setToken } from '../common/Auth'
+import { setToken, getToken } from '../common/Auth'
 
 const LoginPage = () => {
   // ! Location Variables
   const navigate = useNavigate()
 
   // ! State
-  // Track state of following variables
   const [formFields, setFormFields] = useState({
     email: '',
     password: ''
@@ -34,31 +31,30 @@ const LoginPage = () => {
   const [error, setError] = useState('')
 
   // ! Executions
-  // send off form data to our API
   const handleSubmit = async (e) => {
+    console.log('called handle submit')
     e.preventDefault()
     try {
       const { data } = await axios.post(
-        `${REACT_APP_BASE_URL}/login/`,
+        `${REACT_APP_BASE_URL}/auth/login/`,
         formFields
       )
       console.log('token->', data)
+      console.log('form submitted')
       setToken(data.token)
       // navigate to home after successful login
       navigate('/')
+      // navigate('/profile/:userId')- will navigate here when logged in
     } catch (err) {
-      setError(err.response.data.message)
-      console.log(err.response.data.message)
+      console.log(err)
+      // setError(err.response.data.message)
+      // console.log(err.response.data.message)
       // setError({ ...error, [e.target.name]: '', message: '' })
     }
   }
 
   const handleChange = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value })
-  }
-
-  const navigateToProfile = () => {
-    navigate('/profile/:userId')
   }
 
   return (
@@ -105,7 +101,7 @@ const LoginPage = () => {
                     bg: 'blue.500'
                   }}
                   type="submit"
-                  onClick={() => navigateToProfile()}
+                  onClick={handleSubmit}
                 >
                   Login
                 </Button>
@@ -113,7 +109,6 @@ const LoginPage = () => {
             </form>
           </Stack>
         </Flex>
-
         <Flex flex={1}>
           <Image alt={'Login Image'} objectFit={'cover'} src={loginImg} />
         </Flex>

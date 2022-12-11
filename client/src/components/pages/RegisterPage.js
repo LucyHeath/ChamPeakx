@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-
+import { REACT_APP_BASE_URL } from '../../environment'
 import {
   Button,
   Flex,
@@ -12,10 +12,8 @@ import {
   Input,
   Stack,
   Image,
-  Text,
   Textarea
 } from '@chakra-ui/react'
-
 import registerImg from '../images/register.jpeg'
 import UploadImage from '../helpers/UploadImage'
 
@@ -25,36 +23,36 @@ const RegisterPage = () => {
 
   // ! State
   const [formFields, setFormFields] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
+    username: '',
     email: '',
     password: '',
-    passwordConfirmation: ''
+    password_confirmation: '',
+    bio: '',
+    profile_image: ''
   })
   // const [error, setError] = useState('')
+
   // ! Executions
-  //
   const handleSubmit = async (e) => {
+    console.log('we called the handle submit ')
     e.preventDefault()
     try {
-      // send off form data to our API
-      await axios.post(`${REACT_APP_BASE_URL}/register/`, formFields)
+      await axios.post(`${REACT_APP_BASE_URL}/auth/register/`, formFields)
+      console.log('form submitted')
       // navigate to login page after request has completed
-      navigate('/login')
+      navigate('/auth/login')
     } catch (err) {
+      console.log(err)
       // setError(err.response.data.message)
       // console.log(err.response.data.message)
       // setError({ ...error, [e.target.name]: '', message: '' })
     }
-    console.log('form submitted')
   }
 
   const handleChange = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value })
-  }
-
-  const navigateToLogin = () => {
-    navigate('/login')
   }
 
   return (
@@ -68,9 +66,9 @@ const RegisterPage = () => {
               <Input
                 placeholder="Joe"
                 type="text"
-                name="firstName"
+                name="first_name"
                 onChange={handleChange}
-                value={formFields.firstName}
+                value={formFields.first_name}
               />
             </FormControl>
             <FormControl isRequired>
@@ -78,9 +76,19 @@ const RegisterPage = () => {
               <Input
                 placeholder="Bloggs"
                 type="text"
-                name="lastName"
+                name="last_name"
                 onChange={handleChange}
-                value={formFields.lastName}
+                value={formFields.last_name}
+              />
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>Username</FormLabel>
+              <Input
+                placeholder="MountainMan"
+                type="text"
+                name="username"
+                onChange={handleChange}
+                value={formFields.username}
               />
             </FormControl>
             <FormControl isRequired>
@@ -96,7 +104,7 @@ const RegisterPage = () => {
             <FormControl isRequired>
               <FormLabel>Password</FormLabel>
               <Input
-                placeholder="*********"
+                placeholder="must be greater than 8 characters"
                 type="password"
                 name="password"
                 onChange={handleChange}
@@ -106,11 +114,11 @@ const RegisterPage = () => {
             <FormControl isRequired>
               <FormLabel>Confirm password</FormLabel>
               <Input
-                placeholder="*********"
+                placeholder="must be greater than 8 characters"
                 type="password"
-                name="passwordConfirmation"
+                name="password_confirmation"
                 onChange={handleChange}
-                value={formFields.passwordConfirmation}
+                value={formFields.password_confirmation}
               />
             </FormControl>
             <FormControl>
@@ -119,9 +127,9 @@ const RegisterPage = () => {
             </FormControl>
             <FormControl>
               <FormLabel>Image Upload</FormLabel>
-              <Text color="gray.600" pb="1rem">
+              {/* <Text color="gray.600" pb="1rem">
                 Add a profile image
-              </Text>
+              </Text> */}
               <UploadImage />
             </FormControl>
             <FormErrorMessage>
@@ -141,7 +149,7 @@ const RegisterPage = () => {
                   bg: 'blue.500'
                 }}
                 type="submit"
-                onClick={() => navigateToLogin()}
+                onClick={handleSubmit}
               >
                 Register
               </Button>

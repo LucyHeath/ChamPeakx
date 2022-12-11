@@ -26,22 +26,11 @@ import {
 
 import { useNavigate } from 'react-router-dom'
 import { isAuthenticated, handleLogout, getUserId } from './Auth'
-
-// import { Link as ReachLink } from '@reach/router'
-
 import Svg from './Svg'
 
 const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure()
   const navigate = useNavigate()
-
-  const navigateToRegister = () => {
-    navigate('/register')
-  }
-
-  const navigateToLandingPage = () => {
-    navigate('/')
-  }
 
   return (
     <Box>
@@ -71,7 +60,7 @@ const NavBar = () => {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Box onClick={() => navigateToLandingPage()}>
+          <Box as={'a'} href={'/'}>
             <Svg h={'60px'} w={'60px'} />
           </Box>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -86,7 +75,7 @@ const NavBar = () => {
         >
           {isAuthenticated() ? (
             <>
-              <Button
+              {/* <Button
                 as={Link}
                 to
                 fontSize={'sm'}
@@ -95,13 +84,14 @@ const NavBar = () => {
                 href={'/login'}
               >
                 Profile
-              </Button>
+              </Button> */}
               <Button
                 as={'a'}
                 fontSize={'sm'}
                 fontWeight={400}
                 variant={'link'}
-                href={'/login'}
+                href={'/'}
+                onClick={() => handleLogout(navigate)}
               >
                 Sign Out
               </Button>
@@ -113,21 +103,21 @@ const NavBar = () => {
                 fontSize={'sm'}
                 fontWeight={400}
                 variant={'link'}
-                href={'/login'}
+                href={'/auth/login'}
               >
                 Sign In
               </Button>
               <Button
+                as={'a'}
                 display={{ base: 'none', md: 'inline-flex' }}
                 fontSize={'sm'}
                 fontWeight={600}
                 color={'white'}
                 bg={'blue.400'}
-                href={'/register'}
+                href={'/auth/register'}
                 _hover={{
                   bg: 'blue.300'
                 }}
-                onClick={() => navigateToRegister()}
               >
                 Sign Up
               </Button>
