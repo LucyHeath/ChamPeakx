@@ -81,36 +81,6 @@ const EditCommentDrawer = () => {
                   </NumberInputStepper>
                 </NumberInput>
               </FormControl>
-              {/* <RangeSlider
-                  aria-label={['min', 'max']}
-                  colorScheme="blue"
-                  defaultValue={[0, 5]}
-                >
-                  <RangeSliderMark value={0} mt="1" ml="0" fontSize="sm">
-                    0
-                  </RangeSliderMark>
-                  <RangeSliderMark value={20} mt="1" ml="1" fontSize="sm">
-                    1
-                  </RangeSliderMark>
-                  <RangeSliderMark value={40} mt="1" ml="-2.5" fontSize="sm">
-                    2
-                  </RangeSliderMark>
-                  <RangeSliderMark value={60} mt="1" ml="-2.5" fontSize="sm">
-                    3
-                  </RangeSliderMark>
-                  <RangeSliderMark value={80} mt="1" ml="-2.5" fontSize="sm">
-                    4
-                  </RangeSliderMark>
-                  <RangeSliderMark value={100} mt="1" ml="-2.5" fontSize="sm">
-                    5
-                  </RangeSliderMark>
-                  <RangeSliderTrack>
-                    <RangeSliderFilledTrack />
-                    <RangeSliderThumb index={0} />
-                    <RangeSliderThumb index={1} />
-                  </RangeSliderTrack>
-                </RangeSlider> */}
-
               <FormLabel>Image Upload</FormLabel>
               <Text color="gray.600" pb="1rem">
                 Add up to 10 images

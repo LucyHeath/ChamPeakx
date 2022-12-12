@@ -23,23 +23,23 @@ import {
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import { AddIcon } from '@chakra-ui/icons'
 import React from 'react'
-import UploadImage from '../helpers/UploadImage'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-import { getToken } from '../common/Auth'
+import { getToken, isAuthenticated } from '../common/Auth'
+import { REACT_APP_BASE_URL } from '../../environment'
 
-const AddCommentDrawer = () => {
+const AddCommentDrawer = ({ mountaineeringRoute, setMountaineeringRoute }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const firstField = React.useRef()
 
   // ! Location Variables
-  const navigate = useNavigate()
+  const { mountaineeringRouteId } = useParams()
 
   // ! State
   const [formFields, setFormFields] = useState({
-    text: '',
     header: '',
+    text: '',
     rating: '',
     images: ''
   })
@@ -50,22 +50,43 @@ const AddCommentDrawer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      console.log('GET TOKEN ->', getToken())
-      const { data } = await axios.post(
-        'https://breadbored-uk.herokuapp.com/breads',
-        formFields,
+      await axios.post(
+        ` ${REACT_APP_BASE_URL}/comments/`,
+        { ...formFields, mountaineering_route: mountaineeringRouteId },
         {
           headers: {
             Authorization: `Bearer ${getToken()}`
           }
         }
       )
-      console.log('SUCCESS ->', data._id)
-      navigate(`/bread/${data._id}`)
+      setFormFields({ text: '', header: '', images: '', rating: '' })
+      const { data } = await axios.get(
+        `${REACT_APP_BASE_URL}/mountaineering_routes/${mountaineeringRouteId}/`
+      )
+      console.log({ data })
+      setMountaineeringRoute(data)
+      onClose()
+      console.log(formFields)
     } catch (err) {
-      console.log(err.response.data)
+      console.log(err)
+      console.log('hello ->', err.response.data)
+      console.log('Form-<', formFields)
       setErrors(err.response.data)
     }
+  }
+
+  const handleChange = (e) => {
+    console.log('This i e-> ', e)
+    const updatedFormFields = { ...formFields }
+    updatedFormFields[e.target.name] = e.target.value
+    setFormFields(updatedFormFields)
+    setErrors({ ...errors, [e.target.name]: '', message: '' })
+  }
+
+  const handleRating = (int) => {
+    const updatedFormFields = { ...formFields, rating: int }
+    updatedFormFields['rating'] = int
+    setFormFields(updatedFormFields)
   }
 
   return (
@@ -93,86 +114,129 @@ const AddCommentDrawer = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader borderBottomWidth="1px">Add a review</DrawerHeader>
-
-          <DrawerBody>
-            <Stack spacing="24px">
-              <FormControl isRequired>
-                <FormLabel htmlFor="username">Title</FormLabel>
-                <Input
-                  ref={firstField}
-                  id="username"
-                  placeholder="Give your review a great title!"
-                  isRequired
-                />
-              </FormControl>
-
-              <FormControl isRequired>
-                <FormLabel>Description</FormLabel>
-                <Textarea id="desc" placeholder="Write about the route..." />
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel>Rating</FormLabel>
-                <Text>How many stars out of 5 would you give this route?</Text>
-                <NumberInput size="md" maxW={24} min={0} max={5}>
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-              </FormControl>
-              {/* <RangeSlider
-                  aria-label={['min', 'max']}
-                  colorScheme="blue"
-                  defaultValue={[0, 5]}
+          {isAuthenticated() ? (
+            <>
+              <DrawerBody>
+                <Stack spacing="24px">
+                  <form onSubmit={handleSubmit}>
+                    <FormControl isRequired>
+                      <FormLabel>Title</FormLabel>
+                      <Input
+                        ref={firstField}
+                        name="header"
+                        placeholder="Give your review a great title!"
+                        onChange={handleChange}
+                        value={formFields.header}
+                      />
+                      {errors && errors.header && (
+                        <Text size="xs" color="tomato">
+                          {errors.header}
+                        </Text>
+                      )}
+                    </FormControl>
+                    <FormControl isRequired>
+                      <FormLabel>Description</FormLabel>
+                      <Textarea
+                        name="text"
+                        placeholder="Write about the route..."
+                        onChange={handleChange}
+                        value={formFields.text}
+                      />
+                      {errors && errors.text && (
+                        <Text size="xs" color="tomato">
+                          {errors.text}
+                        </Text>
+                      )}
+                    </FormControl>
+                    <FormControl isRequired>
+                      <FormLabel>Rating</FormLabel>
+                      <Text>
+                        How many stars out of 5 would you give this route?
+                      </Text>
+                      <NumberInput
+                        size="md"
+                        name="rating"
+                        maxW={24}
+                        min={0}
+                        max={5}
+                        onChange={handleRating}
+                        value={formFields.rating}
+                      >
+                        <NumberInputField />
+                        <NumberInputStepper>
+                          <NumberIncrementStepper />
+                          <NumberDecrementStepper />
+                        </NumberInputStepper>
+                      </NumberInput>
+                      {errors && errors.rating && (
+                        <Text size="xs" color="tomato">
+                          {errors.header}
+                        </Text>
+                      )}
+                    </FormControl>
+                    <FormLabel>Image Upload</FormLabel>
+                    <Text color="gray.600" pb="1rem">
+                      Add up to 10 images
+                    </Text>
+                    {/* <Input
+                      name="images"
+                      type="file"
+                      onChange={handleChange}
+                      value={formFields.text}
+                    /> */}
+                    <input
+                      name="images"
+                      type="file"
+                      onChange={handleChange}
+                      value={formFields.images}
+                    />
+                  </form>
+                </Stack>
+              </DrawerBody>
+              <DrawerFooter borderTopWidth="1px">
+                <Button variant="outline" mr={3} onClick={onClose}>
+                  Cancel
+                </Button>
+                <Button
+                  bg={'blue.400'}
+                  color={'white'}
+                  _hover={{
+                    bg: 'blue.500'
+                  }}
+                  type="submit"
+                  onClick={handleSubmit}
                 >
-                  <RangeSliderMark value={0} mt="1" ml="0" fontSize="sm">
-                    0
-                  </RangeSliderMark>
-                  <RangeSliderMark value={20} mt="1" ml="1" fontSize="sm">
-                    1
-                  </RangeSliderMark>
-                  <RangeSliderMark value={40} mt="1" ml="-2.5" fontSize="sm">
-                    2
-                  </RangeSliderMark>
-                  <RangeSliderMark value={60} mt="1" ml="-2.5" fontSize="sm">
-                    3
-                  </RangeSliderMark>
-                  <RangeSliderMark value={80} mt="1" ml="-2.5" fontSize="sm">
-                    4
-                  </RangeSliderMark>
-                  <RangeSliderMark value={100} mt="1" ml="-2.5" fontSize="sm">
-                    5
-                  </RangeSliderMark>
-                  <RangeSliderTrack>
-                    <RangeSliderFilledTrack />
-                    <RangeSliderThumb index={0} />
-                    <RangeSliderThumb index={1} />
-                  </RangeSliderTrack>
-                </RangeSlider> */}
-
-              <FormLabel>Image Upload</FormLabel>
-              <Text color="gray.600" pb="1rem">
-                Add up to 10 images
-              </Text>
-              <UploadImage />
-            </Stack>
-          </DrawerBody>
-
-          <DrawerFooter borderTopWidth="1px">
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button
-              bg={'blue.400'}
-              color={'white'}
-              _hover={{
-                bg: 'blue.500'
-              }}
-            >
-              Submit
-            </Button>
-          </DrawerFooter>
+                  Submit
+                </Button>
+              </DrawerFooter>
+            </>
+          ) : (
+            <>
+              <Text>Please Register or Login to leave a review</Text>
+              <Button
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500'
+                }}
+                as={'a'}
+                href={'/auth/register'}
+              >
+                Register
+              </Button>
+              <Button
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500'
+                }}
+                as={'a'}
+                href={'/auth/login'}
+              >
+                Login
+              </Button>
+            </>
+          )}
         </DrawerContent>
       </Drawer>
     </>

@@ -4,41 +4,34 @@
 /* eslint-disable react/no-unknown-property */
 import CommentDisplay from '../common/CommentDisplay'
 import SpinnerItem from '../common/SpinnerItem'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { REACT_APP_BASE_URL } from '../../environment'
 import {
-  Link,
   Box,
-  Icon,
   Heading,
   Card,
-  CardHeader,
-  Flex,
-  Button,
-  IconButton,
   Image,
   Text,
   CardBody,
   CardFooter,
   Stack,
   Divider,
-  ButtonGroup,
-  HStack
+  HStack,
+  VStack,
+  Tooltip
 } from '@chakra-ui/react'
 import { BsHouse } from 'react-icons/bs'
 import { TbRoute } from 'react-icons/tb'
 import { GiMountainClimbing } from 'react-icons/gi'
 import { GiMuscleUp } from 'react-icons/gi'
-import { BsBarChartSteps } from 'react-icons/bs'
 import { FaMountain } from 'react-icons/fa'
 import AddCommentDrawer from '../common/AddCommentDrawer'
-import Difficulty from '../helpers/Difficulty'
 
 const MountaineeringRouteSinglePage = () => {
   const [isHovering, setIsHovering] = useState(false)
-  const [mountaineeringRoute, setmountaineeringRoute] = useState(null)
+  const [mountaineeringRoute, setMountaineeringRoute] = useState(null)
   const [errors, setErrors] = useState(null)
 
   const { mountaineeringRouteId } = useParams()
@@ -50,20 +43,23 @@ const MountaineeringRouteSinglePage = () => {
   const handleMouseOut = () => {
     setIsHovering(false)
   }
-  useEffect(() => {
-    const getMountaineeringRoute = async () => {
-      try {
-        const { data } = await axios.get(
-          `${REACT_APP_BASE_URL}/mountaineering_routes/${mountaineeringRouteId}/`
-        )
-        console.log({ data })
-        setmountaineeringRoute(data)
-      } catch (err) {
-        console.log(err)
-      }
+
+  const getMountaineeringRoute = useCallback(async () => {
+    try {
+      const { data } = await axios.get(
+        `${REACT_APP_BASE_URL}/mountaineering_routes/${mountaineeringRouteId}/`
+      )
+      console.log({ data })
+      setMountaineeringRoute(data)
+    } catch (err) {
+      console.log(err)
     }
-    getMountaineeringRoute()
   }, [mountaineeringRouteId])
+
+  // if getmountaineering changes, then use effect will run
+  useEffect(() => {
+    getMountaineeringRoute()
+  }, [getMountaineeringRoute])
 
   return (
     <Box>
@@ -72,22 +68,35 @@ const MountaineeringRouteSinglePage = () => {
           <Box>
             <HStack justifyContent="space-evenly">
               <HStack>
-                <FaMountain />
+                <Tooltip label="Peak Name" fontSize="md">
+                  <span>
+                    <FaMountain />
+                  </span>
+                </Tooltip>
                 <Heading pt="1rem" size="xl">
                   {mountaineeringRoute.peak}
                 </Heading>
                 <Text>{`(${mountaineeringRoute.height}m)`}</Text>
               </HStack>
               <HStack>
-                <TbRoute />
+                <Tooltip label="Route Name" fontSize="md">
+                  <span>
+                    <TbRoute />
+                  </span>
+                </Tooltip>
                 <Heading pt="1rem" size="xl">
                   {mountaineeringRoute.route}
                 </Heading>
               </HStack>
             </HStack>
             <Card alignItems="center" size="lg">
-              <CardBody display="flex" flexDirection="column" flexWrap="wrap">
+              <CardBody
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+              >
                 <Image
+                  w={['500px', '800px', '1000px', '1200px', '1500px']}
                   objectFit="cover"
                   src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg"
                   alt="Mountain"
@@ -96,32 +105,34 @@ const MountaineeringRouteSinglePage = () => {
                   <Divider orientation="horizontal" />
                   <HStack justifyContent="space-evenly">
                     <HStack>
-                      <GiMountainClimbing
-                        onMouseOver={handleMouseOver}
-                        onMouseOut={handleMouseOut}
-                      />
-                      {isHovering && <Text p="8">Technical Grade</Text>}
+                      <Tooltip label="Grade" fontSize="md">
+                        <span>
+                          <GiMountainClimbing />
+                        </span>
+                      </Tooltip>
                       <Text>{mountaineeringRoute.grade}</Text>
                     </HStack>
                     <HStack>
-                      <GiMuscleUp
-                        onMouseOver={handleMouseOver}
-                        onMouseOut={handleMouseOut}
-                      />
-                      {isHovering && <Text p="8">Route Difficulty</Text>}
-                      {/* {mountaineeringRoute.difficulty.map((d) => (
-                        <Difficulty key={d.name} name={d.name} />
-                      ))} */}
-                      <ul>
-                        {mountaineeringRoute.difficulty.map((d) => (
-                          <Text ontSize="lg" pl="1rem" key={d.name}>
-                            {d.name}
-                          </Text>
-                        ))}
-                      </ul>
+                      <Tooltip label="Difficulty Level" fontSize="md">
+                        <span>
+                          <GiMuscleUp />
+                        </span>
+                      </Tooltip>
+                      {mountaineeringRoute.difficulty.map((d) => (
+                        <Text ontSize="lg" pl="1rem" key={d.name}>
+                          {d.name}
+                        </Text>
+                      ))}
                     </HStack>
                     <HStack>
-                      <BsHouse />
+                      <Tooltip
+                        label="Refuge or Facillities Available on Route "
+                        fontSize="md"
+                      >
+                        <span>
+                          <BsHouse />
+                        </span>
+                      </Tooltip>
                       {mountaineeringRoute.hut === 'true' ? (
                         <Text>Hut on Route</Text>
                       ) : (
@@ -135,12 +146,15 @@ const MountaineeringRouteSinglePage = () => {
               </CardBody>
               <Divider />
               <CardFooter>
-                <AddCommentDrawer />
+                <AddCommentDrawer
+                  setMountaineeringRoute={setMountaineeringRoute}
+                />
               </CardFooter>
             </Card>
           </Box>
           {mountaineeringRoute.comments.map((c) => (
             <CommentDisplay
+              getMountaineeringRoute={getMountaineeringRoute}
               key={c.id}
               owner={c.owner}
               text={c.text}

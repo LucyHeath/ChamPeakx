@@ -22,28 +22,47 @@ import { AiOutlineCalendar } from 'react-icons/ai'
 import { GiAlliedStar } from 'react-icons/gi'
 import EditCommentDrawer from './EditCommentDrawer'
 import { DeleteIcon } from '@chakra-ui/icons'
-// import axios from 'axios'
-// import { REACT_APP_BASE_URL } from '../../environment'
-// import { getToken } from '../common/Auth'
+import axios from 'axios'
+import { REACT_APP_BASE_URL } from '../../environment'
+import { getToken } from '../common/Auth'
 
-const CommentDisplay = ({ owner, text, created_at, header, rating, id }) => {
+const CommentDisplay = ({
+  owner,
+  text,
+  created_at,
+  header,
+  rating,
+  id,
+  getMountaineeringRoute
+}) => {
   const date = new Date(created_at).toLocaleDateString()
 
-  // const deleteComment = async (commentId) => {
-  //   try {
-  //     console.log('commentId -> ', commentId)
-  //     const response = await axios.delete(
-  //       `${REACT_APP_BASE_URL}/comments/${commentId}/`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${getToken()}`
-  //         }
-  //       }
-  //     )
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
+  // const dateOrderedComments = () => {
+  //   orderedDates = new Date(created_at).sort((a, b) =>
+  //     new Date(a) < new Date(b) ? 1 : -1
+  //   )
+  //   displayDate = orderedDates.toLocaleDateString()
   // }
+  // dateOrderedComments()
+
+  const deleteComment = async (commentId) => {
+    try {
+      console.log('commentId -> ', commentId)
+      const response = await axios.delete(
+        `${REACT_APP_BASE_URL}/comments/${commentId}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`
+          }
+        }
+      )
+      getMountaineeringRoute()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  //need to re-render the comments after delete so deleted comment is removed from the DOM
 
   return (
     <Box overflowY="scroll" sx={{ '::-webkit-scrollbar': { display: 'none' } }}>
