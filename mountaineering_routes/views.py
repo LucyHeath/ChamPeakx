@@ -3,19 +3,21 @@ from .models import Mountaineering_Route
 from .serializers.common import MountaineeringRouteSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status 
+from rest_framework import status
 from rest_framework.exceptions import NotFound
 from .serializers.populated import PolpulatedMountaineeringRouteSerializer
-from rest_framework.permissions import IsAuthenticatedOrReadOnly 
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 # Endpoint: /mountaineering_routes
+
+
 class Mountaineering_RouteListView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
   # Get All Mountaineering Routes
     def get(self, _request):
         mountaineering_routes = Mountaineering_Route.objects.all()
-        serialized_mountaineering_routes = MountaineeringRouteSerializer(
+        serialized_mountaineering_routes = PolpulatedMountaineeringRouteSerializer(
             mountaineering_routes, many=True)
         return Response(serialized_mountaineering_routes.data, status.HTTP_200_OK)
 
@@ -37,6 +39,8 @@ class Mountaineering_RouteListView(APIView):
             return Response(str(e), status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # Endpoint: /mountaineering_routes/:pk
+
+
 class Mountaineering_RouteDetailView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
 

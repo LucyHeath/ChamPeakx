@@ -1,16 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 import { useEffect, useState } from 'react'
-import {
-  FormLabel,
-  HStack,
-  Input,
-  Select,
-  RadioGroup,
-  Stack,
-  Radio
-} from '@chakra-ui/react'
+import { FormLabel, HStack, Input, Select } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
+
 const FilterSearch = ({
   mountaineeringRoutes,
   setFilteredMountaineeringRoutes
@@ -24,7 +17,8 @@ const FilterSearch = ({
     const filteredArr = mountaineeringRoutes.filter((m) => {
       return (
         (regex.test(m.peak) || regex.test(m.route)) &&
-        (m.difficulty === input.difficulty || input.difficulty === 'All')
+        (m.difficulty.name === input.difficulty.name ||
+          input.difficulty === 'All')
       )
     })
     setFilteredMountaineeringRoutes(filteredArr)
@@ -54,10 +48,9 @@ const FilterSearch = ({
         <Select
           onChange={handleChange}
           name="difficulty"
-          value={input.difficulty}
-          placeholder="Select Difficulty"
+          value={input.difficulty.name}
         >
-          <option value="" disabled={true}>
+          <option value="" disabled="true">
             Select Difficulty
           </option>
           <option value="All">All</option>
@@ -67,21 +60,6 @@ const FilterSearch = ({
           <option value="Hard">Hard</option>
           <option value="Extreme">Extreme</option>
         </Select>
-        {/* <RadioGroup
-          defaultValue="1"
-          onChange={handleChange}
-          name="difficulty"
-          value={input.difficulty}
-          placeholder="Select Difficulty"
-        >
-          <Stack spacing={4} direction="row">
-            <Radio value="1">Radio 1</Radio>
-            <Radio value="2">Radio 2</Radio>
-            <Radio value="3">Radio 3</Radio>
-            <Radio value="4">Radio 3</Radio>
-            <Radio value="5">Radio 3</Radio>
-          </Stack>
-        </RadioGroup> */}
       </HStack>
     </HStack>
   )

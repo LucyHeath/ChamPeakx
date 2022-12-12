@@ -109,8 +109,16 @@ const MountaineeringRouteSinglePage = () => {
                         onMouseOut={handleMouseOut}
                       />
                       {isHovering && <Text p="8">Route Difficulty</Text>}
-                      <Text>Hard</Text>
-                      {/* <Difficulty /> */}
+                      {/* {mountaineeringRoute.difficulty.map((d) => (
+                        <Difficulty key={d.name} name={d.name} />
+                      ))} */}
+                      <ul>
+                        {mountaineeringRoute.difficulty.map((d) => (
+                          <Text ontSize="lg" pl="1rem" key={d.name}>
+                            {d.name}
+                          </Text>
+                        ))}
+                      </ul>
                     </HStack>
                     <HStack>
                       <BsHouse />
@@ -130,7 +138,6 @@ const MountaineeringRouteSinglePage = () => {
                 <AddCommentDrawer />
               </CardFooter>
             </Card>
-            <Box></Box>
           </Box>
           {mountaineeringRoute.comments.map((c) => (
             <CommentDisplay

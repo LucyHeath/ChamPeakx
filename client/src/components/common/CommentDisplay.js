@@ -22,28 +22,28 @@ import { AiOutlineCalendar } from 'react-icons/ai'
 import { GiAlliedStar } from 'react-icons/gi'
 import EditCommentDrawer from './EditCommentDrawer'
 import { DeleteIcon } from '@chakra-ui/icons'
-import axios from 'axios'
-import { REACT_APP_BASE_URL } from '../../environment'
-import { getToken } from '../common/Auth'
+// import axios from 'axios'
+// import { REACT_APP_BASE_URL } from '../../environment'
+// import { getToken } from '../common/Auth'
 
 const CommentDisplay = ({ owner, text, created_at, header, rating, id }) => {
   const date = new Date(created_at).toLocaleDateString()
 
-  const deleteComment = async (commentId) => {
-    try {
-      console.log('commentId -> ', commentId)
-      const response = await axios.delete(
-        `${REACT_APP_BASE_URL}/comments/${commentId}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${getToken()}`
-          }
-        }
-      )
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // const deleteComment = async (commentId) => {
+  //   try {
+  //     console.log('commentId -> ', commentId)
+  //     const response = await axios.delete(
+  //       `${REACT_APP_BASE_URL}/comments/${commentId}/`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${getToken()}`
+  //         }
+  //       }
+  //     )
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   return (
     <Box overflowY="scroll" sx={{ '::-webkit-scrollbar': { display: 'none' } }}>

@@ -3,7 +3,6 @@ import SpinnerItem from '../common/SpinnerItem'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { REACT_APP_BASE_URL } from '../../environment'
-import { BsHouse } from 'react-icons/bs'
 
 import {
   SimpleGrid,
@@ -16,11 +15,9 @@ import {
   Text,
   CardBody,
   CardFooter,
-  HStack,
-  VStack
+  HStack
 } from '@chakra-ui/react'
 
-import Difficulty from '../helpers/Difficulty'
 import FilterSearch from '../common/FilterSearch'
 
 import { Link } from 'react-router-dom'
@@ -63,7 +60,8 @@ const MountaineeringRoutesMultiPage = () => {
           templateColumns="repeat(auto-fill, minmax(450px, 1fr))"
         >
           {filteredMountaineeringRoutes.map((m) => {
-            const { peak, descripton, route, images, id, height } = m
+            const { peak, descripton, route, difficulty, images, id, height } =
+              m
             return (
               <>
                 <Link to={`/mountaineeringRoutes/${id}`}>
@@ -78,16 +76,12 @@ const MountaineeringRoutesMultiPage = () => {
                         >
                           <Box>
                             <HStack>
-                              <Heading
-                                textDecoration="none"
-                                pt="1rem"
-                                size="lg"
-                              >
+                              <Heading pt="1rem" size="lg">
                                 {peak}
                               </Heading>
-                              <Text textDecoration="none">{`(${height}m)`}</Text>
+                              <Text>{`(${height}m)`}</Text>
                             </HStack>
-                            <Text textDecoration="none" pt="2rem" fontSize="lg">
+                            <Text pt="2rem" fontSize="lg">
                               {route}
                             </Text>
                           </Box>
@@ -95,9 +89,7 @@ const MountaineeringRoutesMultiPage = () => {
                       </Flex>
                     </CardHeader>
                     <CardBody>
-                      <HStack>
-                        <Difficulty />
-                      </HStack>
+                      <HStack></HStack>
                     </CardBody>
                     <Image
                       objectFit="cover"
@@ -105,7 +97,11 @@ const MountaineeringRoutesMultiPage = () => {
                       alt="Mountain"
                     />
                     <CardFooter justify="center">
-                      <Text textDecoration="none">Difficulty Level</Text>
+                      {difficulty.map((d) => (
+                        <Text ontSize="lg" pl="1rem" key={d.name}>
+                          {d.name}
+                        </Text>
+                      ))}
                     </CardFooter>
                   </Card>
                 </Link>
