@@ -10,15 +10,15 @@ class Mountaineering_Route(models.Model):
     height = models.PositiveIntegerField()
     grade = models.CharField(max_length=100)
     difficulty = models.ManyToManyField(
-      'difficulty.Difficulty',
-      related_name= "mountaineering_routes"
+        'difficulty.Difficulty',
+        related_name="mountaineering_routes"
     )
     descripton = models.TextField()
     hut = models.BooleanField()
     images = ArrayField(
-            models.CharField(max_length=500, default=None, blank=True, null=True),
-            size=3,
-        ),
+        models.CharField(max_length=500, default=None, blank=True, null=True),
+        size=3,
+    ),
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

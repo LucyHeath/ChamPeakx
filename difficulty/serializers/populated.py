@@ -3,5 +3,4 @@ from mountaineering_routes.serializers.common import MountaineeringRouteSerializ
 
 
 class PopulatedDifficultySerializer(DifficultySerializer):
-    mountianeering_routes = MountaineeringRouteSerializer(many=True)
-
+    mountaineering_routes = MountaineeringRouteSerializer(many=True)

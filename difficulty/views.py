@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Difficulty
-# from .serializers.populated import DifficultySerializer
+#from .serializers.populated import DifficultySerializer
 from .serializers.populated import PopulatedDifficultySerializer
 
 
