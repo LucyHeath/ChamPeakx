@@ -66,7 +66,8 @@ class CommentDetailView(APIView):
         comment = self.get_comment(pk)
         self.is_comment_owner(comment, request.user)
         request.data['owner'] = request.user.id
-        updated_comment = CommentSerializer(comment, data=request.data)
+        updated_comment = CommentSerializer(
+            comment, data=request.data, partial=True)
         if updated_comment.is_valid():
             updated_comment.save()
             return Response(updated_comment.data, status=status.HTTP_202_ACCEPTED)

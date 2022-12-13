@@ -37,13 +37,6 @@ const MountaineeringRouteSinglePage = () => {
   const { mountaineeringRouteId } = useParams()
   const navigate = useNavigate()
 
-  const handleMouseOver = () => {
-    setIsHovering(true)
-  }
-  const handleMouseOut = () => {
-    setIsHovering(false)
-  }
-
   const getMountaineeringRoute = useCallback(async () => {
     try {
       const { data } = await axios.get(

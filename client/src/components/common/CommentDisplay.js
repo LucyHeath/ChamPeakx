@@ -125,7 +125,14 @@ const CommentDisplay = ({
           </CardBody>
           <CardFooter>
             <ButtonGroup spacing="2">
-              <EditCommentDrawer />
+              <EditCommentDrawer
+                id={id}
+                header={header}
+                text={text}
+                images={images}
+                rating={rating}
+                getMountaineeringRoute={getMountaineeringRoute}
+              />
               <Button
                 leftIcon={<DeleteIcon />}
                 bg={'red.400'}

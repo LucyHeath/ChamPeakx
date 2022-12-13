@@ -24,54 +24,58 @@ import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import { EditIcon } from '@chakra-ui/icons'
 import React from 'react'
 import UploadImage from '../helpers/UploadImage'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { getToken, isAuthenticated } from '../common/Auth'
 import { REACT_APP_BASE_URL } from '../../environment'
 
-const EditCommentDrawer = (setMountaineeringRoute) => {
+const EditCommentDrawer = ({
+  text,
+  header,
+  images,
+  rating,
+  id,
+  getMountaineeringRoute
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const firstField = React.useRef()
 
-  // ! Location Variables
-  const { mountaineeringRouteId } = useParams()
-
   // ! State
   const [formFields, setFormFields] = useState({
-    header: '',
-    text: '',
-    rating: '',
+    header: header,
+    text: text,
+    rating: rating,
     images: ''
   })
 
   const [errors, setErrors] = useState(null)
 
   // ! Execution
+
   const handleSubmit = async (e) => {
+    const updatedFormFields = formFields.images
+      ? { ...formFields }
+      : { ...formFields, images: images }//
     e.preventDefault()
     try {
-      await axios.post(
-        ` ${REACT_APP_BASE_URL}/comments/`,
-        { ...formFields, mountaineering_route: mountaineeringRouteId },
+      console.log('This is the id-->', id)
+      await axios.put(
+        ` ${REACT_APP_BASE_URL}/comments/${id}/`,
+        { ...updatedFormFields },
         {
           headers: {
             Authorization: `Bearer ${getToken()}`
           }
         }
       )
-      setFormFields({ text: '', header: '', images: '', rating: '' })
-      const { data } = await axios.get(
-        `${REACT_APP_BASE_URL}/mountaineering_routes/${mountaineeringRouteId}/`
-      )
-      console.log({ data })
-      setMountaineeringRoute(data)
+      getMountaineeringRoute()
       onClose()
       console.log(formFields)
     } catch (err) {
       console.log(err)
-      console.log('hello ->', err.response.data)
-      console.log('Form-<', formFields)
+      console.log('edit fail -->', err.response.data)
+      console.log('edit Form', formFields)
       setErrors(err.response.data)
     }
   }
