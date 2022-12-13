@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { Box } from '@chakra-ui/layout'
 
-const UploadImage = ({ imageFormData, setFormData }) => {
+const UploadImage = ({ formFields, setFormFields }) => {
   const handleChange = async (event) => {
     try {
       // Create a new form data object
@@ -19,8 +19,10 @@ const UploadImage = ({ imageFormData, setFormData }) => {
         process.env.REACT_APP_CLOUDINARY_URL,
         formData
       )
+      console.log(data.secure_url)
       // Add profile image to form data
-      setFormData({ ...imageFormData, image: data.secure_url })
+      setFormFields({ ...formFields, images: data.secure_url })
+      console.log({ ...formFields, images: data.secure_url })
     } catch (err) {
       console.log(err)
     }
@@ -28,13 +30,17 @@ const UploadImage = ({ imageFormData, setFormData }) => {
 
   return (
     <Box>
-      <input
-        className="input"
-        name="image"
-        type="file"
-        placeholder="Upload picture"
-        onChange={handleChange}
-      />
+      {formFields.images ? (
+        <img src={formFields.images} />
+      ) : (
+        <input
+        
+          name="images"
+          type="file"
+          placeholder="Upload picture"
+          onChange={handleChange}
+        />
+      )}
     </Box>
   )
 }

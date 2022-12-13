@@ -24,10 +24,11 @@ import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import { AddIcon } from '@chakra-ui/icons'
 import React from 'react'
 import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { getToken, isAuthenticated } from '../common/Auth'
 import { REACT_APP_BASE_URL } from '../../environment'
+import UploadImage from '../helpers/UploadImage'
 
 const AddCommentDrawer = ({ mountaineeringRoute, setMountaineeringRoute }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -87,6 +88,7 @@ const AddCommentDrawer = ({ mountaineeringRoute, setMountaineeringRoute }) => {
     const updatedFormFields = { ...formFields, rating: int }
     updatedFormFields['rating'] = int
     setFormFields(updatedFormFields)
+    setErrors({ ...errors, [int]: '', message: '' })
   }
 
   return (
@@ -108,7 +110,7 @@ const AddCommentDrawer = ({ mountaineeringRoute, setMountaineeringRoute }) => {
         placement="right"
         initialFocusRef={firstField}
         onClose={onClose}
-        size="full"
+        size="md"
       >
         <DrawerOverlay />
         <DrawerContent>
@@ -176,20 +178,17 @@ const AddCommentDrawer = ({ mountaineeringRoute, setMountaineeringRoute }) => {
                     </FormControl>
                     <FormLabel>Image Upload</FormLabel>
                     <Text color="gray.600" pb="1rem">
-                      Add up to 10 images
+                      Add images here...
                     </Text>
-                    {/* <Input
-                      name="images"
-                      type="file"
-                      onChange={handleChange}
-                      value={formFields.text}
-                    /> */}
-                    <input
-                      name="images"
-                      type="file"
-                      onChange={handleChange}
-                      value={formFields.images}
+                    <UploadImage
+                      formFields={formFields}
+                      setFormFields={setFormFields}
                     />
+                    {errors && errors.images && (
+                      <Text size="xs" color="tomato">
+                        {errors.images}
+                      </Text>
+                    )}
                   </form>
                 </Stack>
               </DrawerBody>

@@ -43,7 +43,7 @@ const LoginPage = () => {
       console.log('form submitted')
       setToken(data.token)
       // navigate to home after successful login
-      navigate('/')
+      navigate('/mountaineeringRoutes')
       // navigate('/profile/:userId')- will navigate here when logged in
     } catch (err) {
       console.log(err)

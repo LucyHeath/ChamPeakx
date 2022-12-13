@@ -13,19 +13,28 @@ import {
   Stack,
   ButtonGroup,
   HStack,
-  VStack
+  VStack,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogBody,
+  AlertDialogCloseButton,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogContent,
+  Tooltip,
+  AspectRatio
 } from '@chakra-ui/react'
 
-import commentImg from '../images/comment.jpeg'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { AiOutlineCalendar } from 'react-icons/ai'
-import { GiAlliedStar } from 'react-icons/gi'
 import EditCommentDrawer from './EditCommentDrawer'
 import { DeleteIcon } from '@chakra-ui/icons'
 import axios from 'axios'
 import { REACT_APP_BASE_URL } from '../../environment'
 import { getToken } from '../common/Auth'
-
+import { useDisclosure } from '@chakra-ui/react-use-disclosure'
+import React from 'react'
+import StarRating from './StarRating'
 const CommentDisplay = ({
   owner,
   text,
@@ -33,8 +42,11 @@ const CommentDisplay = ({
   header,
   rating,
   id,
+  images,
   getMountaineeringRoute
 }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = React.useRef()
   const date = new Date(created_at).toLocaleDateString()
 
   // const dateOrderedComments = () => {
@@ -61,8 +73,6 @@ const CommentDisplay = ({
       console.log(err)
     }
   }
-
-  //need to re-render the comments after delete so deleted comment is removed from the DOM
 
   return (
     <Box overflowY="scroll" sx={{ '::-webkit-scrollbar': { display: 'none' } }}>
@@ -91,10 +101,7 @@ const CommentDisplay = ({
             <HStack flexDirection="column" alignItems="left" w="80%">
               <HStack>
                 <Heading size="md">{header}</Heading>
-                <HStack>
-                  <GiAlliedStar />
-                  <Text>{`${rating} / 5 `}</Text>
-                </HStack>
+                <StarRating rating={rating} />
               </HStack>
               <Box
                 overflowY="scroll"
@@ -104,12 +111,16 @@ const CommentDisplay = ({
               </Box>
             </HStack>
             <VStack>
-              <Image
-                objectFit="cover"
-                maxW={{ base: '100%', sm: '200px' }}
-                src={commentImg}
-                alt="review picture"
-              />
+              {!images ? (
+                <Text>No Pretty Pictures</Text>
+              ) : (
+                <Image
+                  objectFit="cover"
+                  maxW={{ base: '100%', sm: '200px' }}
+                  src={images}
+                  alt="review picture"
+                />
+              )}
             </VStack>
           </CardBody>
           <CardFooter>
@@ -123,10 +134,38 @@ const CommentDisplay = ({
                 _hover={{
                   bg: 'red.500'
                 }}
-                onClick={() => deleteComment(id)}
+                onClick={onOpen}
               >
                 Delete Review
               </Button>
+              <AlertDialog
+                motionPreset="slideInBottom"
+                leastDestructiveRef={cancelRef}
+                onClose={onClose}
+                isOpen={isOpen}
+                isCentered
+              >
+                <AlertDialogOverlay />
+                <AlertDialogContent>
+                  <AlertDialogHeader>Discard Review?</AlertDialogHeader>
+                  <AlertDialogCloseButton />
+                  <AlertDialogBody>
+                    Are you <em>sure</em> you want to delete this review?
+                  </AlertDialogBody>
+                  <AlertDialogFooter>
+                    <Button ref={cancelRef} onClick={onClose}>
+                      No
+                    </Button>
+                    <Button
+                      onClick={() => deleteComment(id)}
+                      colorScheme="red"
+                      ml={3}
+                    >
+                      Yes
+                    </Button>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </ButtonGroup>
           </CardFooter>
         </Stack>

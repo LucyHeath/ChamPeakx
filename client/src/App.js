@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import NavBar from './components/common/NavBar'
 import Footer from './components/common/Footer'
-import LandingPage from './components/pages/LandingPage'
+// import LandingPage from './components/pages/LandingPage'
 import MountaineeringRoutesMultiPage from './components/pages/MountaineeringRoutesMultiPage'
 import MountaineeringRouteSinglePage from './components/pages/MountaineeringRouteSinglePage'
 import NotFound from './components/pages/NotFound'
@@ -18,7 +18,7 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          {/* <Route path="/" element={<LandingPage />} /> */}
           <Route
             path="/mountaineeringRoutes"
             element={<MountaineeringRoutesMultiPage />}

@@ -60,7 +60,7 @@ const NavBar = () => {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Box as={'a'} href={'/'}>
+          <Box as={'a'} href={'/mountaineeringRoutes'}>
             <Svg h={'60px'} w={'60px'} />
           </Box>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -75,16 +75,6 @@ const NavBar = () => {
         >
           {isAuthenticated() ? (
             <>
-              {/* <Button
-                as={Link}
-                to
-                fontSize={'sm'}
-                fontWeight={400}
-                variant={'link'}
-                href={'/login'}
-              >
-                Profile
-              </Button> */}
               <Button
                 as={'a'}
                 fontSize={'sm'}
