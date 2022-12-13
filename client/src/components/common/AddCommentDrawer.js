@@ -29,8 +29,9 @@ import axios from 'axios'
 import { getToken, isAuthenticated } from '../common/Auth'
 import { REACT_APP_BASE_URL } from '../../environment'
 import UploadImage from '../helpers/UploadImage'
+import UploadImage1 from '../helpers/UploadImage'
 
-const AddCommentDrawer = ({ mountaineeringRoute, setMountaineeringRoute }) => {
+const AddCommentDrawer = ({ setMountaineeringRoute }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const firstField = React.useRef()
 
@@ -42,7 +43,8 @@ const AddCommentDrawer = ({ mountaineeringRoute, setMountaineeringRoute }) => {
     header: '',
     text: '',
     rating: '',
-    images: ''
+    images: '',
+    image1: ''
   })
 
   const [errors, setErrors] = useState(null)
@@ -60,7 +62,13 @@ const AddCommentDrawer = ({ mountaineeringRoute, setMountaineeringRoute }) => {
           }
         }
       )
-      setFormFields({ text: '', header: '', images: '', rating: '' })
+      setFormFields({
+        text: '',
+        header: '',
+        images: '',
+        image1: '',
+        rating: ''
+      })
       const { data } = await axios.get(
         `${REACT_APP_BASE_URL}/mountaineering_routes/${mountaineeringRouteId}/`
       )
@@ -187,6 +195,15 @@ const AddCommentDrawer = ({ mountaineeringRoute, setMountaineeringRoute }) => {
                     {errors && errors.images && (
                       <Text size="xs" color="tomato">
                         {errors.images}
+                      </Text>
+                    )}
+                    <UploadImage1
+                      formFields={formFields}
+                      setFormFields={setFormFields}
+                    />
+                    {errors && errors.image1 && (
+                      <Text size="xs" color="tomato">
+                        {errors.image1}
                       </Text>
                     )}
                   </form>

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import SpinnerItem from '../common/SpinnerItem'
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { REACT_APP_BASE_URL } from '../../environment'
 
 import {
@@ -63,7 +63,7 @@ const MountaineeringRoutesMultiPage = () => {
             const { peak, descripton, route, difficulty, images, id, height } =
               m
             return (
-              <>
+              <React.Fragment key={id}>
                 <Link to={`/mountaineeringRoutes/${id}`}>
                   <Card maxW="md">
                     <CardHeader>
@@ -98,14 +98,14 @@ const MountaineeringRoutesMultiPage = () => {
                     />
                     <CardFooter justify="center">
                       {difficulty.map((d) => (
-                        <Text ontSize="lg" pl="1rem" key={d.name}>
+                        <Text fontSize="lg" pl="1rem" key={d.name}>
                           {d.name}
                         </Text>
                       ))}
                     </CardFooter>
                   </Card>
                 </Link>
-              </>
+              </React.Fragment>
             )
           })}
         </SimpleGrid>

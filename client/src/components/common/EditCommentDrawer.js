@@ -29,11 +29,13 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { getToken, isAuthenticated } from '../common/Auth'
 import { REACT_APP_BASE_URL } from '../../environment'
+import UploadImage1 from '../helpers/UploadImage1'
 
 const EditCommentDrawer = ({
   text,
   header,
   images,
+  image1,
   rating,
   id,
   getMountaineeringRoute
@@ -46,7 +48,8 @@ const EditCommentDrawer = ({
     header: header,
     text: text,
     rating: rating,
-    images: ''
+    images: '',
+    image1: ''
   })
 
   const [errors, setErrors] = useState(null)
@@ -54,9 +57,10 @@ const EditCommentDrawer = ({
   // ! Execution
 
   const handleSubmit = async (e) => {
-    const updatedFormFields = formFields.images
-      ? { ...formFields }
-      : { ...formFields, images: images }//
+    const updatedFormFields =
+      formFields.images && formFields.image1
+        ? { ...formFields }
+        : { ...formFields, images: images, image1: image1 } //
     e.preventDefault()
     try {
       console.log('This is the id-->', id)
@@ -193,6 +197,19 @@ const EditCommentDrawer = ({
                         {errors.images}
                       </Text>
                     )}
+                    <FormLabel>Image Upload</FormLabel>
+                    <Text color="gray.600" pb="1rem">
+                      Add images here...
+                    </Text>
+                    <UploadImage1
+                      formFields={formFields}
+                      setFormFields={setFormFields}
+                    />
+                    {errors && errors.images1 && (
+                      <Text size="xs" color="tomato">
+                        {errors.images1}
+                      </Text>
+                    )}
                   </form>
                 </Stack>
               </DrawerBody>
@@ -237,77 +254,3 @@ const EditCommentDrawer = ({
 
 export default EditCommentDrawer
 
-{
-  /* <Button
-        leftIcon={<EditIcon />}
-        colorScheme="blue"
-        onClick={onOpen}
-        w="full"
-        _hover={{
-          bg: 'blue.500'
-        }}
-        bg={'blue.400'}
-      >
-        Edit Review
-      </Button>
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        initialFocusRef={firstField}
-        onClose={onClose}
-        size="md"
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth="1px">Edit a review</DrawerHeader>
-          <DrawerBody>
-            <Stack spacing="24px">
-              <FormControl isRequired>
-                <FormLabel htmlFor="username">Title</FormLabel>
-                <Input
-                  ref={firstField}
-                  id="username"
-                  placeholder="Give your review a great title!"
-                  isRequired
-                />
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel>Description</FormLabel>
-                <Textarea id="desc" placeholder="Write about the route..." />
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel>Rating</FormLabel>
-                <Text>How many stars out of 5 would you give this route?</Text>
-                <NumberInput size="md" maxW={24} min={0} max={5}>
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-              </FormControl>
-              <FormLabel>Image Upload</FormLabel>
-              <Text color="gray.600" pb="1rem">
-                Add up to 10 images
-              </Text>
-              <UploadImage />
-            </Stack>
-          </DrawerBody>
-          <DrawerFooter borderTopWidth="1px">
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button
-              bg={'blue.400'}
-              color={'white'}
-              _hover={{
-                bg: 'blue.500'
-              }}
-            >
-              Submit
-            </Button>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer> */
-}

@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='comment',
             name='images',
-            field=models.CharField(blank=True, default=None, max_length=500, null=True),
+            field=models.CharField(
+                blank=True, default=None, max_length=500, null=True),
         ),
     ]

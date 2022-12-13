@@ -156,6 +156,7 @@ const MountaineeringRouteSinglePage = () => {
               rating={c.rating}
               header={c.header}
               images={c.images}
+              image1={c.image1}
             />
           ))}
         </>

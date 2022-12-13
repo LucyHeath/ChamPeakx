@@ -20,9 +20,7 @@ import {
   AlertDialogCloseButton,
   AlertDialogHeader,
   AlertDialogFooter,
-  AlertDialogContent,
-  Tooltip,
-  AspectRatio
+  AlertDialogContent
 } from '@chakra-ui/react'
 
 import { BsFillPersonFill } from 'react-icons/bs'
@@ -35,6 +33,7 @@ import { getToken } from '../common/Auth'
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import React from 'react'
 import StarRating from './StarRating'
+import CommentCarousel from './CommentCarousel'
 const CommentDisplay = ({
   owner,
   text,
@@ -43,6 +42,7 @@ const CommentDisplay = ({
   rating,
   id,
   images,
+  image1,
   getMountaineeringRoute
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -110,9 +110,9 @@ const CommentDisplay = ({
                 <Text py="2">{text}</Text>
               </Box>
             </HStack>
-            <VStack>
+            <HStack>
               {!images ? (
-                <Text>No Pretty Pictures</Text>
+                <></>
               ) : (
                 <Image
                   objectFit="cover"
@@ -121,7 +121,17 @@ const CommentDisplay = ({
                   alt="review picture"
                 />
               )}
-            </VStack>
+              {!image1 ? (
+                <></>
+              ) : (
+                <Image
+                  objectFit="cover"
+                  maxW={{ base: '100%', sm: '200px' }}
+                  src={image1}
+                  alt="review picture"
+                />
+              )}
+            </HStack>
           </CardBody>
           <CardFooter>
             <ButtonGroup spacing="2">
@@ -130,6 +140,7 @@ const CommentDisplay = ({
                 header={header}
                 text={text}
                 images={images}
+                image1={image1}
                 rating={rating}
                 getMountaineeringRoute={getMountaineeringRoute}
               />

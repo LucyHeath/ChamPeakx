@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { Box } from '@chakra-ui/layout'
 
-const UploadImage = ({ formFields, setFormFields }) => {
+const UploadImage1 = ({ formFields, setFormFields }) => {
   const handleChange = async (event) => {
     try {
       // Create a new form data object
@@ -23,11 +23,11 @@ const UploadImage = ({ formFields, setFormFields }) => {
       // Add profile image to form data
       setFormFields({
         ...formFields,
-        images: data.secure_url
+        image1: data.secure_url
       })
       console.log({
         ...formFields,
-        images: data.secure_url
+        image1: data.secure_url
       })
     } catch (err) {
       console.log(err)
@@ -37,11 +37,11 @@ const UploadImage = ({ formFields, setFormFields }) => {
   return (
     <>
       <Box>
-        {formFields.images ? (
-          <img src={formFields.images} />
+        {formFields.image1 ? (
+          <img src={formFields.image1} />
         ) : (
           <input
-            name="images"
+            name="image1"
             type="file"
             placeholder="Upload picture"
             onChange={handleChange}
@@ -52,4 +52,4 @@ const UploadImage = ({ formFields, setFormFields }) => {
   )
 }
 
-export default UploadImage
+export default UploadImage1
