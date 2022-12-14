@@ -29,7 +29,6 @@ import { GiMuscleUp } from 'react-icons/gi'
 import { FaMountain } from 'react-icons/fa'
 import AddCommentDrawer from '../common/AddCommentDrawer'
 
-
 const MountaineeringRouteSinglePage = () => {
   const [isHovering, setIsHovering] = useState(false)
   const [mountaineeringRoute, setMountaineeringRoute] = useState(null)
@@ -56,7 +55,7 @@ const MountaineeringRouteSinglePage = () => {
   }, [getMountaineeringRoute])
 
   return (
-    <Box>
+    <Box minH={'100vh'}>
       {mountaineeringRoute ? (
         <>
           <Box>

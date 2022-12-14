@@ -68,7 +68,7 @@ const FilterSearch = ({
 
   console.log(selectedDifficulty)
   return (
-    <HStack justifyContent="center">
+    <HStack justifyContent="center" flexDirection={['column', 'row']}>
       <HStack justifyContent="center">
         <FormLabel>
           <SearchIcon />

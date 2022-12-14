@@ -47,7 +47,7 @@ const MountaineeringRoutesMultiPage = () => {
   }, [])
 
   return (
-    <Box>
+    <Box minH={'100vh'}>
       <VStack
         bgImage="url(https://res.cloudinary.com/dq45dbeya/image/upload/v1671033795/cham_iazlej.jpg)"
         bgPosition="center"
@@ -68,7 +68,7 @@ const MountaineeringRoutesMultiPage = () => {
             bg="linear-gradient(transparent 20%, white 80%)"
           >
             The Best Insights into the Best Mountaineering in Chamonix Mont
-            Blanc{' '}
+            Blanc
           </chakra.span>
         </chakra.h1>
         <VStack
@@ -110,9 +110,11 @@ const MountaineeringRoutesMultiPage = () => {
       </VStack>
       {filteredMountaineeringRoutes.length ? (
         <SimpleGrid
+          // columns={{ sm: 2, md: 3, lg: 4 }}
           pt="2rem"
-          spacing={2}
-          templateColumns="repeat(auto-fill, minmax(450px, 1fr))"
+          spacing={4}
+          templateColumns="repeat(auto-fill, minmax(550px, 1fr))"
+          gap={10}
           justifyItems="center"
           px="40px"
         >
@@ -121,7 +123,7 @@ const MountaineeringRoutesMultiPage = () => {
             return (
               <React.Fragment key={id}>
                 <Link to={`/mountaineeringRoutes/${id}`}>
-                  <Card maxW="lg" px="20px">
+                  <Card maxW="lg" px={{ xs: '0', sm: 'auto' }} my="20px">
                     <CardHeader>
                       <Flex spacing="4">
                         <Flex
@@ -152,6 +154,7 @@ const MountaineeringRoutesMultiPage = () => {
                         src={image}
                         alt="Mountain"
                         borderRadius="4px"
+                        h={['20rem', '25rem']}
                       />
                     </CardBody>
                     <Divider />
@@ -162,6 +165,7 @@ const MountaineeringRoutesMultiPage = () => {
                           fontSize="lg"
                           pl="1rem"
                           key={d.name}
+                          fontWeight="bold"
                         >
                           {d.name}
                         </Text>
