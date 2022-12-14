@@ -33,7 +33,7 @@ const NavBar = () => {
   const navigate = useNavigate()
 
   return (
-    <Box>
+    <Box px="30px">
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}

@@ -15,9 +15,12 @@ import {
   Text,
   CardBody,
   CardFooter,
-  HStack
+  HStack,
+  Stack,
+  chakra,
+  VStack,
+  Divider
 } from '@chakra-ui/react'
-
 import FilterSearch from '../common/FilterSearch'
 
 import { Link } from 'react-router-dom'
@@ -45,27 +48,80 @@ const MountaineeringRoutesMultiPage = () => {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="center">
-        <Heading py="2rem">Mountaineering Routes in Chamonix</Heading>
-      </Box>
-      <FilterSearch
-        mountaineeringRoutes={mountaineeringRoutes}
-        filteredMountaineeringRoutes={filteredMountaineeringRoutes}
-        setFilteredMountaineeringRoutes={setFilteredMountaineeringRoutes}
-      />
+      <VStack
+        bgImage="url(https://res.cloudinary.com/dq45dbeya/image/upload/v1671033795/cham_iazlej.jpg)"
+        bgPosition="center"
+        bgRepeat="no-repeat"
+        alignItems="center"
+        pb="30px"
+        pt="40px"
+      >
+        <chakra.h1
+          fontSize={{ base: '4xl', sm: '5xl' }}
+          fontWeight="bold"
+          textAlign="center"
+          maxW="1200px"
+          py="40px"
+        >
+          <chakra.span
+            color="black"
+            bg="linear-gradient(transparent 20%, white 80%)"
+          >
+            The Best Insights into the Best Mountaineering in Chamonix Mont
+            Blanc{' '}
+          </chakra.span>
+        </chakra.h1>
+        <VStack
+          bgColor="white"
+          borderRadius="4px"
+          boxShadow="md"
+          p="6"
+          rounded="md"
+          bg="white"
+          mb="50px"
+          pos="relative"
+          top="0"
+          zIndex={2}
+          maxW="1000px"
+          opacity="85%"
+        >
+          <Text
+            maxW="550px"
+            fontSize="xl"
+            textAlign="center"
+            color="black"
+            fontWeight="bold"
+          >
+            Search our route guides to find the lates updates and beta to help
+            you plan your next adventure
+          </Text>
+          <Stack
+            direction={{ base: 'column', sm: 'row' }}
+            w={{ base: '100%', sm: 'auto' }}
+            spacing={5}
+          >
+            <FilterSearch
+              mountaineeringRoutes={mountaineeringRoutes}
+              filteredMountaineeringRoutes={filteredMountaineeringRoutes}
+              setFilteredMountaineeringRoutes={setFilteredMountaineeringRoutes}
+            />
+          </Stack>
+        </VStack>
+      </VStack>
       {filteredMountaineeringRoutes.length ? (
         <SimpleGrid
           pt="2rem"
-          spacing={3}
+          spacing={2}
           templateColumns="repeat(auto-fill, minmax(450px, 1fr))"
+          justifyItems="center"
+          px="40px"
         >
           {filteredMountaineeringRoutes.map((m) => {
-            const { peak, descripton, route, difficulty, images, id, height } =
-              m
+            const { peak, descripton, route, difficulty, image, id, height } = m
             return (
               <React.Fragment key={id}>
                 <Link to={`/mountaineeringRoutes/${id}`}>
-                  <Card maxW="md">
+                  <Card maxW="lg" px="20px">
                     <CardHeader>
                       <Flex spacing="4">
                         <Flex
@@ -81,24 +137,32 @@ const MountaineeringRoutesMultiPage = () => {
                               </Heading>
                               <Text>{`(${height}m)`}</Text>
                             </HStack>
+                            <Divider />
                             <Text pt="2rem" fontSize="lg">
                               {route}
                             </Text>
                           </Box>
+                          <Divider />
                         </Flex>
                       </Flex>
                     </CardHeader>
                     <CardBody>
-                      <HStack></HStack>
+                      <Image
+                        objectFit="cover"
+                        src={image}
+                        alt="Mountain"
+                        borderRadius="4px"
+                      />
                     </CardBody>
-                    <Image
-                      objectFit="cover"
-                      src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg"
-                      alt="Mountain"
-                    />
+                    <Divider />
                     <CardFooter justify="center">
                       {difficulty.map((d) => (
-                        <Text fontSize="lg" pl="1rem" key={d.name}>
+                        <Text
+                          color="blue.500"
+                          fontSize="lg"
+                          pl="1rem"
+                          key={d.name}
+                        >
                           {d.name}
                         </Text>
                       ))}

@@ -7,15 +7,13 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  FormErrorMessage,
   Heading,
   Input,
   Stack,
   Image,
-  Textarea
+  Text
 } from '@chakra-ui/react'
 import registerImg from '../images/register.jpeg'
-import UploadImage from '../helpers/UploadImage'
 
 const RegisterPage = () => {
   // ! Location Variables
@@ -32,27 +30,25 @@ const RegisterPage = () => {
     bio: '',
     profile_image: ''
   })
-  // const [error, setError] = useState('')
+  const [errors, setErrors] = useState('')
 
   // ! Executions
   const handleSubmit = async (e) => {
-    console.log('we called the handle submit ')
     e.preventDefault()
     try {
       await axios.post(`${REACT_APP_BASE_URL}/auth/register/`, formFields)
       console.log('form submitted')
-      // navigate to login page after request has completed
       navigate('/auth/login')
     } catch (err) {
       console.log(err)
-      // setError(err.response.data.message)
-      // console.log(err.response.data.message)
-      // setError({ ...error, [e.target.name]: '', message: '' })
+      setErrors(err.response.data.message)
+      console.log(err.response.data.message)
     }
   }
 
   const handleChange = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value })
+    if (errors) setErrors('')
   }
 
   return (
@@ -121,20 +117,7 @@ const RegisterPage = () => {
                 value={formFields.password_confirmation}
               />
             </FormControl>
-            <FormControl>
-              <FormLabel>Bio</FormLabel>
-              <Textarea max="500" id="desc" placeholder="About you" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Image Upload</FormLabel>
-              {/* <Text color="gray.600" pb="1rem">
-                Add a profile image
-              </Text> */}
-              <UploadImage />
-            </FormControl>
-            <FormErrorMessage>
-              {/* {error && <small className="text-danger">{error}</small>} */}
-            </FormErrorMessage>
+            {errors && <Text className="text-danger">{errors}</Text>}
             <Stack spacing={6}>
               <Stack
                 direction={{ base: 'column', sm: 'row' }}
@@ -149,7 +132,7 @@ const RegisterPage = () => {
                   bg: 'blue.500'
                 }}
                 type="submit"
-                onClick={handleSubmit}
+                // onClick={handleSubmit}
               >
                 Register
               </Button>

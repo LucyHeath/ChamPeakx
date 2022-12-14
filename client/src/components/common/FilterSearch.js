@@ -71,7 +71,7 @@ const FilterSearch = ({
     <HStack justifyContent="center">
       <HStack justifyContent="center">
         <FormLabel>
-          <SearchIcon /> Route or Peak
+          <SearchIcon />
         </FormLabel>
         <Input
           onChange={handleChange}
@@ -79,11 +79,10 @@ const FilterSearch = ({
           placeholder="Search Peak or Route"
           name="search"
           value={input.search}
-          outline
+          opacity="100%"
         />
       </HStack>
       <HStack>
-        <FormLabel>Difficulty level</FormLabel>
         <Select
           onChange={handleDifficultyChange}
           name="difficulty"

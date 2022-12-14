@@ -29,6 +29,7 @@ import { GiMuscleUp } from 'react-icons/gi'
 import { FaMountain } from 'react-icons/fa'
 import AddCommentDrawer from '../common/AddCommentDrawer'
 
+
 const MountaineeringRouteSinglePage = () => {
   const [isHovering, setIsHovering] = useState(false)
   const [mountaineeringRoute, setMountaineeringRoute] = useState(null)
@@ -91,7 +92,7 @@ const MountaineeringRouteSinglePage = () => {
                 <Image
                   w={['500px', '800px', '1000px', '1200px', '1500px']}
                   objectFit="cover"
-                  src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg"
+                  src={mountaineeringRoute.image}
                   alt="Mountain"
                 />
                 <Stack mt="6" spacing="3">

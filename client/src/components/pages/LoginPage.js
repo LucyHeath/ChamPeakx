@@ -10,7 +10,8 @@ import {
   Input,
   Stack,
   Image,
-  FormErrorMessage
+  FormErrorMessage,
+  Text
 } from '@chakra-ui/react'
 import loginImg from '../images/login.jpeg'
 import { useState } from 'react'
@@ -28,7 +29,7 @@ const LoginPage = () => {
     password: ''
   })
 
-  const [error, setError] = useState('')
+  const [errors, setErrors] = useState('')
 
   // ! Executions
   const handleSubmit = async (e) => {
@@ -47,9 +48,7 @@ const LoginPage = () => {
       // navigate('/profile/:userId')- will navigate here when logged in
     } catch (err) {
       console.log(err)
-      // setError(err.response.data.message)
-      // console.log(err.response.data.message)
-      // setError({ ...error, [e.target.name]: '', message: '' })
+      setErrors(err.response.data.detail)
     }
   }
 
@@ -84,9 +83,11 @@ const LoginPage = () => {
                   value={formFields.password}
                 />
               </FormControl>
-              <FormErrorMessage>
-                {error && <small className="text-danger">{error}</small>}
-              </FormErrorMessage>
+              {errors && (
+                <Text size="xs" color="tomato">
+                  {errors}
+                </Text>
+              )}
               <Stack spacing={6}>
                 <Stack
                   direction={{ base: 'column', sm: 'row' }}

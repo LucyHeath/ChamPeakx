@@ -22,7 +22,6 @@ import {
   AlertDialogFooter,
   AlertDialogContent
 } from '@chakra-ui/react'
-
 import { BsFillPersonFill } from 'react-icons/bs'
 import { AiOutlineCalendar } from 'react-icons/ai'
 import EditCommentDrawer from './EditCommentDrawer'
@@ -33,7 +32,6 @@ import { getToken } from '../common/Auth'
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import React from 'react'
 import StarRating from './StarRating'
-import CommentCarousel from './CommentCarousel'
 const CommentDisplay = ({
   owner,
   text,

@@ -18,7 +18,6 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          {/* <Route path="/" element={<LandingPage />} /> */}
           <Route
             path="/mountaineeringRoutes"
             element={<MountaineeringRoutesMultiPage />}
