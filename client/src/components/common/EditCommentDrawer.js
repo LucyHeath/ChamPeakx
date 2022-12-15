@@ -20,14 +20,18 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  useToast
+  useToast,
+  VStack,
+  Box,
+  Image,
+  HStack
 } from '@chakra-ui/react'
+
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import { EditIcon } from '@chakra-ui/icons'
 import React from 'react'
 import UploadImage from '../helpers/UploadImage'
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 import axios from 'axios'
 import { getToken, isAuthenticated } from '../common/Auth'
 import { REACT_APP_BASE_URL } from '../../environment'
@@ -38,11 +42,11 @@ import UploadImage3 from '../helpers/UploadImage3'
 const EditCommentDrawer = ({
   text,
   header,
+  rating,
   images,
   image1,
   image2,
   image3,
-  rating,
   id,
   getMountaineeringRoute
 }) => {
@@ -70,7 +74,7 @@ const EditCommentDrawer = ({
       formFields.images &&
       formFields.image1 &&
       formFields.image2 &&
-      formFields.image3
+      formFields.image3 
         ? { ...formFields }
         : {
             ...formFields,
@@ -95,7 +99,7 @@ const EditCommentDrawer = ({
       onClose()
       console.log(formFields)
       toast({
-        title: 'Comment Created',
+        title: 'Comment Updated',
         status: 'success',
         duration: 9000,
         isClosable: true
@@ -109,18 +113,17 @@ const EditCommentDrawer = ({
   }
 
   const handleChange = (e) => {
-    console.log('This i e-> ', e)
     const updatedFormFields = { ...formFields }
     updatedFormFields[e.target.name] = e.target.value
     setFormFields(updatedFormFields)
-    setErrors({ ...errors, [e.target.name]: '', message: '' })
+    setErrors({ ...errors, [e.target.name]: '' })
   }
 
   const handleRating = (int) => {
     const updatedFormFields = { ...formFields, rating: int }
     updatedFormFields['rating'] = int
     setFormFields(updatedFormFields)
-    setErrors({ ...errors, [int]: '', message: '' })
+    setErrors({ ...errors, [int]: '' })
   }
 
   return (
@@ -163,7 +166,7 @@ const EditCommentDrawer = ({
                         value={formFields.header}
                       />
                       {errors && errors.header && (
-                        <Text size="xs" color="tomato">
+                        <Text size="xs" color="red">
                           {errors.header}
                         </Text>
                       )}
@@ -177,7 +180,7 @@ const EditCommentDrawer = ({
                         value={formFields.text}
                       />
                       {errors && errors.text && (
-                        <Text size="xs" color="tomato">
+                        <Text size="xs" color="red">
                           {errors.text}
                         </Text>
                       )}
@@ -203,8 +206,8 @@ const EditCommentDrawer = ({
                         </NumberInputStepper>
                       </NumberInput>
                       {errors && errors.rating && (
-                        <Text size="xs" color="tomato">
-                          {errors.header}
+                        <Text size="xs" color="red">
+                          {errors.rating}
                         </Text>
                       )}
                     </FormControl>
@@ -229,7 +232,7 @@ const EditCommentDrawer = ({
                       setFormFields={setFormFields}
                     />
                     {errors && errors.images && (
-                      <Text size="xs" color="tomato">
+                      <Text size="xs" color="red">
                         {errors.images}
                       </Text>
                     )}
@@ -256,18 +259,37 @@ const EditCommentDrawer = ({
             </>
           ) : (
             <>
-              <Text>Please sign in to edit your reviews</Text>
-              <Button
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500'
-                }}
-                as={'a'}
-                href={'/auth/register'}
-              >
-                Register
-              </Button>
+              <VStack>
+                <Text
+                  color="blue.500"
+                  fontSize="xl"
+                  my="20px"
+                  textAlign="center"
+                >
+                  Please sign in to edit a review
+                </Text>
+                <Box boxSize="md">
+                  <Image
+                    src="https://res.cloudinary.com/dq45dbeya/image/upload/v1671097524/istockphoto-1083813666-612x612_onugjr.jpg"
+                    alt="mountaineers"
+                  />
+                </Box>
+                <HStack>
+                  <Button
+                    m="20px"
+                    bg={'blue.400'}
+                    color={'white'}
+                    _hover={{
+                      bg: 'blue.500'
+                    }}
+                    as={'a'}
+                    href={'/auth/login'}
+                    size="lg"
+                  >
+                    Login
+                  </Button>
+                </HStack>
+              </VStack>
             </>
           )}
         </DrawerContent>

@@ -96,10 +96,10 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
   }
 
   const handleChange = (e) => {
-    console.log('This i e-> ', e)
-    const updatedFormFields = { ...formFields }
-    updatedFormFields[e.target.name] = e.target.value
-    setFormFields(updatedFormFields)
+    // const updatedFormFields = { ...formFields }
+    // updatedFormFields[e.target.name] = e.target.value
+    // setFormFields(updatedFormFields)
+    setFormFields({ ...formFields, [e.target.name]: e.target.value })
     setErrors({ ...errors, [e.target.name]: '', message: '' })
   }
 
@@ -150,9 +150,7 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
                         value={formFields.header}
                       />
                       {errors && errors.header && (
-                        <Text size="xs" color="tomato">
-                          {errors.header}
-                        </Text>
+                        <Text color="red">{errors.header}</Text>
                       )}
                     </FormControl>
                     <FormControl isRequired>
@@ -164,9 +162,7 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
                         value={formFields.text}
                       />
                       {errors && errors.text && (
-                        <Text size="xs" color="tomato">
-                          {errors.text}
-                        </Text>
+                        <Text color="red">{errors.text}</Text>
                       )}
                     </FormControl>
                     <FormControl isRequired>
@@ -190,9 +186,7 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
                         </NumberInputStepper>
                       </NumberInput>
                       {errors && errors.rating && (
-                        <Text size="xs" color="tomato">
-                          {errors.header}
-                        </Text>
+                        <Text color="red">{errors.rating}</Text>
                       )}
                     </FormControl>
                     <FormLabel>Image Upload</FormLabel>
@@ -215,11 +209,6 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
                       formFields={formFields}
                       setFormFields={setFormFields}
                     />
-                    {errors && errors.images && (
-                      <Text size="xs" color="tomato">
-                        {errors.images}
-                      </Text>
-                    )}
                   </form>
                 </Stack>
               </DrawerBody>

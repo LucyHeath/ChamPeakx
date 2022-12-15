@@ -6,7 +6,6 @@ import {
   Card,
   CardHeader,
   Button,
-  Image,
   Text,
   CardBody,
   CardFooter,
@@ -19,25 +18,22 @@ import {
   AlertDialogHeader,
   AlertDialogFooter,
   AlertDialogContent,
-  Tooltip,
   SimpleGrid,
-  chakra,
   VStack,
   Avatar,
-  Wrap,
-  Center,
-  WrapItem
+  chakra
 } from '@chakra-ui/react'
 import { AiOutlineCalendar } from 'react-icons/ai'
 import EditCommentDrawer from './EditCommentDrawer'
 import { DeleteIcon } from '@chakra-ui/icons'
 import axios from 'axios'
 import { REACT_APP_BASE_URL } from '../../environment'
-import { getToken } from '../common/Auth'
+import { getToken, getPayload } from '../common/Auth'
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import React from 'react'
 import StarRating from './StarRating'
 import { isOwner } from '../common/Auth'
+
 const CommentDisplay = ({
   owner,
   text,
@@ -72,13 +68,15 @@ const CommentDisplay = ({
     }
   }
 
-  console.log('this is owner -- >', owner)
+  console.log('this is owner -- >', owner) // this is an object
+  console.log('get payload', getPayload())
+
   return (
     <>
       <Box mx="200px" alignItems="center" size="lg">
         <HStack pb="10px">
           <ButtonGroup spacing="2">
-            {isOwner ? (
+            {getPayload().sub === owner.id ? (
               <>
                 <EditCommentDrawer
                   id={id}
@@ -153,11 +151,11 @@ const CommentDisplay = ({
             justifyContent="space-between"
             width="100%"
           >
-            <CardHeader display="flex" flexDirection="column">
+            <CardHeader p="30px" display="flex" flexDirection="column">
               <VStack>
-                <HStack>
+                <HStack pb="20px">
                   <AiOutlineCalendar />
-                  <Text size="md">{date}</Text>
+                  <Text fontSize="md">{date}</Text>
                 </HStack>
                 <HStack>
                   <Avatar bg="blue.500" size="xl" />
@@ -168,46 +166,47 @@ const CommentDisplay = ({
               </VStack>
             </CardHeader>
             <CardBody
-              p="0"
+              px="30px"
+              pb="30px"
               display="flex"
               flexDirection="column"
               alignItems="left"
               w="80%"
             >
-              <HStack>
+              <VStack pl="20px" alignItems="left">
+                <chakra.span size="2">
+                  <StarRating rating={rating} />
+                </chakra.span>
                 <Heading>{header}</Heading>
-                <StarRating rating={rating} />
-              </HStack>
-              <HStack>
                 <Text>{`"${text}"`}</Text>
-              </HStack>
+              </VStack>
             </CardBody>
             <CardFooter></CardFooter>
           </HStack>
         </Card>
       </Box>
-      <Box mx="200px" mb="40px" alignItems="center" size="lg">
-        <Card
-          direction="column"
-          // paddingX="300px"
-          alignItems="centre"
-          size="md"
-          border="1px"
-          borderColor="lightgrey"
-          boxShadow="xl"
-          p="6"
-          rounded="md"
-          mt="20px"
-        >
-          <SimpleGrid
-            display="flex"
-            justifyContent="center"
-            // minChildWidth="100px"
-            spacing="30px"
-            columns={{ xs: 1, sm: 2, md: 4, lg: 4, xl: 4 }}
-          >
-            {images ? (
-              <>
+      {images ? (
+        <>
+          <Box mx="200px" mb="40px" alignItems="center" size="lg">
+            <Card
+              direction="column"
+              // paddingX="300px"
+              alignItems="centre"
+              size="md"
+              border="1px"
+              borderColor="lightgrey"
+              boxShadow="xl"
+              p="6"
+              rounded="md"
+              mt="20px"
+            >
+              <SimpleGrid
+                display="flex"
+                justifyContent="center"
+                minChildWidth="100px"
+                spacing="30px"
+                columns={{ xs: 1, sm: 2, md: 4, lg: 4, xl: 4 }}
+              >
                 {!images ? (
                   <></>
                 ) : (
@@ -252,13 +251,13 @@ const CommentDisplay = ({
                     borderRadius="md"
                   ></Box>
                 )}
-              </>
-            ) : (
-              <></>
-            )}
-          </SimpleGrid>
-        </Card>
-      </Box>
+              </SimpleGrid>
+            </Card>
+          </Box>
+        </>
+      ) : (
+        <Box py="20px"></Box>
+      )}
     </>
   )
 }

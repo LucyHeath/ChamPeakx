@@ -10,14 +10,13 @@ import {
   Input,
   Stack,
   Image,
-  Text,
   useToast
 } from '@chakra-ui/react'
-import loginImg from '../images/login.jpeg'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { setToken, getToken } from '../common/Auth'
+import DisplayError from '../common/DisplayError'
 
 const LoginPage = ({ owner }) => {
   // ! Location Variables
@@ -41,19 +40,16 @@ const LoginPage = ({ owner }) => {
         `${REACT_APP_BASE_URL}/auth/login/`,
         formFields
       )
-      console.log('token->', data)
-      console.log('form submitted')
       setToken(data.token)
       // navigate to home after successful login
       toast({
         title: 'Logged in',
-        description: `Welcome Back ${data.message}!`,
+        description: `${data.message}!`,
         status: 'success',
         duration: 9000,
         isClosable: true
       })
       navigate('/mountaineeringRoutes')
-      // navigate('/profile/:userId')- will navigate here when logged in
     } catch (err) {
       console.log(err)
       setErrors(err.response.data.detail)
@@ -91,11 +87,7 @@ const LoginPage = ({ owner }) => {
                   value={formFields.password}
                 />
               </FormControl>
-              {errors && (
-                <Text size="xs" color="tomato">
-                  {errors}
-                </Text>
-              )}
+              <DisplayError errorText={errors} />
               <Stack spacing={6}>
                 <Stack
                   direction={{ base: 'column', sm: 'row' }}

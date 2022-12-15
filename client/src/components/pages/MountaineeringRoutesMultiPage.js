@@ -67,8 +67,8 @@ const MountaineeringRoutesMultiPage = () => {
             color="black"
             bg="linear-gradient(transparent 20%, white 80%)"
           >
-            The Best Insights into the Best Mountaineering in Chamonix Mont
-            Blanc
+            The Best Insights into the Best Mountaineering in the Chamonix
+            Valley
           </chakra.span>
         </chakra.h1>
         <VStack
@@ -146,7 +146,10 @@ const MountaineeringRoutesMultiPage = () => {
                               <Heading pt="1rem" size="lg">
                                 {peak}
                               </Heading>
-                              <Text>{`(${height}m)`}</Text>
+                              <Text
+                                color="blue.500"
+                                fontWeight="bold"
+                              >{`(${height}m)`}</Text>
                             </HStack>
                             <Divider />
                             <Text pt="2rem" fontSize="lg">

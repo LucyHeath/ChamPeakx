@@ -1,5 +1,5 @@
 import { HStack, Tooltip } from '@chakra-ui/react'
-import { GiAlliedStar } from 'react-icons/gi'
+import { FaSnowflake } from 'react-icons/fa'
 
 const StarRating = ({ rating }) => {
   return (
@@ -12,7 +12,7 @@ const StarRating = ({ rating }) => {
           <HStack>
             {rating === 1 ? (
               <HStack>
-                <GiAlliedStar />
+                <FaSnowflake />
               </HStack>
             ) : (
               <></>
@@ -21,8 +21,8 @@ const StarRating = ({ rating }) => {
           <HStack>
             {rating === 2 ? (
               <HStack>
-                <GiAlliedStar />
-                <GiAlliedStar />
+                <FaSnowflake />
+                <FaSnowflake />
               </HStack>
             ) : (
               <></>
@@ -31,9 +31,9 @@ const StarRating = ({ rating }) => {
           <HStack>
             {rating === 3 ? (
               <HStack>
-                <GiAlliedStar />
-                <GiAlliedStar />
-                <GiAlliedStar />
+                <FaSnowflake />
+                <FaSnowflake />
+                <FaSnowflake />
               </HStack>
             ) : (
               <></>
@@ -42,10 +42,10 @@ const StarRating = ({ rating }) => {
           <HStack>
             {rating === 4 ? (
               <HStack>
-                <GiAlliedStar />
-                <GiAlliedStar />
-                <GiAlliedStar />
-                <GiAlliedStar />
+                <FaSnowflake />
+                <FaSnowflake />
+                <FaSnowflake />
+                <FaSnowflake />
               </HStack>
             ) : (
               <></>
@@ -54,11 +54,11 @@ const StarRating = ({ rating }) => {
           <HStack>
             {rating === 5 ? (
               <HStack>
-                <GiAlliedStar />
-                <GiAlliedStar />
-                <GiAlliedStar />
-                <GiAlliedStar />
-                <GiAlliedStar />
+                <FaSnowflake />
+                <FaSnowflake />
+                <FaSnowflake />
+                <FaSnowflake />
+                <FaSnowflake />
               </HStack>
             ) : (
               <></>

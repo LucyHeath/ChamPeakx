@@ -13,7 +13,7 @@ import {
   Image,
   Text
 } from '@chakra-ui/react'
-import registerImg from '../images/register.jpeg'
+import DisplayError from '../common/DisplayError'
 
 const RegisterPage = () => {
   // ! Location Variables
@@ -26,37 +26,38 @@ const RegisterPage = () => {
     username: '',
     email: '',
     password: '',
-    password_confirmation: '',
-    bio: '',
-    profile_image: ''
+    password_confirmation: ''
   })
-  const [errors, setErrors] = useState('')
+  const [errors, setErrors] = useState({})
 
   // ! Executions
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post(`${REACT_APP_BASE_URL}/auth/register/`, formFields)
-      console.log('form submitted')
+      const { data } = await axios.post(
+        `${REACT_APP_BASE_URL}/auth/register/`,
+        formFields
+      )
+      console.log('form submitted', data)
       navigate('/auth/login')
     } catch (err) {
-      console.log(err)
-      setErrors(err.response.data.message)
-      console.log(err.response.data.message)
+      console.log('Error', err.response.data)
+      setErrors(err.response.data)
     }
   }
 
   const handleChange = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value })
-    if (errors) setErrors('')
+    setErrors({ ...errors, [e.target.name]: '' })
   }
 
+  console.log('errors', errors)
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
         <Stack spacing={4} w={'full'} maxW={'md'}>
-          <Heading fontSize={'2xl'}>Sign up for an account</Heading>
-          <form onSubmit={handleSubmit}>
+          <Heading fontSize={'2xl'}>Sign up to leave reviews!</Heading>
+          <form>
             <FormControl isRequired>
               <FormLabel>First name</FormLabel>
               <Input
@@ -66,6 +67,7 @@ const RegisterPage = () => {
                 onChange={handleChange}
                 value={formFields.first_name}
               />
+              <DisplayError errorText={errors.first_name} />
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Last name</FormLabel>
@@ -76,6 +78,7 @@ const RegisterPage = () => {
                 onChange={handleChange}
                 value={formFields.last_name}
               />
+              <DisplayError errorText={errors.last_name} />
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Username</FormLabel>
@@ -86,6 +89,7 @@ const RegisterPage = () => {
                 onChange={handleChange}
                 value={formFields.username}
               />
+              <DisplayError errorText={errors.username} />
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Email address</FormLabel>
@@ -96,28 +100,31 @@ const RegisterPage = () => {
                 onChange={handleChange}
                 value={formFields.email}
               />
+              <DisplayError errorText={errors.email} />
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Password</FormLabel>
               <Input
-                placeholder="must be greater than 8 characters"
+                placeholder="••••••••••"
                 type="password"
                 name="password"
                 onChange={handleChange}
                 value={formFields.password}
               />
+              <DisplayError errorText={errors.password} />
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Confirm password</FormLabel>
               <Input
-                placeholder="must be greater than 8 characters"
+                placeholder="••••••••••"
                 type="password"
                 name="password_confirmation"
                 onChange={handleChange}
                 value={formFields.password_confirmation}
               />
+              <DisplayError errorText={errors.password_confirmation} />
             </FormControl>
-            {errors && <Text className="text-danger">{errors}</Text>}
+            <DisplayError errorText={errors.non_field_errors} />
             <Stack spacing={6}>
               <Stack
                 direction={{ base: 'column', sm: 'row' }}
@@ -132,7 +139,7 @@ const RegisterPage = () => {
                   bg: 'blue.500'
                 }}
                 type="submit"
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
               >
                 Register
               </Button>
