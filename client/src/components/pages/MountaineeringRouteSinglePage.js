@@ -190,6 +190,8 @@ const MountaineeringRouteSinglePage = () => {
               header={c.header}
               images={c.images}
               image1={c.image1}
+              image2={c.image2}
+              image3={c.image3}
               mountaineeringRoute={mountaineeringRoute}
             />
           ))}

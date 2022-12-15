@@ -25,7 +25,6 @@ import {
   VStack,
   Avatar
 } from '@chakra-ui/react'
-import { BsFillPersonFill } from 'react-icons/bs'
 import { AiOutlineCalendar } from 'react-icons/ai'
 import EditCommentDrawer from './EditCommentDrawer'
 import { DeleteIcon } from '@chakra-ui/icons'
@@ -45,6 +44,8 @@ const CommentDisplay = ({
   id,
   images,
   image1,
+  image2,
+  image3,
   getMountaineeringRoute
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -70,161 +71,206 @@ const CommentDisplay = ({
 
   console.log('this is owner -- >', owner)
   return (
-    <Box
-      id="commentBox"
-      mx="200px"
-      overflowY="scroll"
-      overflow="hidden"
-      sx={{ '::-webkit-scrollbar': { display: 'none' } }}
-      alignItems="center"
-      size="lg"
-    >
-      <Card
-        direction="column"
-        paddingX="300px"
-        alignItems="flex-start"
-        size="md"
-        border="1px"
-        borderColor="lightgrey"
-        boxShadow="xl"
-        p="6"
-        rounded="md"
-      >
-        <HStack flexDirection="row" justifyContent="space-between" width="100%">
-          <CardHeader display="flex" flexDirection="column">
-            <VStack>
-              <HStack>
-                <AiOutlineCalendar />
-                <Text size="md">{date}</Text>
-              </HStack>
-              <HStack>
-                <Avatar bg="blue.500" size="xl" />
-              </HStack>
-              <Text as="b" fontSize="lg">
-                {owner.username}
-              </Text>
-            </VStack>
-          </CardHeader>
-          <CardBody
-            p="0"
-            display="flex"
-            flexDirection="column"
-            alignItems="left"
-            w="80%"
+    <>
+      <Box id="commentBox" mx="200px" alignItems="center" size="lg">
+        <HStack pb="10px">
+          <ButtonGroup spacing="2">
+            {isOwner ? (
+              <>
+                <EditCommentDrawer
+                  id={id}
+                  header={header}
+                  text={text}
+                  images={images}
+                  image1={image1}
+                  image2={image2}
+                  image3={image3}
+                  rating={rating}
+                  getMountaineeringRoute={getMountaineeringRoute}
+                />
+                <Button
+                  leftIcon={<DeleteIcon />}
+                  bg={'red.400'}
+                  color={'white'}
+                  w="full"
+                  _hover={{
+                    bg: 'red.500'
+                  }}
+                  onClick={onOpen}
+                >
+                  Delete Review
+                </Button>
+              </>
+            ) : (
+              <></>
+            )}
+            <AlertDialog
+              motionPreset="slideInBottom"
+              leastDestructiveRef={cancelRef}
+              onClose={onClose}
+              isOpen={isOpen}
+              isCentered
+            >
+              <AlertDialogOverlay />
+              <AlertDialogContent>
+                <AlertDialogHeader>Discard Review?</AlertDialogHeader>
+                <AlertDialogCloseButton />
+                <AlertDialogBody>
+                  Are you <em>sure</em> you want to delete this review?
+                </AlertDialogBody>
+                <AlertDialogFooter>
+                  <Button ref={cancelRef} onClick={onClose}>
+                    No
+                  </Button>
+                  <Button
+                    onClick={() => deleteComment(id)}
+                    colorScheme="red"
+                    ml={3}
+                  >
+                    Yes
+                  </Button>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </ButtonGroup>
+        </HStack>
+        <Card
+          direction="column"
+          paddingX="300px"
+          alignItems="flex-start"
+          size="md"
+          border="1px"
+          borderColor="lightgrey"
+          boxShadow="xl"
+          p="6"
+          rounded="md"
+        >
+          <HStack
+            flexDirection="row"
+            justifyContent="space-between"
+            width="100%"
           >
-            <HStack>
-              <Heading>{header}</Heading>
-              <StarRating rating={rating} />
-            </HStack>
-            <HStack>
-              <Text>{`"${text}"`}</Text>
-            </HStack>
-          </CardBody>
-          <CardFooter>
-            <SimpleGrid
-              columns={['1', '2']}
-              spacing={2}
-              templateColumns="repeat(auto-fill, minmax(550px, 1fr))"
-              gap={2}
-              justifyItems="center"
-              px="40px"
+            <CardHeader display="flex" flexDirection="column">
+              <VStack>
+                <HStack>
+                  <AiOutlineCalendar />
+                  <Text size="md">{date}</Text>
+                </HStack>
+                <HStack>
+                  <Avatar bg="blue.500" size="xl" />
+                </HStack>
+                <Text as="b" fontSize="lg">
+                  {owner.username}
+                </Text>
+              </VStack>
+            </CardHeader>
+            <CardBody
+              p="0"
+              display="flex"
+              flexDirection="column"
+              alignItems="left"
+              w="80%"
             >
               <HStack>
-                {!images ? (
-                  <></>
-                ) : (
-                  <Image
-                    objectFit="cover"
-                    maxW={{
-                      base: '100%',
-                      sm: '200px',
-                      md: '300px',
-                      lg: '400px'
-                    }}
-                    src={images}
-                    alt="review picture"
-                  />
-                )}
-                {!image1 ? (
-                  <></>
-                ) : (
-                  <Image
-                    objectFit="cover"
-                    maxW={{
-                      base: '100%',
-                      sm: '200px',
-                      md: '300px',
-                      lg: '400px'
-                    }}
-                    src={image1}
-                    alt="review picture"
-                  />
-                )}
+                <Heading>{header}</Heading>
+                <StarRating rating={rating} />
               </HStack>
-            </SimpleGrid>
-          </CardFooter>
-        </HStack>
-      </Card>
-      <HStack pt="10px">
-        <ButtonGroup spacing="2">
-          {isOwner ? (
-            <>
-              <EditCommentDrawer
-                id={id}
-                header={header}
-                text={text}
-                images={images}
-                image1={image1}
-                rating={rating}
-                getMountaineeringRoute={getMountaineeringRoute}
-              />
-              <Button
-                leftIcon={<DeleteIcon />}
-                bg={'red.400'}
-                color={'white'}
-                w="full"
-                _hover={{
-                  bg: 'red.500'
-                }}
-                onClick={onOpen}
-              >
-                Delete Review
-              </Button>
-            </>
-          ) : (
-            <></>
-          )}
-          <AlertDialog
-            motionPreset="slideInBottom"
-            leastDestructiveRef={cancelRef}
-            onClose={onClose}
-            isOpen={isOpen}
-            isCentered
+              <HStack>
+                <Text>{`"${text}"`}</Text>
+              </HStack>
+            </CardBody>
+            <CardFooter></CardFooter>
+          </HStack>
+        </Card>
+      </Box>
+      <Box>
+        <Card
+          direction="column"
+          paddingX="300px"
+          alignItems="flex-start"
+          size="md"
+          border="1px"
+          borderColor="lightgrey"
+          boxShadow="xl"
+          p="6"
+          rounded="md"
+        >
+          <SimpleGrid
+            columns={['2', '2']}
+            spacing={2}
+            templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+            gap={2}
+            justifyItems="center"
+            px="40px"
           >
-            <AlertDialogOverlay />
-            <AlertDialogContent>
-              <AlertDialogHeader>Discard Review?</AlertDialogHeader>
-              <AlertDialogCloseButton />
-              <AlertDialogBody>
-                Are you <em>sure</em> you want to delete this review?
-              </AlertDialogBody>
-              <AlertDialogFooter>
-                <Button ref={cancelRef} onClick={onClose}>
-                  No
-                </Button>
-                <Button
-                  onClick={() => deleteComment(id)}
-                  colorScheme="red"
-                  ml={3}
-                >
-                  Yes
-                </Button>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </ButtonGroup>
-      </HStack>
-    </Box>
+            <HStack>
+              {images ? (
+                <>
+                  {!images ? (
+                    <></>
+                  ) : (
+                    <Image
+                      objectFit="cover"
+                      maxW={{
+                        base: '100%',
+                        sm: '200px'
+                      }}
+                      src={images}
+                      alt="review picture"
+                    />
+                  )}
+                  {!image1 ? (
+                    <></>
+                  ) : (
+                    <Image
+                      objectFit="cover"
+                      maxW={{
+                        base: '100%',
+                        sm: '200px'
+                      }}
+                      src={image1}
+                      alt="review picture"
+                    />
+                  )}
+                  {!image2 ? (
+                    <></>
+                  ) : (
+                    <Image
+                      objectFit="cover"
+                      maxW={{
+                        base: '100%',
+                        sm: '200px',
+                        md: '300px',
+                        lg: '400px'
+                      }}
+                      src={image2}
+                      alt="review picture"
+                    />
+                  )}
+                  {!image3 ? (
+                    <></>
+                  ) : (
+                    <Image
+                      objectFit="cover"
+                      maxW={{
+                        base: '100%',
+                        sm: '200px',
+                        md: '300px',
+                        lg: '400px'
+                      }}
+                      src={image3}
+                      alt="review picture"
+                    />
+                  )}
+                </>
+              ) : (
+                <></>
+              )}
+            </HStack>
+          </SimpleGrid>
+        </Card>
+      </Box>
+    </>
   )
 }
 export default CommentDisplay

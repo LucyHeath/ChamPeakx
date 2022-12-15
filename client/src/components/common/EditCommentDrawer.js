@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable no-unused-vars */
 import {
   Stack,
@@ -31,12 +32,16 @@ import axios from 'axios'
 import { getToken, isAuthenticated } from '../common/Auth'
 import { REACT_APP_BASE_URL } from '../../environment'
 import UploadImage1 from '../helpers/UploadImage1'
+import UploadImage2 from '../helpers/UploadImage2'
+import UploadImage3 from '../helpers/UploadImage3'
 
 const EditCommentDrawer = ({
   text,
   header,
   images,
   image1,
+  image2,
+  image3,
   rating,
   id,
   getMountaineeringRoute
@@ -51,7 +56,9 @@ const EditCommentDrawer = ({
     text: text,
     rating: rating,
     images: '',
-    image1: ''
+    image1: '',
+    image2: '',
+    image3: ''
   })
 
   const [errors, setErrors] = useState(null)
@@ -60,9 +67,18 @@ const EditCommentDrawer = ({
 
   const handleSubmit = async (e) => {
     const updatedFormFields =
-      formFields.images && formFields.image1
+      formFields.images &&
+      formFields.image1 &&
+      formFields.image2 &&
+      formFields.image3
         ? { ...formFields }
-        : { ...formFields, images: images, image1: image1 } //
+        : {
+            ...formFields,
+            images: images,
+            image1: image1,
+            image2: image2,
+            image3: image3
+          }
     e.preventDefault()
     try {
       console.log('This is the id-->', id)
@@ -200,19 +216,21 @@ const EditCommentDrawer = ({
                       formFields={formFields}
                       setFormFields={setFormFields}
                     />
-                    {errors && errors.images && (
-                      <Text size="xs" color="tomato">
-                        {errors.images}
-                      </Text>
-                    )}
-                    <Text color="gray.600" pb="1rem"></Text>
                     <UploadImage1
                       formFields={formFields}
                       setFormFields={setFormFields}
                     />
-                    {errors && errors.images1 && (
+                    <UploadImage2
+                      formFields={formFields}
+                      setFormFields={setFormFields}
+                    />
+                    <UploadImage3
+                      formFields={formFields}
+                      setFormFields={setFormFields}
+                    />
+                    {errors && errors.images && (
                       <Text size="xs" color="tomato">
-                        {errors.images1}
+                        {errors.images}
                       </Text>
                     )}
                   </form>
@@ -238,7 +256,7 @@ const EditCommentDrawer = ({
             </>
           ) : (
             <>
-              <Text>Please login to edit your reviews</Text>
+              <Text>Please sign in to edit your reviews</Text>
               <Button
                 bg={'blue.400'}
                 color={'white'}

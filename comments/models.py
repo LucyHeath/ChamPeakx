@@ -15,6 +15,11 @@ class Comment(models.Model):
         max_length=500, default=None, blank=True, null=True)
     image1 = models.CharField(
         max_length=500, default=None, blank=True, null=True)
+    image2 = models.CharField(
+        max_length=500, default=None, blank=True, null=True)
+    image3 = models.CharField(
+        max_length=500, default=None, blank=True, null=True)
+
     rating = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     mountaineering_route = models.ForeignKey(

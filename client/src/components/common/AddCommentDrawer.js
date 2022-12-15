@@ -22,8 +22,7 @@ import {
   VStack,
   HStack,
   Box,
-  Image,
-  Heading
+  Image
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import { AddIcon } from '@chakra-ui/icons'
@@ -33,8 +32,11 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { getToken, isAuthenticated } from '../common/Auth'
 import { REACT_APP_BASE_URL } from '../../environment'
+
 import UploadImage from '../helpers/UploadImage'
 import UploadImage1 from '../helpers/UploadImage'
+import UploadImage2 from '../helpers/UploadImage'
+import UploadImage3 from '../helpers/UploadImage'
 
 const AddCommentDrawer = ({ setMountaineeringRoute }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -49,7 +51,9 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
     text: '',
     rating: '',
     images: '',
-    image1: ''
+    image1: '',
+    image2: '',
+    image3: ''
   })
 
   const [errors, setErrors] = useState(null)
@@ -72,6 +76,8 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
         header: '',
         images: '',
         image1: '',
+        image2: '',
+        image3: '',
         rating: ''
       })
       const { data } = await axios.get(
@@ -83,8 +89,8 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
       console.log(formFields)
     } catch (err) {
       console.log(err)
-      console.log('hello ->', err.response.data)
-      console.log('Form-<', formFields)
+      console.log('add fail->', err.response.data)
+      console.log('Form', formFields)
       setErrors(err.response.data)
     }
   }
@@ -197,18 +203,21 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
                       formFields={formFields}
                       setFormFields={setFormFields}
                     />
-                    {errors && errors.images && (
-                      <Text size="xs" color="tomato">
-                        {errors.images}
-                      </Text>
-                    )}
                     <UploadImage1
                       formFields={formFields}
                       setFormFields={setFormFields}
                     />
-                    {errors && errors.image1 && (
+                    <UploadImage2
+                      formFields={formFields}
+                      setFormFields={setFormFields}
+                    />
+                    <UploadImage3
+                      formFields={formFields}
+                      setFormFields={setFormFields}
+                    />
+                    {errors && errors.images && (
                       <Text size="xs" color="tomato">
-                        {errors.image1}
+                        {errors.images}
                       </Text>
                     )}
                   </form>
@@ -234,7 +243,7 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
           ) : (
             <VStack>
               <Text color="blue.500" fontSize="xl" my="20px" textAlign="center">
-                Please Register or Login to leave a review
+                Please sign up or sign in to leave a review
               </Text>
               <Box boxSize="md">
                 <Image
