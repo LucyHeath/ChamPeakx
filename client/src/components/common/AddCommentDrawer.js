@@ -96,9 +96,6 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
   }
 
   const handleChange = (e) => {
-    // const updatedFormFields = { ...formFields }
-    // updatedFormFields[e.target.name] = e.target.value
-    // setFormFields(updatedFormFields)
     setFormFields({ ...formFields, [e.target.name]: e.target.value })
     setErrors({ ...errors, [e.target.name]: '', message: '' })
   }

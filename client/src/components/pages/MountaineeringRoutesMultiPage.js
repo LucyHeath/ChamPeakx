@@ -3,7 +3,6 @@ import SpinnerItem from '../common/SpinnerItem'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { REACT_APP_BASE_URL } from '../../environment'
-
 import {
   SimpleGrid,
   Box,
@@ -22,14 +21,12 @@ import {
   Divider
 } from '@chakra-ui/react'
 import FilterSearch from '../common/FilterSearch'
-
 import { Link } from 'react-router-dom'
 
 const MountaineeringRoutesMultiPage = () => {
   const [mountaineeringRoutes, setMountaineeringRoutes] = useState([])
   const [errors, setErrors] = useState(false)
-  const [filteredMountaineeringRoutes, setFilteredMountaineeringRoutes] =
-    useState([])
+  const [filteredMountaineeringRoutes, setFilteredMountaineeringRoutes] = useState([])
 
   useEffect(() => {
     const getData = async () => {
@@ -119,7 +116,7 @@ const MountaineeringRoutesMultiPage = () => {
           px="40px"
         >
           {filteredMountaineeringRoutes.map((m) => {
-            const { peak, descripton, route, difficulty, image, id, height } = m
+            const { peak, route, difficulty, image, id, height } = m
             return (
               <React.Fragment key={id}>
                 <Link to={`/mountaineeringRoutes/${id}`}>

@@ -19,19 +19,15 @@ import { setToken, getToken } from '../common/Auth'
 import DisplayError from '../common/DisplayError'
 
 const LoginPage = ({ owner }) => {
-  // ! Location Variables
+
   const navigate = useNavigate()
   const toast = useToast()
-
-  // ! State
   const [formFields, setFormFields] = useState({
     email: '',
     password: ''
   })
-
   const [errors, setErrors] = useState('')
 
-  // ! Executions
   const handleSubmit = async (e) => {
     console.log('called handle submit')
     e.preventDefault()

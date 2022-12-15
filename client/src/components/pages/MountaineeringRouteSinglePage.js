@@ -29,13 +29,10 @@ import AddCommentDrawer from '../common/AddCommentDrawer'
 import ClimbingGradesAccordian from '../common/ClimbingGradesAccordian'
 
 const MountaineeringRouteSinglePage = () => {
-  // const [isHovering, setIsHovering] = useState(false)
   const [mountaineeringRoute, setMountaineeringRoute] = useState(null)
   const [errors, setErrors] = useState(null)
-
   const { mountaineeringRouteId } = useParams()
-  const navigate = useNavigate()
-
+  
   const getMountaineeringRoute = useCallback(async () => {
     try {
       const { data } = await axios.get(
@@ -48,7 +45,7 @@ const MountaineeringRouteSinglePage = () => {
     }
   }, [mountaineeringRouteId])
 
-  // if getmountaineering changes, then use effect will run
+  // if getMountaineering changes, then useEffect will run
   useEffect(() => {
     getMountaineeringRoute()
   }, [getMountaineeringRoute])

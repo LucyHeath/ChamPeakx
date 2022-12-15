@@ -19,7 +19,7 @@ import { BsHouse } from 'react-icons/bs'
 
 const ClimbingGradesAccordian = ({ mountaineeringRoute }) => {
   return (
-    <Accordion defaultIndex={[0]} allowMultiple>
+    <Accordion allowToggle>
       <AccordionItem>
         <h2>
           <AccordionButton>

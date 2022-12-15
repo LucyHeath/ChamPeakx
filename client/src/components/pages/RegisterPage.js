@@ -10,8 +10,7 @@ import {
   Heading,
   Input,
   Stack,
-  Image,
-  Text
+  Image
 } from '@chakra-ui/react'
 import DisplayError from '../common/DisplayError'
 
