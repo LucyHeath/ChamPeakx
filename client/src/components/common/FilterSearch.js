@@ -47,13 +47,14 @@ const FilterSearch = ({
       axios
         .get(`${REACT_APP_BASE_URL}/difficulty/${selectedDifficulty}/`)
         .then(({ data }) => {
-          console.log(data)
-          const routesWithDifficulties = data.mountaineeringRoutes.map(
+          console.log('routes from api are-->', data)
+          const routesWithDifficulties = data.mountaineering_routes.map(
             (route) => {
+              console.log('route is -->', route)
               const populatedDifficulties = difficulties.filter((d) =>
-                route.difficulties.includes(d.id)
+                route.difficulty.includes(d.id)
               )
-              route.difficulties = populatedDifficulties
+              route.difficulty = populatedDifficulties
               return route
             }
           )
