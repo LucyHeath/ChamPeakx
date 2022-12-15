@@ -18,7 +18,12 @@ import {
   NumberInputField,
   NumberInputStepper,
   NumberIncrementStepper,
-  NumberDecrementStepper
+  NumberDecrementStepper,
+  VStack,
+  HStack,
+  Box,
+  Image,
+  Heading
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import { AddIcon } from '@chakra-ui/icons'
@@ -227,31 +232,45 @@ const AddCommentDrawer = ({ setMountaineeringRoute }) => {
               </DrawerFooter>
             </>
           ) : (
-            <>
-              <Text>Please Register or Login to leave a review</Text>
-              <Button
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500'
-                }}
-                as={'a'}
-                href={'/auth/register'}
-              >
-                Register
-              </Button>
-              <Button
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500'
-                }}
-                as={'a'}
-                href={'/auth/login'}
-              >
-                Login
-              </Button>
-            </>
+            <VStack>
+              <Text color="blue.500" fontSize="xl" my="20px" textAlign="center">
+                Please Register or Login to leave a review
+              </Text>
+              <Box boxSize="md">
+                <Image
+                  src="https://res.cloudinary.com/dq45dbeya/image/upload/v1671064930/mg_1106_gsiee2.webp"
+                  alt="mountaineers"
+                />
+              </Box>
+              <HStack>
+                <Button
+                  m="20px"
+                  bg={'blue.400'}
+                  color={'white'}
+                  _hover={{
+                    bg: 'blue.500'
+                  }}
+                  as={'a'}
+                  href={'/auth/register'}
+                  size="lg"
+                >
+                  Register
+                </Button>
+                <Button
+                  m="20px"
+                  bg={'blue.400'}
+                  color={'white'}
+                  _hover={{
+                    bg: 'blue.500'
+                  }}
+                  as={'a'}
+                  href={'/auth/login'}
+                  size="lg"
+                >
+                  Login
+                </Button>
+              </HStack>
+            </VStack>
           )}
         </DrawerContent>
       </Drawer>

@@ -4,7 +4,7 @@
 /* eslint-disable react/no-unknown-property */
 import CommentDisplay from '../common/CommentDisplay'
 import SpinnerItem from '../common/SpinnerItem'
-import { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { REACT_APP_BASE_URL } from '../../environment'
@@ -20,7 +20,9 @@ import {
   Divider,
   HStack,
   VStack,
-  Tooltip
+  Tooltip,
+  CardHeader,
+  chakra
 } from '@chakra-ui/react'
 import { BsHouse } from 'react-icons/bs'
 import { TbRoute } from 'react-icons/tb'
@@ -60,93 +62,124 @@ const MountaineeringRouteSinglePage = () => {
         <>
           <Box>
             <HStack justifyContent="space-evenly">
-              <HStack>
-                <Tooltip label="Peak Name" fontSize="md">
-                  <span>
-                    <FaMountain />
-                  </span>
-                </Tooltip>
-                <Heading pt="1rem" size="xl">
-                  {mountaineeringRoute.peak}
-                </Heading>
-                <Text>{`(${mountaineeringRoute.height}m)`}</Text>
-              </HStack>
-              <HStack>
-                <Tooltip label="Route Name" fontSize="md">
-                  <span>
-                    <TbRoute />
-                  </span>
-                </Tooltip>
-                <Heading pt="1rem" size="xl">
-                  {mountaineeringRoute.route}
-                </Heading>
-              </HStack>
-            </HStack>
-            <Card alignItems="center" size="lg">
-              <CardBody
-                display="flex"
-                flexDirection="column"
+              <Card
                 alignItems="center"
+                size="lg"
+                border="1px"
+                borderColor="lightgrey"
+                boxShadow="xl"
+                p="6"
+                rounded="md"
+                mb="50px"
               >
-                <Image
-                  w={['500px', '800px', '1000px', '1200px', '1500px']}
-                  objectFit="cover"
-                  src={mountaineeringRoute.image}
-                  alt="Mountain"
-                />
-                <Stack mt="6" spacing="3">
-                  <Divider orientation="horizontal" />
-                  <HStack justifyContent="space-evenly">
+                <CardHeader>
+                  <HStack>
                     <HStack>
-                      <Tooltip label="Grade" fontSize="md">
-                        <span>
-                          <GiMountainClimbing />
-                        </span>
+                      <Tooltip label="Peak Name" fontSize="md">
+                        <Heading pt="1rem" size="xl" display="flex" pr="80px">
+                          <chakra.span pr="30px">
+                            <FaMountain />
+                          </chakra.span>
+                          {mountaineeringRoute.peak}
+                          <chakra.span
+                            pl="30px"
+                            color="blue.500"
+                          >{`(${mountaineeringRoute.height}m)`}</chakra.span>
+                        </Heading>
                       </Tooltip>
-                      <Text>{mountaineeringRoute.grade}</Text>
                     </HStack>
                     <HStack>
-                      <Tooltip label="Difficulty Level" fontSize="md">
-                        <span>
-                          <GiMuscleUp />
-                        </span>
+                      <Tooltip label="Route Name" fontSize="md">
+                        <Heading pt="1rem" size="xl" display="flex" pl="80px">
+                          <chakra.span pr="30px">
+                            <TbRoute />
+                          </chakra.span>
+                          {mountaineeringRoute.route}
+                        </Heading>
                       </Tooltip>
-                      {mountaineeringRoute.difficulty.map((d) => (
-                        <Text ontSize="lg" pl="1rem" key={d.name}>
-                          {d.name}
-                        </Text>
-                      ))}
-                    </HStack>
-                    <HStack>
-                      <Tooltip
-                        label="Refuge or Facillities Available on Route "
-                        fontSize="md"
-                      >
-                        <span>
-                          <BsHouse />
-                        </span>
-                      </Tooltip>
-                      {mountaineeringRoute.hut === 'true' ? (
-                        <Text>Hut on Route</Text>
-                      ) : (
-                        <Text>No Hut</Text>
-                      )}
                     </HStack>
                   </HStack>
-                  <Divider orientation="horizontal" />
-                  <Text fontSize="2xl">{mountaineeringRoute.descripton}</Text>
-                </Stack>
-              </CardBody>
-              <Divider />
-              <CardFooter>
-                <AddCommentDrawer
-                  setMountaineeringRoute={setMountaineeringRoute}
-                />
-              </CardFooter>
-            </Card>
+                </CardHeader>
+                <CardBody
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                >
+                  <Image
+                    w={['500px', '800px', '1000px']}
+                    objectFit="cover"
+                    src={mountaineeringRoute.image}
+                    alt="Mountain"
+                    borderRadius="4px"
+                    pb="20px"
+                  />
+                  <Stack mt="6" spacing="3" w={['500px', '800px', '1500px']}>
+                    <Divider orientation="horizontal" />
+
+                    <HStack justifyContent="space-evenly">
+                      <HStack>
+                        <Tooltip label="Grade" fontSize="md">
+                          <Heading display="flex" size="md">
+                            <chakra.span pr="30px">
+                              <GiMountainClimbing />
+                            </chakra.span>
+                            {mountaineeringRoute.grade}
+                          </Heading>
+                        </Tooltip>
+                      </HStack>
+
+                      <HStack>
+                        <Tooltip label="Difficulty Level" fontSize="md">
+                          <Heading display="flex" size="md">
+                            <chakra.span pr="30px">
+                              <GiMuscleUp />
+                            </chakra.span>
+                            {mountaineeringRoute.difficulty.map((d) => (
+                              <Text fontSize="lg" pl="1rem" key={d.name}>
+                                {d.name}
+                              </Text>
+                            ))}
+                          </Heading>
+                        </Tooltip>
+                      </HStack>
+
+                      <HStack>
+                        <Tooltip
+                          label="Refuge or Facillities Available on Route "
+                          fontSize="md"
+                        >
+                          <Heading fontSize="md">
+                            <chakra.span>
+                              <BsHouse />
+                            </chakra.span>
+                          </Heading>
+                        </Tooltip>
+                        {mountaineeringRoute.hut === 'true' ? (
+                          <Heading size="md">Hut on Route</Heading>
+                        ) : (
+                          <Heading size="md">No Hut</Heading>
+                        )}
+                      </HStack>
+                    </HStack>
+                    <Divider orientation="horizontal" />
+                    <Text
+                      px="20px"
+                      fontSize="2xl"
+                    >{`"${mountaineeringRoute.descripton}"`}</Text>
+                  </Stack>
+                </CardBody>
+                <Divider orientation="horizontal" />
+                <CardFooter>
+                  <AddCommentDrawer
+                    setMountaineeringRoute={setMountaineeringRoute}
+                  />
+                </CardFooter>
+              </Card>
+            </HStack>
           </Box>
           {mountaineeringRoute.comments.map((c) => (
             <CommentDisplay
+              mt="50px"
               getMountaineeringRoute={getMountaineeringRoute}
               key={c.id}
               owner={c.owner}
@@ -157,6 +190,7 @@ const MountaineeringRouteSinglePage = () => {
               header={c.header}
               images={c.images}
               image1={c.image1}
+              mountaineeringRoute={mountaineeringRoute}
             />
           ))}
         </>

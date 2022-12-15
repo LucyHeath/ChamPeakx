@@ -13,7 +13,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  // useBreakpointValue,
   useDisclosure
 } from '@chakra-ui/react'
 
@@ -33,10 +32,10 @@ const NavBar = () => {
   const navigate = useNavigate()
 
   return (
-    <Box px="30px">
+    <Box px="60px">
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        color={useColorModeValue('gray.900', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -76,8 +75,8 @@ const NavBar = () => {
             <>
               <Button
                 as={'a'}
-                fontSize={'sm'}
-                fontWeight={400}
+                fontSize={'md'}
+                fontWeight={500}
                 variant={'link'}
                 href={'/'}
                 onClick={() => handleLogout(navigate)}
@@ -89,8 +88,8 @@ const NavBar = () => {
             <>
               <Button
                 as={'a'}
-                fontSize={'sm'}
-                fontWeight={400}
+                fontSize={'md'}
+                fontWeight={500}
                 variant={'link'}
                 href={'/auth/login'}
               >
@@ -99,7 +98,7 @@ const NavBar = () => {
               <Button
                 as={'a'}
                 display={{ base: 'none', md: 'inline-flex' }}
-                fontSize={'sm'}
+                fontSize={'md'}
                 fontWeight={600}
                 color={'white'}
                 bg={'blue.400'}
@@ -134,13 +133,13 @@ const DesktopNav = () => {
       spacing={4}
     >
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
+        <Box size="md" key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Link
                 p={2}
                 href={navItem.href ?? '#'}
-                fontSize={'sm'}
+                fontSize={'md'}
                 fontWeight={500}
                 color={linkColor}
                 _hover={{
@@ -183,13 +182,13 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
+      _hover={{ bg: useColorModeValue('blue.50', 'gray.900') }}
     >
       <Stack direction={'row'} align={'center'}>
         <Box>
           <Text
             transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
+            _groupHover={{ color: 'blue.400' }}
             fontWeight={500}
           >
             {label}

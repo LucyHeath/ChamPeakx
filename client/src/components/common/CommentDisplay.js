@@ -10,17 +10,20 @@ import {
   Text,
   CardBody,
   CardFooter,
-  Stack,
   ButtonGroup,
   HStack,
-  VStack,
   AlertDialog,
   AlertDialogOverlay,
   AlertDialogBody,
   AlertDialogCloseButton,
   AlertDialogHeader,
   AlertDialogFooter,
-  AlertDialogContent
+  AlertDialogContent,
+  Tooltip,
+  SimpleGrid,
+  chakra,
+  VStack,
+  Avatar
 } from '@chakra-ui/react'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { AiOutlineCalendar } from 'react-icons/ai'
@@ -32,6 +35,7 @@ import { getToken } from '../common/Auth'
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import React from 'react'
 import StarRating from './StarRating'
+import { isOwner } from '../common/Auth'
 const CommentDisplay = ({
   owner,
   text,
@@ -46,14 +50,6 @@ const CommentDisplay = ({
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = React.useRef()
   const date = new Date(created_at).toLocaleDateString()
-
-  // const dateOrderedComments = () => {
-  //   orderedDates = new Date(created_at).sort((a, b) =>
-  //     new Date(a) < new Date(b) ? 1 : -1
-  //   )
-  //   displayDate = orderedDates.toLocaleDateString()
-  // }
-  // dateOrderedComments()
 
   const deleteComment = async (commentId) => {
     try {
@@ -72,67 +68,107 @@ const CommentDisplay = ({
     }
   }
 
+  console.log('this is owner -- >', owner)
   return (
-    <Box overflowY="scroll" sx={{ '::-webkit-scrollbar': { display: 'none' } }}>
+    <Box
+      id="commentBox"
+      mx="200px"
+      overflowY="scroll"
+      overflow="hidden"
+      sx={{ '::-webkit-scrollbar': { display: 'none' } }}
+      alignItems="center"
+      size="lg"
+    >
       <Card
-        // justifyContent="center"
-        size="lg"
-        direction={{ base: 'column', sm: 'row' }}
-        overflow="hidden"
-        paddingX="50px"
+        direction="column"
+        paddingX="300px"
         alignItems="flex-start"
+        size="md"
+        border="1px"
+        borderColor="lightgrey"
+        boxShadow="xl"
+        p="6"
+        rounded="md"
       >
-        <Stack width="100%">
-          <CardHeader pl="50px">
-            <HStack>
-              <HStack pr="1rem">
-                <AiOutlineCalendar />
-                <Text>{date}</Text>
-              </HStack>
-              <HStack pl="2rem">
-                <BsFillPersonFill />
-                <Text>{owner.username}</Text>
-              </HStack>
-            </HStack>
-          </CardHeader>
-          <CardBody display="flex">
-            <HStack flexDirection="column" alignItems="left" w="80%">
+        <HStack flexDirection="row" justifyContent="space-between" width="100%">
+          <CardHeader display="flex" flexDirection="column">
+            <VStack>
               <HStack>
-                <Heading size="md">{header}</Heading>
-                <StarRating rating={rating} />
+                <AiOutlineCalendar />
+                <Text size="md">{date}</Text>
               </HStack>
-              <Box
-                overflowY="scroll"
-                sx={{ '::-webkit-scrollbar': { display: 'none' } }}
-              >
-                <Text py="2">{text}</Text>
-              </Box>
+              <HStack>
+                <Avatar bg="blue.500" size="xl" />
+              </HStack>
+              <Text as="b" fontSize="lg">
+                {owner.username}
+              </Text>
+            </VStack>
+          </CardHeader>
+          <CardBody
+            p="0"
+            display="flex"
+            flexDirection="column"
+            alignItems="left"
+            w="80%"
+          >
+            <HStack>
+              <Heading>{header}</Heading>
+              <StarRating rating={rating} />
             </HStack>
             <HStack>
-              {!images ? (
-                <></>
-              ) : (
-                <Image
-                  objectFit="cover"
-                  maxW={{ base: '100%', sm: '200px' }}
-                  src={images}
-                  alt="review picture"
-                />
-              )}
-              {!image1 ? (
-                <></>
-              ) : (
-                <Image
-                  objectFit="cover"
-                  maxW={{ base: '100%', sm: '200px' }}
-                  src={image1}
-                  alt="review picture"
-                />
-              )}
+              <Text>{`"${text}"`}</Text>
             </HStack>
           </CardBody>
           <CardFooter>
-            <ButtonGroup spacing="2">
+            <SimpleGrid
+              columns={['1', '2']}
+              spacing={2}
+              templateColumns="repeat(auto-fill, minmax(550px, 1fr))"
+              gap={2}
+              justifyItems="center"
+              px="40px"
+            >
+              <HStack>
+                {!images ? (
+                  <></>
+                ) : (
+                  <Image
+                    objectFit="cover"
+                    maxW={{
+                      base: '100%',
+                      sm: '200px',
+                      md: '300px',
+                      lg: '400px'
+                    }}
+                    src={images}
+                    alt="review picture"
+                  />
+                )}
+                {!image1 ? (
+                  <></>
+                ) : (
+                  <Image
+                    objectFit="cover"
+                    maxW={{
+                      base: '100%',
+                      sm: '200px',
+                      md: '300px',
+                      lg: '400px'
+                    }}
+                    src={image1}
+                    alt="review picture"
+                  />
+                )}
+              </HStack>
+            </SimpleGrid>
+          </CardFooter>
+        </HStack>
+      </Card>
+      <HStack pt="10px">
+        <ButtonGroup spacing="2">
+          {isOwner ? (
+            <>
               <EditCommentDrawer
                 id={id}
                 header={header}
@@ -154,38 +190,40 @@ const CommentDisplay = ({
               >
                 Delete Review
               </Button>
-              <AlertDialog
-                motionPreset="slideInBottom"
-                leastDestructiveRef={cancelRef}
-                onClose={onClose}
-                isOpen={isOpen}
-                isCentered
-              >
-                <AlertDialogOverlay />
-                <AlertDialogContent>
-                  <AlertDialogHeader>Discard Review?</AlertDialogHeader>
-                  <AlertDialogCloseButton />
-                  <AlertDialogBody>
-                    Are you <em>sure</em> you want to delete this review?
-                  </AlertDialogBody>
-                  <AlertDialogFooter>
-                    <Button ref={cancelRef} onClick={onClose}>
-                      No
-                    </Button>
-                    <Button
-                      onClick={() => deleteComment(id)}
-                      colorScheme="red"
-                      ml={3}
-                    >
-                      Yes
-                    </Button>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            </ButtonGroup>
-          </CardFooter>
-        </Stack>
-      </Card>
+            </>
+          ) : (
+            <></>
+          )}
+          <AlertDialog
+            motionPreset="slideInBottom"
+            leastDestructiveRef={cancelRef}
+            onClose={onClose}
+            isOpen={isOpen}
+            isCentered
+          >
+            <AlertDialogOverlay />
+            <AlertDialogContent>
+              <AlertDialogHeader>Discard Review?</AlertDialogHeader>
+              <AlertDialogCloseButton />
+              <AlertDialogBody>
+                Are you <em>sure</em> you want to delete this review?
+              </AlertDialogBody>
+              <AlertDialogFooter>
+                <Button ref={cancelRef} onClick={onClose}>
+                  No
+                </Button>
+                <Button
+                  onClick={() => deleteComment(id)}
+                  colorScheme="red"
+                  ml={3}
+                >
+                  Yes
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </ButtonGroup>
+      </HStack>
     </Box>
   )
 }

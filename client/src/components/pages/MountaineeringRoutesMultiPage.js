@@ -123,7 +123,16 @@ const MountaineeringRoutesMultiPage = () => {
             return (
               <React.Fragment key={id}>
                 <Link to={`/mountaineeringRoutes/${id}`}>
-                  <Card maxW="lg" px={{ xs: '0', sm: 'auto' }} my="20px">
+                  <Card
+                    maxW="lg"
+                    px={{ xs: '0', sm: 'auto' }}
+                    my="20px"
+                    border="1px"
+                    borderColor="lightgrey"
+                    boxShadow="xl"
+                    p="6"
+                    rounded="md"
+                  >
                     <CardHeader>
                       <Flex spacing="4">
                         <Flex

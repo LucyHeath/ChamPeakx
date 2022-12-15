@@ -10,8 +10,8 @@ import {
   Input,
   Stack,
   Image,
-  FormErrorMessage,
-  Text
+  Text,
+  useToast
 } from '@chakra-ui/react'
 import loginImg from '../images/login.jpeg'
 import { useState } from 'react'
@@ -19,9 +19,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { setToken, getToken } from '../common/Auth'
 
-const LoginPage = () => {
+const LoginPage = ({ owner }) => {
   // ! Location Variables
   const navigate = useNavigate()
+  const toast = useToast()
 
   // ! State
   const [formFields, setFormFields] = useState({
@@ -44,6 +45,13 @@ const LoginPage = () => {
       console.log('form submitted')
       setToken(data.token)
       // navigate to home after successful login
+      toast({
+        title: 'Logged in',
+        description: `Welcome Back ${data.message}!`,
+        status: 'success',
+        duration: 9000,
+        isClosable: true
+      })
       navigate('/mountaineeringRoutes')
       // navigate('/profile/:userId')- will navigate here when logged in
     } catch (err) {
@@ -102,6 +110,7 @@ const LoginPage = () => {
                     bg: 'blue.500'
                   }}
                   type="submit"
+                  owner={owner}
                   onClick={handleSubmit}
                 >
                   Login
@@ -111,7 +120,11 @@ const LoginPage = () => {
           </Stack>
         </Flex>
         <Flex flex={1}>
-          <Image alt={'Login Image'} objectFit={'cover'} src={loginImg} />
+          <Image
+            alt={'Login Image'}
+            objectFit={'cover'}
+            src="https://res.cloudinary.com/dq45dbeya/image/upload/v1671064936/1314971421_941846373BI_cjfhoh.jpg"
+          />
         </Flex>
       </Stack>
     </>

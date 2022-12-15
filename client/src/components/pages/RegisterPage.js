@@ -141,7 +141,11 @@ const RegisterPage = () => {
         </Stack>
       </Flex>
       <Flex flex={1}>
-        <Image alt={'Login Image'} objectFit={'cover'} src={registerImg} />
+        <Image
+          alt={'Login Image'}
+          objectFit={'cover'}
+          src="https://res.cloudinary.com/dq45dbeya/image/upload/v1671066618/profile_add_cw9elt.jpg"
+        />
       </Flex>
     </Stack>
   )

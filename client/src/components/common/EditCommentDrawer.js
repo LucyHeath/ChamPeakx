@@ -18,7 +18,8 @@ import {
   NumberInputField,
   NumberInputStepper,
   NumberIncrementStepper,
-  NumberDecrementStepper
+  NumberDecrementStepper,
+  useToast
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import { EditIcon } from '@chakra-ui/icons'
@@ -42,6 +43,7 @@ const EditCommentDrawer = ({
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const firstField = React.useRef()
+  const toast = useToast()
 
   // ! State
   const [formFields, setFormFields] = useState({
@@ -76,6 +78,12 @@ const EditCommentDrawer = ({
       getMountaineeringRoute()
       onClose()
       console.log(formFields)
+      toast({
+        title: 'Comment Created',
+        status: 'success',
+        duration: 9000,
+        isClosable: true
+      })
     } catch (err) {
       console.log(err)
       console.log('edit fail -->', err.response.data)
@@ -184,7 +192,7 @@ const EditCommentDrawer = ({
                         </Text>
                       )}
                     </FormControl>
-                    <FormLabel>Image Upload</FormLabel>
+                    <FormLabel mt="20px">Image Upload</FormLabel>
                     <Text color="gray.600" pb="1rem">
                       Add images here...
                     </Text>
@@ -197,10 +205,7 @@ const EditCommentDrawer = ({
                         {errors.images}
                       </Text>
                     )}
-                    <FormLabel>Image Upload</FormLabel>
-                    <Text color="gray.600" pb="1rem">
-                      Add images here...
-                    </Text>
+                    <Text color="gray.600" pb="1rem"></Text>
                     <UploadImage1
                       formFields={formFields}
                       setFormFields={setFormFields}
@@ -213,8 +218,8 @@ const EditCommentDrawer = ({
                   </form>
                 </Stack>
               </DrawerBody>
-              <DrawerFooter borderTopWidth="1px">
-                <Button variant="outline" mr={3} onClick={onClose}>
+              <DrawerFooter pb="60px" borderTopWidth="1px">
+                <Button size="lg" variant="outline" mr={3} onClick={onClose}>
                   Cancel
                 </Button>
                 <Button
@@ -225,6 +230,7 @@ const EditCommentDrawer = ({
                   }}
                   type="submit"
                   onClick={handleSubmit}
+                  size="lg"
                 >
                   Submit
                 </Button>
@@ -253,4 +259,3 @@ const EditCommentDrawer = ({
 }
 
 export default EditCommentDrawer
-
