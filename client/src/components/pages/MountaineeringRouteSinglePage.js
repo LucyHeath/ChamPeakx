@@ -110,7 +110,7 @@ const MountaineeringRouteSinglePage = () => {
                     objectFit="cover"
                     src={mountaineeringRoute.image}
                     alt="Mountain"
-                    borderRadius="4px"
+                    borderRadius="md"
                     pb="20px"
                   />
                   <Stack mt="6" spacing="3" w={['500px', '800px', '1500px']}>

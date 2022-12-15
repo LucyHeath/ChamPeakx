@@ -23,7 +23,10 @@ import {
   SimpleGrid,
   chakra,
   VStack,
-  Avatar
+  Avatar,
+  Wrap,
+  Center,
+  WrapItem
 } from '@chakra-ui/react'
 import { AiOutlineCalendar } from 'react-icons/ai'
 import EditCommentDrawer from './EditCommentDrawer'
@@ -72,7 +75,7 @@ const CommentDisplay = ({
   console.log('this is owner -- >', owner)
   return (
     <>
-      <Box id="commentBox" mx="200px" alignItems="center" size="lg">
+      <Box mx="200px" alignItems="center" size="lg">
         <HStack pb="10px">
           <ButtonGroup spacing="2">
             {isOwner ? (
@@ -142,7 +145,7 @@ const CommentDisplay = ({
           border="1px"
           borderColor="lightgrey"
           boxShadow="xl"
-          p="6"
+          p="0px"
           rounded="md"
         >
           <HStack
@@ -183,90 +186,76 @@ const CommentDisplay = ({
           </HStack>
         </Card>
       </Box>
-      <Box>
+      <Box mx="200px" mb="40px" alignItems="center" size="lg">
         <Card
           direction="column"
-          paddingX="300px"
-          alignItems="flex-start"
+          // paddingX="300px"
+          alignItems="centre"
           size="md"
           border="1px"
           borderColor="lightgrey"
           boxShadow="xl"
           p="6"
           rounded="md"
+          mt="20px"
         >
           <SimpleGrid
-            columns={['2', '2']}
-            spacing={2}
-            templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
-            gap={2}
-            justifyItems="center"
-            px="40px"
+            display="flex"
+            justifyContent="center"
+            // minChildWidth="100px"
+            spacing="30px"
+            columns={{ xs: 1, sm: 2, md: 4, lg: 4, xl: 4 }}
           >
-            <HStack>
-              {images ? (
-                <>
-                  {!images ? (
-                    <></>
-                  ) : (
-                    <Image
-                      objectFit="cover"
-                      maxW={{
-                        base: '100%',
-                        sm: '200px'
-                      }}
-                      src={images}
-                      alt="review picture"
-                    />
-                  )}
-                  {!image1 ? (
-                    <></>
-                  ) : (
-                    <Image
-                      objectFit="cover"
-                      maxW={{
-                        base: '100%',
-                        sm: '200px'
-                      }}
-                      src={image1}
-                      alt="review picture"
-                    />
-                  )}
-                  {!image2 ? (
-                    <></>
-                  ) : (
-                    <Image
-                      objectFit="cover"
-                      maxW={{
-                        base: '100%',
-                        sm: '200px',
-                        md: '300px',
-                        lg: '400px'
-                      }}
-                      src={image2}
-                      alt="review picture"
-                    />
-                  )}
-                  {!image3 ? (
-                    <></>
-                  ) : (
-                    <Image
-                      objectFit="cover"
-                      maxW={{
-                        base: '100%',
-                        sm: '200px',
-                        md: '300px',
-                        lg: '400px'
-                      }}
-                      src={image3}
-                      alt="review picture"
-                    />
-                  )}
-                </>
-              ) : (
-                <></>
-              )}
-            </HStack>
+            {images ? (
+              <>
+                {!images ? (
+                  <></>
+                ) : (
+                  <Box
+                    bgImage={images}
+                    bgPosition="center"
+                    bgRepeat="no-repeat"
+                    boxSize={['100px', '200px', '300px', '350px']}
+                    borderRadius="md"
+                  ></Box>
+                )}
+                {!image1 ? (
+                  <></>
+                ) : (
+                  <Box
+                    bgImage={image1}
+                    bgPosition="center"
+                    bgRepeat="no-repeat"
+                    boxSize={['100px', '200px', '300px', '350px']}
+                    borderRadius="md"
+                  ></Box>
+                )}
+                {!image2 ? (
+                  <></>
+                ) : (
+                  <Box
+                    bgImage={image2}
+                    bgPosition="center"
+                    bgRepeat="no-repeat"
+                    boxSize={['100px', '200px', '300px', '350px']}
+                    borderRadius="md"
+                  ></Box>
+                )}
+                {!image3 ? (
+                  <></>
+                ) : (
+                  <Box
+                    bgImage={image3}
+                    bgPosition="center"
+                    bgRepeat="no-repeat"
+                    boxSize={['100px', '200px', '300px', '350px']}
+                    borderRadius="md"
+                  ></Box>
+                )}
+              </>
+            ) : (
+              <></>
+            )}
           </SimpleGrid>
         </Card>
       </Box>
