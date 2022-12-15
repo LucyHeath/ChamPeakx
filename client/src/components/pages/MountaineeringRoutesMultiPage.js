@@ -137,7 +137,7 @@ const MountaineeringRoutesMultiPage = () => {
                       <Flex spacing="4">
                         <Flex
                           flex="1"
-                          gap="4"
+                          gap="3"
                           alignItems="center"
                           flexWrap="wrap"
                         >

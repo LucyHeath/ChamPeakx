@@ -19,20 +19,17 @@ import {
   Stack,
   Divider,
   HStack,
-  VStack,
   Tooltip,
   CardHeader,
   chakra
 } from '@chakra-ui/react'
-import { BsHouse } from 'react-icons/bs'
 import { TbRoute } from 'react-icons/tb'
-import { GiMountainClimbing } from 'react-icons/gi'
-import { GiMuscleUp } from 'react-icons/gi'
 import { FaMountain } from 'react-icons/fa'
 import AddCommentDrawer from '../common/AddCommentDrawer'
+import ClimbingGradesAccordian from '../common/ClimbingGradesAccordian'
 
 const MountaineeringRouteSinglePage = () => {
-  const [isHovering, setIsHovering] = useState(false)
+  // const [isHovering, setIsHovering] = useState(false)
   const [mountaineeringRoute, setMountaineeringRoute] = useState(null)
   const [errors, setErrors] = useState(null)
 
@@ -114,54 +111,9 @@ const MountaineeringRouteSinglePage = () => {
                     pb="20px"
                   />
                   <Stack mt="6" spacing="3" w={['500px', '800px', '1500px']}>
-                    <Divider orientation="horizontal" />
-
-                    <HStack justifyContent="space-evenly">
-                      <HStack>
-                        <Tooltip label="Grade" fontSize="md">
-                          <Heading display="flex" size="md">
-                            <chakra.span pr="30px">
-                              <GiMountainClimbing />
-                            </chakra.span>
-                            {mountaineeringRoute.grade}
-                          </Heading>
-                        </Tooltip>
-                      </HStack>
-
-                      <HStack>
-                        <Tooltip label="Difficulty Level" fontSize="md">
-                          <Heading display="flex" size="md">
-                            <chakra.span pr="30px">
-                              <GiMuscleUp />
-                            </chakra.span>
-                            {mountaineeringRoute.difficulty.map((d) => (
-                              <Text fontSize="lg" pl="1rem" key={d.name}>
-                                {d.name}
-                              </Text>
-                            ))}
-                          </Heading>
-                        </Tooltip>
-                      </HStack>
-
-                      <HStack>
-                        <Tooltip
-                          label="Refuge or Facillities Available on Route "
-                          fontSize="md"
-                        >
-                          <Heading fontSize="md">
-                            <chakra.span>
-                              <BsHouse />
-                            </chakra.span>
-                          </Heading>
-                        </Tooltip>
-                        {mountaineeringRoute.hut === 'true' ? (
-                          <Heading size="md">Hut on Route</Heading>
-                        ) : (
-                          <Heading size="md">No Hut</Heading>
-                        )}
-                      </HStack>
-                    </HStack>
-                    <Divider orientation="horizontal" />
+                    <ClimbingGradesAccordian
+                      mountaineeringRoute={mountaineeringRoute}
+                    />
                     <Text
                       px="20px"
                       fontSize="2xl"

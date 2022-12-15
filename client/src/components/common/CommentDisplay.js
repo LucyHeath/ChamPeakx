@@ -32,7 +32,7 @@ import { getToken, getPayload } from '../common/Auth'
 import { useDisclosure } from '@chakra-ui/react-use-disclosure'
 import React from 'react'
 import StarRating from './StarRating'
-import { isOwner } from '../common/Auth'
+// import { isOwner } from '../common/Auth'
 
 const CommentDisplay = ({
   owner,
@@ -68,8 +68,8 @@ const CommentDisplay = ({
     }
   }
 
-  console.log('this is owner -- >', owner) // this is an object
-  console.log('get payload', getPayload())
+  // console.log('this is owner -- >', owner) // this is an object
+  // console.log('get payload', getPayload())
 
   return (
     <>
