@@ -10,7 +10,9 @@ import {
   Heading,
   Input,
   Stack,
-  Image
+  Image,
+  HStack,
+  Text
 } from '@chakra-ui/react'
 import DisplayError from '../common/DisplayError'
 
@@ -144,6 +146,18 @@ const RegisterPage = () => {
               </Button>
             </Stack>
           </form>
+          <HStack justifyContent="center">
+            <Text>Already have an account?</Text>
+            <Button
+              as={'a'}
+              fontSize={'md'}
+              fontWeight={500}
+              variant={'link'}
+              href={'/auth/login'}
+            >
+              Sign In
+            </Button>
+          </HStack>
         </Stack>
       </Flex>
       <Flex flex={1}>

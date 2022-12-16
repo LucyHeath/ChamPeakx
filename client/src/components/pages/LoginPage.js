@@ -10,7 +10,9 @@ import {
   Input,
   Stack,
   Image,
-  useToast
+  useToast,
+  HStack,
+  Text
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -19,7 +21,6 @@ import { setToken, getToken } from '../common/Auth'
 import DisplayError from '../common/DisplayError'
 
 const LoginPage = ({ owner }) => {
-
   const navigate = useNavigate()
   const toast = useToast()
   const [formFields, setFormFields] = useState({
@@ -105,6 +106,18 @@ const LoginPage = ({ owner }) => {
                 </Button>
               </Stack>
             </form>
+            <HStack justifyContent='center'>
+              <Text>Need to create an account ?</Text>
+              <Button
+                as={'a'}
+                fontSize={'md'}
+                fontWeight={500}
+                variant={'link'}
+                href={'/auth/register'}
+              >
+                Sign Up
+              </Button>
+            </HStack>
           </Stack>
         </Flex>
         <Flex flex={1}>
