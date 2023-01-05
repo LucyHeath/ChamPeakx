@@ -88,5 +88,5 @@ Mobile, logged in:
 The home page is made of two sections
 * Hero with filter and search bar
 * Mountaineering route index
+![Filter-search](https://user-images.githubusercontent.com/114397080/210769266-e7cd79d1-69f9-4c19-aa62-d515ed6c15b5.gif)
 
-![Filter search](https://user-images.githubusercontent.com/114397080/210766864-9c945eb5-d5a2-49ef-85e2-4299b5b2234b.mov)
