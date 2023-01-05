@@ -109,7 +109,7 @@ The search function allows the user to search for matches from the peak or route
 The mountaineering index is built using a customised Chakra UI card component.
 
 ### Single mountaineering route detail page
-Clicking throught the index page brings displays `MountaineeringRouteSinglePage.js . Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with (React and Chakra UI) icons, and the use of tooltips (Chakra UI) on hover. Below the image sits the description and infographic display. 
+Clicking throught the index page brings displays `MountaineeringRouteSinglePage.js` . Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with (React and Chakra UI) icons, and the use of tooltips (Chakra UI) on hover. Below the image sits the description and infographic display. 
 
 ![Screenshot 2023-01-05 at 12 42 07](https://user-images.githubusercontent.com/114397080/210782712-bb7b6935-1690-4aa9-8580-295268114a6f.png)
 
