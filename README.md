@@ -165,8 +165,9 @@ On log in, a toast pop-up(Chakra UI) to welcomes that user.
 ![Screenshot 2023-01-05 at 21 50 20](https://user-images.githubusercontent.com/114397080/210886971-970f35c1-0a39-4917-9bd0-1d320e387da8.png)
 
 ### Not found and loading
-A nice graphic displays if the page is not found and i've used a spinner to show pages loading for both the index and single route pages. 
-![Screenshot 2023-01-05 at 20 55 45](https://user-images.githubusercontent.com/114397080/210878281-d91ce31f-5316-407e-ae39-eea8962c5eae.png)
+A nice graphic displays if the page is not found and I used a spinner to show pages loading for both the index and single route pages. 
+
+![Screenshot 2023-01-05 at 22 50 01](https://user-images.githubusercontent.com/114397080/210895269-fa3edfa9-df27-407b-9ec2-0d37adf1fa26.png)
 
 ## Back-end
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
