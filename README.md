@@ -95,7 +95,7 @@ The home page is made of two sections
  
 ![Filter](https://user-images.githubusercontent.com/114397080/210779903-1c96275a-778d-44f0-8ced-808204bab004.png)
 
-The search function allows the user to search for matched from the peak name or the route name
+The search function allows the user to search for matches from the peak or the route names
 
 ![Search](https://user-images.githubusercontent.com/114397080/210780274-4851e696-4a8d-47c7-9759-16fdc777dc85.png)
 
