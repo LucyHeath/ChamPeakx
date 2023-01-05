@@ -82,7 +82,7 @@ The first part of the frontend that I built was the `BrowserRouter` and the path
 
 ### Navbar
 
-I built the Navbar (as the `NavBar.js` component) to be responsive, with a burger toggle on mobile screens.The menu options change depending on whether a user is authenticated or not. 
+I built the Navbar (`NavBar.js`) to be responsive, with a burger toggle on mobile screens.The menu options change depending on whether a user is authenticated or not. 
 
 Desktop, logged out
 ![Desktop Navbar](https://user-images.githubusercontent.com/114397080/210762326-e6d8ec0f-3dc4-4f60-895f-817c6ee736d7.png)
