@@ -139,7 +139,8 @@ Error handling is built in to both add and delete routes
 
 #### Deleting comments
 
-When the user clicks the "Delete Review" button, they are not able to carry out this final action without making further confirmation. This is to prevent accidental deletion. 
+When the user clicks the "Delete Review" button, they are not able to carry out this final action without further confirmation, preventing accidental deletion. 
+
 ![Screenshot 2023-01-05 at 21 09 40](https://user-images.githubusercontent.com/114397080/210880457-5af6dbcc-8ebc-4dbc-9a0d-33f73cf2b045.png)
 
 ### User registration and login
@@ -156,7 +157,7 @@ Error handling is present and specific for each input field.
 
 ![Screenshot 2023-01-05 at 21 39 55](https://user-images.githubusercontent.com/114397080/210885205-3e68e5f4-f8e3-4dd2-aa08-6062eb9f794a.png)
 
-The user login page has a similar form. Error handling is present but due to security reasons, do not highlight which credentials have been entered incorrectly.
+The user login page has a similar form. Error handling is present but due to security reasons, does not highlight which credentials are incorrect.
 ![Screenshot 2023-01-05 at 21 35 22](https://user-images.githubusercontent.com/114397080/210884532-5d9d3218-2cda-4c90-8f22-617a765c21ff.png)
 
 On log in, a toast pop-up(Chakra UI) to welcomes that user.
