@@ -91,4 +91,23 @@ The home page is made of two sections
 
 ![Filter-search](https://user-images.githubusercontent.com/114397080/210769266-e7cd79d1-69f9-4c19-aa62-d515ed6c15b5.gif)
 
-<img src="https://user-images.githubusercontent.com/114397080/210769266-e7cd79d1-69f9-4c19-aa62-d515ed6c15b5.gif" width="1000" height="700" />
+
+## Challenges
+Building the app with all the features I wanted to include within the timeframe was challenging. 
+
+## Wins
+* Refactoring the create giveaway form component so that it can also be used for updating a giveaway. Form is empty when creating a new giveaway, but is populated by giveaway data when the update button is clicked.
+* Also refactoring the dashboard components to be used by the profile page. hence keeping the layout consistent.
+
+## Key Learnings
+* I have learnt to break components down and i'm much more aware of making components that could be reused if they appear in the code more thank once. 
+
+## Known Bugs or Errors
+
+* When adding images to the comments there is a problem with the upload, whereby only the first selected image uploads. This is not a problem when updating the images on the comments, and user is able to upload four individual images of their choice.
+
+## Future Improvements
+
+* Develop the front-end CRUD functionality for an admin to add/update mountaineering routes themselves. The back end is in situ for this. 
+* Add in a favorites sytem
+* Develop a user profile page, which includes an ability to add a profile picture, bio, experience  and which displays their reviews, and favourites all in one place. 
