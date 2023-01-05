@@ -1,8 +1,8 @@
-# ChamPeakx - GA Project Four
+# ChamPeakx - GA Project Four- 7 days
 ![Champeakx](https://user-images.githubusercontent.com/114397080/210755933-d9158c41-ece4-4e9d-85b0-6ebda74dec5b.png)
 
 ## Description
-Champeakx is a website which provides information about the best mountaineering in Chamonix.Users can create an account which enables them to post comments, ratings and images of their experiences of the routes listed on the site. This information can be viewed by both registered and non-registered users in the community and serves as a useful respository for route beta for subsequent mountaineering trips. 
+Champeakx is a website which provides information about the best mountaineering in Chamonix. Users can create an account which enables them to post comments, ratings and images of their experiences of the routes listed on the site. This information can be viewed by both registered and non-registered users in the community and serves as a useful respository for route beta for subsequent mountaineering trips. 
 
 ## Deployment Link
 The project was deployed using Heroku and is available [here](http://bit.ly/Champeakx).
@@ -82,12 +82,12 @@ The first part of the frontend that I built was the `BrowserRouter` and the path
 
 ### Navbar
 
-I built the Navbar (`NavBar.js`) to be responsive, with a burger toggle on mobile screens.The menu options change depending on whether a user is authenticated or not. 
+I built the Navbar (`NavBar.js`) to be responsive, with a burger toggle on mobile screens. The menu options change depending on whether a user is authenticated or not. 
 
-Desktop, logged out
+Desktop, logged out.
 ![Desktop Navbar](https://user-images.githubusercontent.com/114397080/210762326-e6d8ec0f-3dc4-4f60-895f-817c6ee736d7.png)
 
-Mobile, logged in
+Mobile, logged in.
 
 ![Mobile Navbar](https://user-images.githubusercontent.com/114397080/210762608-4301c1cd-59e3-4cfe-b0e6-6954f1f1c024.png)
 
@@ -119,21 +119,24 @@ The infographic display has an accordian (`ClimbingGradesAccordian.js` component
 
 #### Comment display
 
-The `CommentDrawer.js` component injected into the `MountaineeringRouteSinglePage.js` to display the user comments. The edit and delete buttons only appear in the display if the user is authenticated and is the owner of the comment. The image display is a seperate component(`ImageDisplay.js`)
+The `CommentDrawer.js`component is injected into the `MountaineeringRouteSinglePage.js` to display the user comments. The "Edit review" and "Delete review" buttons only appear in the display if the user is authenticated and is the owner of the comment. The image display is a seperate component(`ImageDisplay.js`).
 
 ![Screenshot 2023-01-05 at 13 38 32](https://user-images.githubusercontent.com/114397080/210792969-230fc5c4-14d1-4494-be94-7af62f284458.png)
 
 #### Add and edit comments
 
-Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draw. This fitted neatly with the clean and simple design of the project. When a user is not logged in the drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding the "add comment " function from non-authenticated users. 
+Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draws for each, which open when the "Add review" or "Edit review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in "Add review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding button function from non-authenticated users and encourages user registration.
 
 ![Screenshot 2023-01-05 at 13 13 40](https://user-images.githubusercontent.com/114397080/210788252-0136cb82-0b9f-4ea9-97b1-b7b3dd682489.png)
 
-When authenticated, the user may add their comment. 
+When authenticated, the user may add their comment usig the form in the drawer. 
 
 ![Screenshot 2023-01-05 at 13 24 07](https://user-images.githubusercontent.com/114397080/210790123-30732540-6bcb-4809-9077-af98004ace4e.png)
 
 #### Delete comment
+
+When the user clicks the "Delete review" button, they are not able to carry out this final action without making further confirmation. This is to prevent accidental deletion. 
+![Screenshot 2023-01-05 at 21 09 40](https://user-images.githubusercontent.com/114397080/210880457-5af6dbcc-8ebc-4dbc-9a0d-33f73cf2b045.png)
 
 ### Register
 
