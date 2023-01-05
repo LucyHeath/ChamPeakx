@@ -164,13 +164,26 @@ On log in, a toast pop-up(Chakra UI) to welcomes that user.
 
 ![Screenshot 2023-01-05 at 21 50 20](https://user-images.githubusercontent.com/114397080/210886971-970f35c1-0a39-4917-9bd0-1d320e387da8.png)
 
-
 ### Not found and loading
 A nice graphic displays if the page is not found and i've used a spinner to show pages loading for both the index and single route pages. 
 ![Screenshot 2023-01-05 at 20 55 45](https://user-images.githubusercontent.com/114397080/210878281-d91ce31f-5316-407e-ae39-eea8962c5eae.png)
 
 ## Back-end
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
+
+### Comment views
+
+#### CommentListView class - endpoint: /comments/
+
+![Screenshot 2023-01-05 at 22 00 02](https://user-images.githubusercontent.com/114397080/210888233-4a471681-38bf-4a1f-bd09-d1571240311c.png)
+
+#### CommentDetailView class - endpoint: /comments/<int:pk>/
+
+![Screenshot 2023-01-05 at 22 00 42](https://user-images.githubusercontent.com/114397080/210888363-5cc55c7c-b1bb-496d-ad94-369b4ddddd34.png)
+
+### Comment Model
+![Screenshot 2023-01-05 at 22 02 06](https://user-images.githubusercontent.com/114397080/210888580-3e11f716-6ee2-4ff5-a7fb-f6510490d97d.png)
+
 
 ### Database Relationships
 I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Route Difficulty; Comments; Users/Authorisation
