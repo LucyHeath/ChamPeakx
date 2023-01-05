@@ -186,10 +186,12 @@ this was the largest model containing a range of input types; `CharField`, `Posi
 
 #### Comment model
 Again I had wanted to use N `ArrayField` instead of charfield for the images, but time was a factor in this decision. 
+
 ![Screenshot 2023-01-05 at 22 02 06](https://user-images.githubusercontent.com/114397080/210888580-3e11f716-6ee2-4ff5-a7fb-f6510490d97d.png)
 
 #### Difficulty model
 This was a simple model and was useful in the filter on the front end. 
+
 ![Screenshot 2023-01-05 at 22 09 34](https://user-images.githubusercontent.com/114397080/210889685-841b1243-ef89-4d14-8f3f-7bb32c26eed7.png)
 
 #### User model
@@ -221,7 +223,7 @@ POST/api/auth/login/
 POST/api/auth/register/
 
 ## Challenges
-Building the app with all the features I wanted to include within the timeframe was really challenging. 
+* Building the app with all the features I wanted to include within the timeframe was really challenging. My aim was to try and execute the basics well. 
 
 ## Wins
 *
