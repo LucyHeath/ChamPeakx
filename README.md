@@ -65,9 +65,23 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
  I used [Excalidraw](https://excalidraw.com) to sketch out how the pages of the site would look and flow. I planned how to execute the project on [Trello](https://trello.com), creating a TODO list and diving work up into sections, with mini targets over the course of the project. 
 
-## Database Relationships
+### Database Relationships
 
 I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com)
 ![Quick Database Diagram](https://user-images.githubusercontent.com/114397080/210760666-3445aede-a027-4b88-9dbe-d34563728b41.png)
 
 ## Build Process
+## Frontend
+
+### Navbar
+
+I wanted the Navbar to be responsive.The menu changes depending on whether a user is logged in or not. 
+
+Desktop, logged out:
+![Desktop Navbar](https://user-images.githubusercontent.com/114397080/210762326-e6d8ec0f-3dc4-4f60-895f-817c6ee736d7.png)
+
+Mobile, logged in:
+
+![Mobile Navbar](https://user-images.githubusercontent.com/114397080/210762608-4301c1cd-59e3-4cfe-b0e6-6954f1f1c024.png)
+
+### Home Page
