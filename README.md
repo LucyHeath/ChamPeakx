@@ -161,7 +161,9 @@ The user login page has a similar form. Error handling is present but due to sec
 ![Screenshot 2023-01-05 at 21 35 22](https://user-images.githubusercontent.com/114397080/210884532-5d9d3218-2cda-4c90-8f22-617a765c21ff.png)
 
 On log in, a toast pop-up(Chakra UI) to welcomes that user.
-![Screenshot 2023-01-05 at 13 22 20](https://user-images.githubusercontent.com/114397080/210789792-62108f4d-e549-4bc1-b0cf-843f7cce83e6.png)
+
+![Screenshot 2023-01-05 at 21 50 20](https://user-images.githubusercontent.com/114397080/210886971-970f35c1-0a39-4917-9bd0-1d320e387da8.png)
+
 
 ### Not found and loading
 A nice graphic displays if the page is not found and i've used a spinner to show pages loading for both the index and single route pages. 
