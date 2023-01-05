@@ -171,6 +171,13 @@ A nice graphic displays if the page is not found and i've used a spinner to show
 ## Back-end
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
 
+### Database Relationships
+I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Route Difficulty; Comments; Users/Authorisation
+
+![Quick Database Diagram](https://user-images.githubusercontent.com/114397080/210760666-3445aede-a027-4b88-9dbe-d34563728b41.png)
+
+It was an efficient process to create the PostgreSQL database. I was able to test all the views using Insomnia to making sure all relationships between models were correct and receving the correct JSON responses. 
+
 ### Document models
 
 #### Mountaineering route model
@@ -189,26 +196,32 @@ This was a simple model and was useful in the filter on the front end.
 The user model was relatively easy to set up as I utilised the inbuilt `AbstractUser` model, which already includes `password` and `password_confirmation`, so it was relatively easy to build . I had added `bio` and `profile_image` fields but removed these due to time limitations meaning I was unable to utilise them on the front end. 
 ![Screenshot 2023-01-05 at 22 11 33](https://user-images.githubusercontent.com/114397080/210889990-31eafa80-ff24-4036-8ae3-d80e307dcd11.png)
 
-### Comment views
+### Views and API endpoints
 
 ##### CommentListView class - endpoint: /comments/
 
 ![Screenshot 2023-01-05 at 22 00 02](https://user-images.githubusercontent.com/114397080/210888233-4a471681-38bf-4a1f-bd09-d1571240311c.png)
 
+
 ##### CommentDetailView class - endpoint: /comments/<int:pk>/
 
 ![Screenshot 2023-01-05 at 22 00 42](https://user-images.githubusercontent.com/114397080/210888363-5cc55c7c-b1bb-496d-ad94-369b4ddddd34.png)
 
-### Database Relationships
-I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Route Difficulty; Comments; Users/Authorisation
+GET/api/mountaineering_routes/
+GET/api/mountaineering_routes/:mountaineeringRouteId/
 
-![Quick Database Diagram](https://user-images.githubusercontent.com/114397080/210760666-3445aede-a027-4b88-9dbe-d34563728b41.png)
+GET /api/difficulty/:selectedDifficulty/
+GET /api/difficulty/
 
-It was an efficient process to create the PostgreSQL database. I was able to test all the views using Insomnia to making sure all relationships between models were correct and receving the correct JSON responses. 
+PUT /api/comments/${id}/
+DELETE /api/comments/:commentId/
+POST /api/comments/
 
+POST/api/auth/login/
+POST/api/auth/register/
 
 ## Challenges
-Building the app with all the features I wanted to include within the timeframe was challenging. 
+Building the app with all the features I wanted to include within the timeframe was really challenging. 
 
 ## Wins
 *
