@@ -9,6 +9,7 @@ The project was deployed using Heroku and is available [here](http://bit.ly/Cham
 
 ## Timeframe
 This was the final project built solo over 7 days for the General Assembly Engineering Immersive Course. 
+![Screenshot 2023-01-05 at 12 25 10](https://user-images.githubusercontent.com/114397080/210779759-af78fedf-175e-4a57-b73d-12e32c01c175.png)
 
 ## Brief
 * **Build a full-stack application** by making your own backend and your own front-end
@@ -20,6 +21,11 @@ This was the final project built solo over 7 days for the General Assembly Engin
 * **Be deployed online** so it's publicly accessible.
 
 ## Features
+* All users can browse the mountaineering routes index and refine choices with difficulty filter or search by route or pek name if they know what they are looking for
+* All users can select an individual mountaineering route and click through to find out further information about it , as well as viewing comments and images left bby other people who have already done the route. 
+* Users can register for an account, and then log in to leave ther own reviews and experiences, as well as upload up to 4 photos for each review, and provide a rating of their experience. 
+* Users can edit their own review comment, images or ratings.
+* Users can delete their own reviews. 
 
 ## Technologies Used
 
@@ -85,7 +91,17 @@ The home page is made of two sections
 * Hero with filter and search bar
 * Mountaineering route index
 
-![Filter-search](https://user-images.githubusercontent.com/114397080/210769266-e7cd79d1-69f9-4c19-aa62-d515ed6c15b5.gif)
+ The filter allows the user to find routes of a certain difficulty
+ 
+![Filter](https://user-images.githubusercontent.com/114397080/210779903-1c96275a-778d-44f0-8ced-808204bab004.png)
+
+The search function allows the user to search for matched from the peak name or the route name
+
+![Search](https://user-images.githubusercontent.com/114397080/210780274-4851e696-4a8d-47c7-9759-16fdc777dc85.png)
+
+The filter and search code
+
+![Filter search code snippet](https://user-images.githubusercontent.com/114397080/210779509-211f18ff-5ca1-4980-8943-6ee44e4d9bf1.png)
 
 ## Backend
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
