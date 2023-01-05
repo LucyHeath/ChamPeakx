@@ -2,7 +2,7 @@
 ![Champeakx](https://user-images.githubusercontent.com/114397080/210755933-d9158c41-ece4-4e9d-85b0-6ebda74dec5b.png)
 
 ## Description
-Champeakx is a website which provides information about the best mountaineering in Chamonix. Mountaineers can create an account which  enables them to post reviews and images of their experiences of the routes listed on the site. This information can be viewed by both registered and non-registered users in the community and serves as a useful respository for route beta for subsequent mountaineering trips. 
+Champeakx is a website which provides information about the best mountaineering in Chamonix. Mountaineers can create an account which enables them to post reviews and images of their experiences of the routes listed on the site. This information can be viewed by both registered and non-registered users in the community and serves as a useful respository for route beta for subsequent mountaineering trips. 
 
 ## Deployment Link
 The project was deployed using Heroku and is available [here](http://bit.ly/Champeakx).
@@ -76,7 +76,7 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
 ### Navbar
 
-I wanted the Navbar to be responsive.The menu changes depending on whether a user is logged in or not. 
+I built the Navbar to be responsive, and the menu toggles to a burger on mobile screens.The menu options change depending on whether a user is authenticated or not. 
 
 Desktop, logged out:
 ![Desktop Navbar](https://user-images.githubusercontent.com/114397080/210762326-e6d8ec0f-3dc4-4f60-895f-817c6ee736d7.png)
@@ -102,17 +102,20 @@ The filter and search code
 
 ![Filter search code snippet](https://user-images.githubusercontent.com/114397080/210779509-211f18ff-5ca1-4980-8943-6ee44e4d9bf1.png)
 
+The mountaineering index is built using the Chakra UI card
+
 ### Mountaineering route detail page
-Clicking on the route from the index page brings the user to the single route detail page. Here they can review the route beta, including an image of the route, the peak and route names (which are highlighted with icons and the use off tooltips on hover). Below the piture sits the description and an infographic display. 
+Clicking on the route from the index page brings the user to the single route detail page. Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with icons(React and Chakra UI) and the use off tooltips (Chakra UI) on hover. Below the picture sits the description and an infographic display. 
 
 ![Screenshot 2023-01-05 at 12 42 07](https://user-images.githubusercontent.com/114397080/210782712-bb7b6935-1690-4aa9-8580-295268114a6f.png)
 
-The infographic display has a drawer which can be toggled to diplay more info about the climbing grades and the infographics themselves again use tooltips to provide further detail. 
+The infographic display has an accordian (Chakra UI) which can be toggled to diplay more info about the climbing grades and the infographics themselves again use tooltips to provide further detail. 
 
 ![Screenshot 2023-01-05 at 12 46 41](https://user-images.githubusercontent.com/114397080/210783470-c961a10f-3126-48d4-8715-3c1a7cbe9b95.png)
 
 ## Back-end
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
+
 ### Database Relationships
 I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Route Difficulty; Comments; Users/Authorisation
 
