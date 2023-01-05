@@ -85,3 +85,8 @@ Mobile, logged in:
 ![Mobile Navbar](https://user-images.githubusercontent.com/114397080/210762608-4301c1cd-59e3-4cfe-b0e6-6954f1f1c024.png)
 
 ### Home Page
+The home page is made of two sections
+* Hero with filter and search bar
+* Mountaineering route index
+
+![Filter search](https://user-images.githubusercontent.com/114397080/210766864-9c945eb5-d5a2-49ef-85e2-4299b5b2234b.mov)
