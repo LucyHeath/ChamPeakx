@@ -37,7 +37,7 @@ This was the final project built solo over 7 days for the General Assembly Engin
 * Chakra UI
 * Chakra-ui/icons
 * buffer
-* 
+
 ### Backend
 * Python
 * Django
