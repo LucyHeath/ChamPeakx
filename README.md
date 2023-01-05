@@ -1,4 +1,4 @@
-# ChamPeakx- GA Project Four
+# ChamPeakx - GA Project Four
 ![Champeakx](https://user-images.githubusercontent.com/114397080/210755933-d9158c41-ece4-4e9d-85b0-6ebda74dec5b.png)
 
 ## Description
