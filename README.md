@@ -119,13 +119,13 @@ The infographic display has an accordian (`ClimbingGradesAccordian.js` component
 
 #### Comment display
 
-The `CommentDrawer.js`component is injected into the `MountaineeringRouteSinglePage.js` to display the user comments. The "Edit review" and "Delete review" buttons only appear in the display if the user is authenticated and is the owner of the comment. The image display and star rating display are seperate components(`ImageDisplay.js`, `StarRating.js`).
+The `CommentDrawer.js`component is injected into the `MountaineeringRouteSinglePage.js` to display the user comments. The "Edit Review" and "Delete Review" buttons only appear in the display if the user is authenticated and is the owner of the comment. The image display and star rating display are seperate components(`ImageDisplay.js`, `StarRating.js`).
 
 ![Screenshot 2023-01-05 at 13 38 32](https://user-images.githubusercontent.com/114397080/210792969-230fc5c4-14d1-4494-be94-7af62f284458.png)
 
 #### Adding and editing comments
 
-Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draws for each, which open when the "Add review" or "Edit review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in "Add review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding button function from non-authenticated users and encourages user registration.
+Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draws for each, which open when the "Add Review" or "Edit review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in "Add Review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding button function from non-authenticated users and encourages user registration.
 
 ![Screenshot 2023-01-05 at 13 13 40](https://user-images.githubusercontent.com/114397080/210788252-0136cb82-0b9f-4ea9-97b1-b7b3dd682489.png)
 
@@ -139,12 +139,12 @@ Error handling is built in to both add and delete routes
 
 #### Deleting comments
 
-When the user clicks the "Delete review" button, they are not able to carry out this final action without making further confirmation. This is to prevent accidental deletion. 
+When the user clicks the "Delete Review" button, they are not able to carry out this final action without making further confirmation. This is to prevent accidental deletion. 
 ![Screenshot 2023-01-05 at 21 09 40](https://user-images.githubusercontent.com/114397080/210880457-5af6dbcc-8ebc-4dbc-9a0d-33f73cf2b045.png)
 
 ### User registration and login
 
-When choosing to register as a user on the site, visitors will navigate to a simple form, via clicking the "Sign Up" button in the Navbar or in the "Add review" drawer. Users are guided to "Sign In" instead if they already have an existing account. 
+When choosing to register as a user on the site, visitors will navigate to a simple form, via clicking the "Sign Up" button in the Navbar or in the "Add Review" drawer. Users are guided to "Sign In" instead if they already have an existing account. 
 
 <img width="1428" alt="Screenshot 2023-01-05 at 21 18 47" src="https://user-images.githubusercontent.com/114397080/210881880-80c05206-fd5b-4cf3-b43a-57683bac9501.png">
 
