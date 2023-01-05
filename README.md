@@ -76,7 +76,7 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
 ### Navbar
 
-I built the Navbar to be responsive, and the menu toggles to a burger on mobile screens.The menu options change depending on whether a user is authenticated or not. 
+I built the Navbar to be responsive, with a burger toggle on mobile screens.The menu options change depending on whether a user is authenticated or not. 
 
 Desktop, logged out:
 ![Desktop Navbar](https://user-images.githubusercontent.com/114397080/210762326-e6d8ec0f-3dc4-4f60-895f-817c6ee736d7.png)
@@ -90,6 +90,7 @@ The home page is made of two sections
 * Hero with filter and search bar
 * Mountaineering route index
 
+
  The filter allows the user to find routes of a certain difficulty
  
 ![Filter](https://user-images.githubusercontent.com/114397080/210779903-1c96275a-778d-44f0-8ced-808204bab004.png)
@@ -102,16 +103,42 @@ The filter and search code
 
 ![Filter search code snippet](https://user-images.githubusercontent.com/114397080/210779509-211f18ff-5ca1-4980-8943-6ee44e4d9bf1.png)
 
-The mountaineering index is built using the Chakra UI card
+The mountaineering index is built using a customised Chakra UI card component, which can be made responsive inline.
 
 ### Mountaineering route detail page
-Clicking on the route from the index page brings the user to the single route detail page. Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with icons(React and Chakra UI) and the use off tooltips (Chakra UI) on hover. Below the picture sits the description and an infographic display. 
+Clicking on the route from the index page brings the user to the single route detail page. Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with icons(React and Chakra UI) and the use tooltips (Chakra UI) on hover. Below the picture sits the description and an infographic display. 
 
 ![Screenshot 2023-01-05 at 12 42 07](https://user-images.githubusercontent.com/114397080/210782712-bb7b6935-1690-4aa9-8580-295268114a6f.png)
 
-The infographic display has an accordian (Chakra UI) which can be toggled to diplay more info about the climbing grades and the infographics themselves again use tooltips to provide further detail. 
+The infographic display has an accordian (Chakra UI) which can be toggled to diplay more info about the climbing grades and the infographics themselves, again using tooltips to provide further detail. 
 
 ![Screenshot 2023-01-05 at 12 46 41](https://user-images.githubusercontent.com/114397080/210783470-c961a10f-3126-48d4-8715-3c1a7cbe9b95.png)
+
+#### Review display
+
+The reviews are displayed on the mountineering route detail page, under the route information. 
+
+![Screenshot 2023-01-05 at 13 38 32](https://user-images.githubusercontent.com/114397080/210792969-230fc5c4-14d1-4494-be94-7af62f284458.png)
+
+#### Add and edit review
+
+Rather than navigating away from this page to add or edit reviews, I chose to implement a Chakra UI draw. This fitted neatly with the clean and simple design of the project. When a user is not logged in the drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding the "add review " function from non-authenticated users. The "edit review" button only appears on the comment display if the user is authenticated and is the owner. 
+
+![Screenshot 2023-01-05 at 13 13 40](https://user-images.githubusercontent.com/114397080/210788252-0136cb82-0b9f-4ea9-97b1-b7b3dd682489.png)
+
+When authenticated, the user may add their review. 
+
+![Screenshot 2023-01-05 at 13 24 07](https://user-images.githubusercontent.com/114397080/210790123-30732540-6bcb-4809-9077-af98004ace4e.png)
+
+#### Delete review
+
+### Register
+
+### Login
+
+Use of toast on login (Chakra UI)
+
+![Screenshot 2023-01-05 at 13 22 20](https://user-images.githubusercontent.com/114397080/210789792-62108f4d-e549-4bc1-b0cf-843f7cce83e6.png)
 
 ## Back-end
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
@@ -123,7 +150,6 @@ I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visua
 
 It was an efficient process to create the PostgreSQL database. I was able to test all the views using Insomnia to making sure all relationships between models were correct and receving the correct JSON responses. 
 
-## Comments View
 
 ## Challenges
 Building the app with all the features I wanted to include within the timeframe was challenging. 
