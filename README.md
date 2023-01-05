@@ -90,11 +90,11 @@ The home page is made of two sections
 ## Backend
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
 ### Database Relationships
-I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Difficulty; Comments; Users/Authorisation
+I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Route Difficulty; Comments; Users/Authorisation
 
 ![Quick Database Diagram](https://user-images.githubusercontent.com/114397080/210760666-3445aede-a027-4b88-9dbe-d34563728b41.png)
 
-It was an efficient process to create the PostgreSQL database. I was able to test all the views using Insomnia - making sure all relationships between models were correct and that we were receiving the correct JSON responses. 
+It was an efficient process to create the PostgreSQL database. I was able to test all the views using Insomnia to making sure all relationships between models were correct and receving the correct JSON responses. 
 
 ## Comments View
 
@@ -102,8 +102,7 @@ It was an efficient process to create the PostgreSQL database. I was able to tes
 Building the app with all the features I wanted to include within the timeframe was challenging. 
 
 ## Wins
-* Refactoring the create giveaway form component so that it can also be used for updating a giveaway. Form is empty when creating a new giveaway, but is populated by giveaway data when the update button is clicked.
-* Also refactoring the dashboard components to be used by the profile page. hence keeping the layout consistent.
+*
 
 ## Key Learnings
 * I have learnt to break components down and i'm much more aware of making components that could be reused if they appear in the code more than once. 
