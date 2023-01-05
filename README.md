@@ -23,15 +23,6 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
 ## Technologies Used
 
-### Backend
-* Python
-* Django
-* Django REST Framework
-* Psycopg2-binary
-* pyjwt
-* autopep8
-* pylint
-
 ### Frontend
 * React.js
 * JSX
@@ -41,6 +32,15 @@ This was the final project built solo over 7 days for the General Assembly Engin
 * Chakra UI
 * Chakra-ui/icons
 * buffer
+* 
+### Backend
+* Python
+* Django
+* Django REST Framework
+* Psycopg2-binary
+* pyjwt
+* autopep8
+* pylint
 
 ### Development tools
 * VS code
@@ -65,12 +65,8 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
  I used [Excalidraw](https://excalidraw.com) to sketch out how the pages of the site would look and flow. I planned how to execute the project on [Trello](https://trello.com), creating a TODO list and diving work up into sections, with mini targets over the course of the project. 
 
-### Database Relationships
-
-I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com)
-![Quick Database Diagram](https://user-images.githubusercontent.com/114397080/210760666-3445aede-a027-4b88-9dbe-d34563728b41.png)
-
 ## Build Process
+
 ## Frontend
 
 ### Navbar
@@ -91,6 +87,16 @@ The home page is made of two sections
 
 ![Filter-search](https://user-images.githubusercontent.com/114397080/210769266-e7cd79d1-69f9-4c19-aa62-d515ed6c15b5.gif)
 
+## Backend
+This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
+### Database Relationships
+I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Difficulty; Comments; Users/Authorisation
+
+![Quick Database Diagram](https://user-images.githubusercontent.com/114397080/210760666-3445aede-a027-4b88-9dbe-d34563728b41.png)
+
+It was an efficient process to create the PostgreSQL database. I was able to test all the views using Insomnia - making sure all relationships between models were correct and that we were receiving the correct JSON responses. 
+
+## Comments View
 
 ## Challenges
 Building the app with all the features I wanted to include within the timeframe was challenging. 
@@ -100,7 +106,7 @@ Building the app with all the features I wanted to include within the timeframe 
 * Also refactoring the dashboard components to be used by the profile page. hence keeping the layout consistent.
 
 ## Key Learnings
-* I have learnt to break components down and i'm much more aware of making components that could be reused if they appear in the code more thank once. 
+* I have learnt to break components down and i'm much more aware of making components that could be reused if they appear in the code more than once. 
 
 ## Known Bugs or Errors
 
@@ -111,3 +117,8 @@ Building the app with all the features I wanted to include within the timeframe 
 * Develop the front-end CRUD functionality for an admin to add/update mountaineering routes themselves. The back end is in situ for this. 
 * Add in a favorites sytem
 * Develop a user profile page, which includes an ability to add a profile picture, bio, experience  and which displays their reviews, and favourites all in one place. 
+* Refactor the image upload function, so images upload as an array on the backend.
+* Whilst the app is fairly responsive this could be further optimised, especially for mobile. 
+* Build in the average rating to the back end, and display this on the mountaineering route single page, not just on the individual review. 
+* Change the reviewer rating to a hover stars effect for a better UX
+
