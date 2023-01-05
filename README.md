@@ -74,9 +74,15 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
 ## Front-end
 
+### App.js
+
+The first part of the frontend that I built was the `BrowserRouter` and the paths.This helped me visualise the layout of the site.
+
+<img width="566" alt="Screenshot 2023-01-05 at 20 37 32" src="https://user-images.githubusercontent.com/114397080/210875366-3246fbfe-0fd3-4856-881f-467a25e228eb.png">
+
 ### Navbar
 
-I built the Navbar to be responsive, with a burger toggle on mobile screens.The menu options change depending on whether a user is authenticated or not. 
+I built the Navbar (as the `NavBar.js` component) to be responsive, with a burger toggle on mobile screens.The menu options change depending on whether a user is authenticated or not. 
 
 Desktop, logged out
 ![Desktop Navbar](https://user-images.githubusercontent.com/114397080/210762326-e6d8ec0f-3dc4-4f60-895f-817c6ee736d7.png)
@@ -87,7 +93,7 @@ Mobile, logged in
 
 ### Home page
 The home page is made of two sections.
-* Hero with filter and search bar
+* Hero with filter and search bar (`FilterSearch.js` component)
 * Mountaineering route index
 
  The filter allows the user to find routes of a particular difficulty level.
@@ -102,25 +108,24 @@ The search function allows the user to search for matches from the peak or route
 
 The mountaineering index is built using a customised Chakra UI card component.
 
-### Mountaineering route detail page
-Clicking on the route from the index page brings the user to the single route detail page. Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with (React and Chakra UI) icons, and the use of tooltips (Chakra UI) on hover. Below the picture sits the description and infographic display. 
+### Single mountaineering route detail page
+Clicking throught the index page brings displays `MountaineeringRouteSinglePage.js . Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with (React and Chakra UI) icons, and the use of tooltips (Chakra UI) on hover. Below the image sits the description and infographic display. 
 
 ![Screenshot 2023-01-05 at 12 42 07](https://user-images.githubusercontent.com/114397080/210782712-bb7b6935-1690-4aa9-8580-295268114a6f.png)
 
-The infographic display has an accordian (Chakra UI) which can be toggled to diplay more info about the climbing grades, and the infographics themselves, again have tooltips to provide further detail. 
+The infographic display has an accordian (`ClimbingGradesAccordian.js` component), brought in from Chakra UI,  which can be toggled to diplay more info about the climbing grades. The infographics themselves again utlise tooltips to provide greater detail. 
 
 ![Screenshot 2023-01-05 at 12 46 41](https://user-images.githubusercontent.com/114397080/210783470-c961a10f-3126-48d4-8715-3c1a7cbe9b95.png)
 
 #### Comment display
 
-The comment display is a component injected into the single route page. 
-The comment  are displayed on the mountineering route detail page, under the route information. The edit and delete buttons only appear in the display if the user is authenticated and is the owner. 
+The `CommentDrawer.js` component injected into the `MountaineeringRouteSinglePage.js` to display the user comments. The edit and delete buttons only appear in the display if the user is authenticated and is the owner of the comment. The image display is a seperate component(`ImageDisplay.js`)
 
 ![Screenshot 2023-01-05 at 13 38 32](https://user-images.githubusercontent.com/114397080/210792969-230fc5c4-14d1-4494-be94-7af62f284458.png)
 
 #### Add and edit comments
 
-Rather than navigating away from this page to add or edit comments, I chose to implement a Chakra UI draw. This fitted neatly with the clean and simple design of the project. When a user is not logged in the drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding the "add comment " function from non-authenticated users. 
+Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draw. This fitted neatly with the clean and simple design of the project. When a user is not logged in the drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding the "add comment " function from non-authenticated users. 
 
 ![Screenshot 2023-01-05 at 13 13 40](https://user-images.githubusercontent.com/114397080/210788252-0136cb82-0b9f-4ea9-97b1-b7b3dd682489.png)
 
@@ -137,6 +142,10 @@ When authenticated, the user may add their comment.
 Use of toast on login (Chakra UI)
 
 ![Screenshot 2023-01-05 at 13 22 20](https://user-images.githubusercontent.com/114397080/210789792-62108f4d-e549-4bc1-b0cf-843f7cce83e6.png)
+
+### Not found and loading
+A nice graphic displays if the page is not found and i've used a spinner to show pages loading for both the index and single route pages. 
+![Screenshot 2023-01-05 at 20 55 45](https://user-images.githubusercontent.com/114397080/210878281-d91ce31f-5316-407e-ae39-eea8962c5eae.png)
 
 ## Back-end
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
