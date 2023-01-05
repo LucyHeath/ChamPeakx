@@ -72,7 +72,7 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
 ## Build Process
 
-## Frontend
+## Front-end
 
 ### Navbar
 
@@ -85,7 +85,7 @@ Mobile, logged in:
 
 ![Mobile Navbar](https://user-images.githubusercontent.com/114397080/210762608-4301c1cd-59e3-4cfe-b0e6-6954f1f1c024.png)
 
-### Home Page
+### Home page
 The home page is made of two sections
 * Hero with filter and search bar
 * Mountaineering route index
@@ -102,7 +102,15 @@ The filter and search code
 
 ![Filter search code snippet](https://user-images.githubusercontent.com/114397080/210779509-211f18ff-5ca1-4980-8943-6ee44e4d9bf1.png)
 
-## Backend
+### Mountaineering route detail page
+Clicking on the route from the index page brings the user to the single route detail page. Here they can reviw the route beta, including an image of the route,the peak and route name whcih are highlighted with icons and the use off tooltips on hover. The description of the route and an inforgraphic display give further detail. 
+![Screenshot 2023-01-05 at 12 42 07](https://user-images.githubusercontent.com/114397080/210782712-bb7b6935-1690-4aa9-8580-295268114a6f.png)
+
+The infographic display has a drawer which can be toggled to diplay a guide on route grades, and the infographics themselves again use tooltips to provide context. 
+
+![Screenshot 2023-01-05 at 12 46 41](https://user-images.githubusercontent.com/114397080/210783470-c961a10f-3126-48d4-8715-3c1a7cbe9b95.png)
+
+## Back-end
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
 ### Database Relationships
 I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Route Difficulty; Comments; Users/Authorisation
