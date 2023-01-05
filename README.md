@@ -11,19 +11,19 @@ The project was deployed using Heroku and is available [here](http://bit.ly/Cham
 This was the final project built solo over 7 days for the General Assembly Engineering Immersive Course. 
 
 ## Brief
-* **Build a full-stack application** by making your own backend and your own front-end
-* **Use a Python Django API** using Django REST Framework to serve your data from a Postgres database
-* **Consume your API with a separate front-end** built with React
-* **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models
-* **Implement thoughtful user stories/wireframes** that are significant enough to help you know which features are core MVP and which you can cut
+* **Build a full-stack application** by making your own backend and your own front-end.
+* **Use a Python Django API** using Django REST Framework to serve your data from a Postgres database.
+* **Consume your API with a separate front-end** built with React.
+* **Be a complete product** which most likely means multiple relationships and CRUD functionality for at least a couple of models.
+* **Implement thoughtful user stories/wireframes** that are significant enough to help you know which features are core MVP and which you can cut.
 * **Have a visually impressive design** to kick your portfolio up a notch and have something to wow future clients & employers. **ALLOW** time for this.
 * **Be deployed online** so it's publicly accessible.
 
 ## Features
-* All users can browse the mountaineering routes index and refine choices with difficulty filter or search by route or pek name if they know what they are looking for
-* All users can select an individual mountaineering route and click through to find out further information about it , as well as viewing comments and images left bby other people who have already done the route. 
-* Users can register for an account, and then log in to leave ther own reviews and experiences, as well as upload up to 4 photos for each review, and provide a rating of their experience. 
-* Users can edit their own review comment, images or ratings.
+* All users can browse the mountaineering routes index and refine choices with the difficulty filter, or search by route or peak name if they know what they are looking for.
+* All users can select an individual mountaineering route and click through to find out further information about it , as well as viewing comments and images left by others who have already done the route. 
+* Users can register for an account, and then log in to leave ther own reviews and experiences, as well as upload up to four photos for each review, along with a rating of their experience.
+* Users can edit their own review (comment, images or rating).
 * Users can delete their own reviews. 
 
 ## Technologies Used
@@ -68,7 +68,7 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
 ![Wireframe](https://user-images.githubusercontent.com/114397080/210758910-03195319-0d34-477f-998f-ef1b0ecdc90f.png)
 
- I used [Excalidraw](https://excalidraw.com) to sketch out how the pages of the site would look and flow. I planned how to execute the project on [Trello](https://trello.com), creating a TODO list and diving work up into sections, with mini targets over the course of the project. 
+ I used [Excalidraw](https://excalidraw.com) to sketch out how the pages of the site would look and flow. I planned how to execute the project on [Trello](https://trello.com), creating a TODO list and dividing work up into sections, with mini targets over the course of the project. 
 
 ## Build Process
 
@@ -103,10 +103,11 @@ The filter and search code
 ![Filter search code snippet](https://user-images.githubusercontent.com/114397080/210779509-211f18ff-5ca1-4980-8943-6ee44e4d9bf1.png)
 
 ### Mountaineering route detail page
-Clicking on the route from the index page brings the user to the single route detail page. Here they can reviw the route beta, including an image of the route,the peak and route name whcih are highlighted with icons and the use off tooltips on hover. The description of the route and an inforgraphic display give further detail. 
+Clicking on the route from the index page brings the user to the single route detail page. Here they can review the route beta, including an image of the route, the peak and route names (which are highlighted with icons and the use off tooltips on hover). Below the piture sits the description and an infographic display. 
+
 ![Screenshot 2023-01-05 at 12 42 07](https://user-images.githubusercontent.com/114397080/210782712-bb7b6935-1690-4aa9-8580-295268114a6f.png)
 
-The infographic display has a drawer which can be toggled to diplay a guide on route grades, and the infographics themselves again use tooltips to provide context. 
+The infographic display has a drawer which can be toggled to diplay more info about the climbing grades and the infographics themselves again use tooltips to provide further detail. 
 
 ![Screenshot 2023-01-05 at 12 46 41](https://user-images.githubusercontent.com/114397080/210783470-c961a10f-3126-48d4-8715-3c1a7cbe9b95.png)
 
