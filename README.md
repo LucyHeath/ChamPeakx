@@ -9,7 +9,6 @@ The project was deployed using Heroku and is available [here](http://bit.ly/Cham
 
 ## Timeframe
 This was the final project built solo over 7 days for the General Assembly Engineering Immersive Course. 
-![Screenshot 2023-01-05 at 12 25 10](https://user-images.githubusercontent.com/114397080/210779759-af78fedf-175e-4a57-b73d-12e32c01c175.png)
 
 ## Brief
 * **Build a full-stack application** by making your own backend and your own front-end
