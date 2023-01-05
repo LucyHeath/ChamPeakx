@@ -119,11 +119,11 @@ The infographic display has an accordian (`ClimbingGradesAccordian.js` component
 
 #### Comment display
 
-The `CommentDrawer.js`component is injected into the `MountaineeringRouteSinglePage.js` to display the user comments. The "Edit review" and "Delete review" buttons only appear in the display if the user is authenticated and is the owner of the comment. The image display is a seperate component(`ImageDisplay.js`).
+The `CommentDrawer.js`component is injected into the `MountaineeringRouteSinglePage.js` to display the user comments. The "Edit review" and "Delete review" buttons only appear in the display if the user is authenticated and is the owner of the comment. The image display and star rating display are seperate components(`ImageDisplay.js`, `StarRating.js`).
 
 ![Screenshot 2023-01-05 at 13 38 32](https://user-images.githubusercontent.com/114397080/210792969-230fc5c4-14d1-4494-be94-7af62f284458.png)
 
-#### Add and edit comments
+#### Adding and editing comments
 
 Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draws for each, which open when the "Add review" or "Edit review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in "Add review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding button function from non-authenticated users and encourages user registration.
 
@@ -133,16 +133,20 @@ When authenticated, the user may add their comment usig the form in the drawer.
 
 ![Screenshot 2023-01-05 at 13 24 07](https://user-images.githubusercontent.com/114397080/210790123-30732540-6bcb-4809-9077-af98004ace4e.png)
 
-#### Delete comment
+#### Deleting comments
 
 When the user clicks the "Delete review" button, they are not able to carry out this final action without making further confirmation. This is to prevent accidental deletion. 
 ![Screenshot 2023-01-05 at 21 09 40](https://user-images.githubusercontent.com/114397080/210880457-5af6dbcc-8ebc-4dbc-9a0d-33f73cf2b045.png)
 
-### Register
+### Registration and Login
 
-### Login
+When choosing to register as a user on the site visitoers will navigate to a simple form. 
+<img width="1428" alt="Screenshot 2023-01-05 at 21 18 47" src="https://user-images.githubusercontent.com/114397080/210881880-80c05206-fd5b-4cf3-b43a-57683bac9501.png">
 
-Use of toast on login (Chakra UI)
+<img width="466" alt="Screenshot 2023-01-05 at 21 17 31" src="https://user-images.githubusercontent.com/114397080/210881668-b1d6c221-4bfc-4f6f-ae72-69ddd83c2e6a.png">
+
+
+Use of toast to welcome user on login (Chakra UI)
 
 ![Screenshot 2023-01-05 at 13 22 20](https://user-images.githubusercontent.com/114397080/210789792-62108f4d-e549-4bc1-b0cf-843f7cce83e6.png)
 
