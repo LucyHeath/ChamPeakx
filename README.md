@@ -116,13 +116,13 @@ The infographic display has an accordian (Chakra UI) which can be toggled to dip
 
 #### Review display
 
-The reviews are displayed on the mountineering route detail page, under the route information. 
+The reviews are displayed on the mountineering route detail page, under the route information. The edit and delete buttons only appear in the display if the user is authenticated and is the owner. 
 
 ![Screenshot 2023-01-05 at 13 38 32](https://user-images.githubusercontent.com/114397080/210792969-230fc5c4-14d1-4494-be94-7af62f284458.png)
 
 #### Add and edit review
 
-Rather than navigating away from this page to add or edit reviews, I chose to implement a Chakra UI draw. This fitted neatly with the clean and simple design of the project. When a user is not logged in the drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding the "add review " function from non-authenticated users. The "edit review" button only appears on the comment display if the user is authenticated and is the owner. 
+Rather than navigating away from this page to add or edit reviews, I chose to implement a Chakra UI draw. This fitted neatly with the clean and simple design of the project. When a user is not logged in the drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding the "add review " function from non-authenticated users. 
 
 ![Screenshot 2023-01-05 at 13 13 40](https://user-images.githubusercontent.com/114397080/210788252-0136cb82-0b9f-4ea9-97b1-b7b3dd682489.png)
 
