@@ -150,7 +150,10 @@ When choosing to register as a user on the site, visitors will navigate to a sim
 
 <img width="466" alt="Screenshot 2023-01-05 at 21 17 31" src="https://user-images.githubusercontent.com/114397080/210881668-b1d6c221-4bfc-4f6f-ae72-69ddd83c2e6a.png">
 
-Error handling is present and specific for each input field. 
+Error handling is present and specific for each input field.
+
+![Screenshot 2023-01-05 at 21 42 40](https://user-images.githubusercontent.com/114397080/210885586-f3b16b95-554d-418d-915d-de1c854c110b.png)
+
 ![Screenshot 2023-01-05 at 21 39 55](https://user-images.githubusercontent.com/114397080/210885205-3e68e5f4-f8e3-4dd2-aa08-6062eb9f794a.png)
 
 The user login page has a similar form. Error handling is present but due to security reasons, do not highlight which credentials have been entered incorrectly.
