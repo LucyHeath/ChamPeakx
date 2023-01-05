@@ -171,19 +171,33 @@ A nice graphic displays if the page is not found and i've used a spinner to show
 ## Back-end
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
 
+### Document models
+
+#### Mountaineering route model
+this was the largest model containing a range of input types; `CharField`, `PositiveIntegerField`, `DateTimeField`, `TextField` and `ManyToManyField`. I had wanted to make the image field and `ArrayField` but time limited my ability to utilise arrys with cloudinary, so i used a `CharField` instead. I also wanted to add an average rating field , related to the rating in the user comment model. 
+![Screenshot 2023-01-05 at 22 07 09](https://user-images.githubusercontent.com/114397080/210889334-3370a8da-8f55-4e1f-adef-f93bb9d26f31.png)
+
+#### Comment model
+Again I had wanted to use N `ArrayField` instead of charfield for the images, but time was a factor in this decision. 
+![Screenshot 2023-01-05 at 22 02 06](https://user-images.githubusercontent.com/114397080/210888580-3e11f716-6ee2-4ff5-a7fb-f6510490d97d.png)
+
+#### Difficulty model
+This was a simple model and was useful in the filter on the front end. 
+![Screenshot 2023-01-05 at 22 09 34](https://user-images.githubusercontent.com/114397080/210889685-841b1243-ef89-4d14-8f3f-7bb32c26eed7.png)
+
+#### User model
+The user model was relatively easy to set up as I utilised the inbuilt `AbstractUser` model, which already includes `password` and `password_confirmation`, so it was relatively easy to build . I had added `bio` and `profile_image` fields but removed these due to time limitations meaning I was unable to utilise them on the front end. 
+![Screenshot 2023-01-05 at 22 11 33](https://user-images.githubusercontent.com/114397080/210889990-31eafa80-ff24-4036-8ae3-d80e307dcd11.png)
+
 ### Comment views
 
-#### CommentListView class - endpoint: /comments/
+##### CommentListView class - endpoint: /comments/
 
 ![Screenshot 2023-01-05 at 22 00 02](https://user-images.githubusercontent.com/114397080/210888233-4a471681-38bf-4a1f-bd09-d1571240311c.png)
 
-#### CommentDetailView class - endpoint: /comments/<int:pk>/
+##### CommentDetailView class - endpoint: /comments/<int:pk>/
 
 ![Screenshot 2023-01-05 at 22 00 42](https://user-images.githubusercontent.com/114397080/210888363-5cc55c7c-b1bb-496d-ad94-369b4ddddd34.png)
-
-### Comment Model
-![Screenshot 2023-01-05 at 22 02 06](https://user-images.githubusercontent.com/114397080/210888580-3e11f716-6ee2-4ff5-a7fb-f6510490d97d.png)
-
 
 ### Database Relationships
 I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Route Difficulty; Comments; Users/Authorisation
