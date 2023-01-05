@@ -133,6 +133,10 @@ When authenticated, the user may add their comment usig the form in the drawer.
 
 ![Screenshot 2023-01-05 at 13 24 07](https://user-images.githubusercontent.com/114397080/210790123-30732540-6bcb-4809-9077-af98004ace4e.png)
 
+Error handling is built in to both add and delete routes
+
+![Add route error handling](https://user-images.githubusercontent.com/114397080/210883199-62b04b12-3b3f-47f4-b063-05efd6f97419.png)
+
 #### Deleting comments
 
 When the user clicks the "Delete review" button, they are not able to carry out this final action without making further confirmation. This is to prevent accidental deletion. 
@@ -140,13 +144,14 @@ When the user clicks the "Delete review" button, they are not able to carry out 
 
 ### Registration and Login
 
-When choosing to register as a user on the site visitoers will navigate to a simple form. 
+When choosing to register as a user on the site, visitors will navigate to a simple form, via clicking the "Sign up" button in the Navbar or in the "Add review" drawer. Users are guided to signin instead if they already have an existing account. 
+
 <img width="1428" alt="Screenshot 2023-01-05 at 21 18 47" src="https://user-images.githubusercontent.com/114397080/210881880-80c05206-fd5b-4cf3-b43a-57683bac9501.png">
 
 <img width="466" alt="Screenshot 2023-01-05 at 21 17 31" src="https://user-images.githubusercontent.com/114397080/210881668-b1d6c221-4bfc-4f6f-ae72-69ddd83c2e6a.png">
 
 
-Use of toast to welcome user on login (Chakra UI)
+A toasts to welcomes user on login (Chakra UI)
 
 ![Screenshot 2023-01-05 at 13 22 20](https://user-images.githubusercontent.com/114397080/210789792-62108f4d-e549-4bc1-b0cf-843f7cce83e6.png)
 
