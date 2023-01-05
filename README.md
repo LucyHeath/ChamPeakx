@@ -197,6 +197,7 @@ This was a simple model and was useful in the filter on the front end.
 
 #### User model
 The user model was relatively easy to set up as I utilised the inbuilt `AbstractUser` model, which already includes `password` and `password_confirmation`, so it was relatively easy to build . I had added `bio` and `profile_image` fields but removed these due to time limitations meaning I was unable to utilise them on the front end. 
+
 ![Screenshot 2023-01-05 at 22 11 33](https://user-images.githubusercontent.com/114397080/210889990-31eafa80-ff24-4036-8ae3-d80e307dcd11.png)
 
 ### Views and API endpoints
