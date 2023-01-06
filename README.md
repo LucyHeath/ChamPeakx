@@ -237,23 +237,37 @@ The bespoke `get_mountaineering_route` function was reused in all of the `Mounta
 #### Difficulty
 
 * **GET** /api/difficulty/
-* **GET** /api/difficulty/:selectedDifficulty/
+* **GET** /api/difficulty/:pk/
 
 <img width="255" alt="All difficulties" src="https://user-images.githubusercontent.com/114397080/210995935-72176ab8-c856-493c-b90c-5ab3047c8186.png">
+
+##### DifficultyListView class
+
+![DifficultyListView class](https://user-images.githubusercontent.com/114397080/211007371-da0880ef-c3cc-4dad-baa8-45cb42f69e29.png)
+
+##### SingleDifficultyListView
+
+![SingleDifficultyListView](https://user-images.githubusercontent.com/114397080/211008305-0bf0bbeb-2240-4c50-99bf-e684e14bfccb.png)
 
 #### User/Auth
 
 * **POST**/api/auth/login/
 * **POST**/api/auth/register/
 
+##### RegisterView class
+![RegisterView class](https://user-images.githubusercontent.com/114397080/211006882-b15f8c66-29aa-421d-8bb2-716a4fa4932d.png)
+
+##### LoginView class
+![LoginView class](https://user-images.githubusercontent.com/114397080/211007068-cd99fb56-9a83-40e3-a644-61473fe599df.png)
+
 ## Challenges
 * Building the app with all the features I wanted to include within the timeframe was really challenging. My aim was to try and execute the basics well. 
 
 ## Wins
-*
+* Making a full stack app after less than a weeks familiarity with Python, Django and PostgreSQL.
 
 ## Key Learnings
-* I have learnt to break components down and i'm much more aware of making components that could be reused if they appear in the code more than once. 
+* I'm much more familiar with making reauseable components if they appear in the code more than once. 
 
 ## Known Bugs or Errors
 
