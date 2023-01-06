@@ -27,7 +27,7 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
 ## Technologies Used
 
-### Frontend
+### Front-end
 * React.js
 * JSX
 * Axios
@@ -180,7 +180,8 @@ Creating the PostgreSQL database was a fairly fast process. I used [Insomnia](ht
 ### Document models
 
 #### Mountaineering route model
-This was the largest model containing a range of input types: `CharField`; `PositiveIntegerField`; `DateTimeField`; `TextField` ; `ManyToManyField`. I had wanted to make the image field and `ArrayField` to allow multiple images for each route ( and diplay these in a Carousel) but time limited my opportunity to learn about using arrays with [Cloudinary](https://cloudinary.com/), therefore I used `CharField`for a single image as this was my MVP. Furthermore I had wanted to add an average rating field  related to the rating in the user comment model, but again time was insufficient for this.  
+This was the largest model containing a range of input types: `CharField`; `PositiveIntegerField`; `DateTimeField`; `TextField` ; `ManyToManyField`. I had wanted to make the image field and `ArrayField` to allow multiple images for each route ( and diplay these in a Carousel) but time limited my opportunity to learn about using arrays with [Cloudinary](https://cloudinary.com/), therefore I used `CharField`for a single image as this was my MVP. Furthermore I had wanted to add an average rating field  related to the rating in the user comment model, but again time was insufficient for this.
+
 ![Screenshot 2023-01-05 at 22 07 09](https://user-images.githubusercontent.com/114397080/210889334-3370a8da-8f55-4e1f-adef-f93bb9d26f31.png)
 
 #### Comment model
@@ -201,9 +202,11 @@ The user model was relatively easy to set up as I utilised the inbuilt `Abstract
 ### Views and API endpoints
 
 #### Mountaineering routes
-**GET** /api/mountaineering_routes/
-**GET** /api/mountaineering_routes/:mountaineeringRouteId/
+* **GET** /api/mountaineering_routes/
+* **GET** /api/mountaineering_routes/:mountaineeringRouteId/
+
 ![Screenshot 2023-01-06 at 11 00 31](https://user-images.githubusercontent.com/114397080/210999455-a931fa46-7acb-4d7c-a8c2-d75d7be570e0.png)
+
 Also created and working in backend but not utilised: **POST**,  **PUT**  and **DELETE** 
 
 #####  Mountaineering_RouteListView class - /mountaineering_routes/
@@ -219,10 +222,10 @@ The bespoke `get_mountaineering_route` function was reused in all of the `Mounta
 
 ![Screenshot 2023-01-06 at 10 53 53](https://user-images.githubusercontent.com/114397080/210998439-8d75ece4-404f-48b5-a071-e996bd15dc75.png)
 
-* **POST** /api/comments/
-* **PUT** /api/comments/:commentId/
-* **DELETE** /api/comments/:commentId/
-* Had also created **GET** /api/comments/ but not used on front end due to lack of time
+* **POST** /api/comments/ (secure)
+* **PUT** /api/comments/:commentId/ (secure)
+* **DELETE** /api/comments/:commentId/ (secure)
+Also created **GET** /api/comments/ but not used on front end due to lack of time
 
 ##### CommentListView class -  /comments/
 
@@ -234,15 +237,15 @@ The bespoke `get_mountaineering_route` function was reused in all of the `Mounta
 
 #### Difficulty
 
-**GET** /api/difficulty/:selectedDifficulty/
-**GET** /api/difficulty/
+* **GET** /api/difficulty/:selectedDifficulty/
+* **GET** /api/difficulty/
 
 <img width="255" alt="Screenshot 2023-01-06 at 10 46 39" src="https://user-images.githubusercontent.com/114397080/210995935-72176ab8-c856-493c-b90c-5ab3047c8186.png">
 
 #### User/Auth
 
-**POST**/api/auth/login/
-**POST**/api/auth/register/
+* **POST**/api/auth/login/
+* **POST**/api/auth/register/
 
 ## Challenges
 * Building the app with all the features I wanted to include within the timeframe was really challenging. My aim was to try and execute the basics well. 
