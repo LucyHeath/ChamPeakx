@@ -2,7 +2,7 @@
 ![Champeakx](https://user-images.githubusercontent.com/114397080/210755933-d9158c41-ece4-4e9d-85b0-6ebda74dec5b.png)
 
 ## Description
-Champeakx is a website which provides information about the best mountaineering in Chamonix. Users can create an account which enables them to post comments, ratings and images of their experiences of the routes listed on the site. This information can be viewed by both registered and non-registered users in the community and, serves as a useful respository for route beta for subsequent mountaineering trips. 
+Champeakx is a website which provides information about the best mountaineering in Chamonix. Users can create an account which enables them to post comments, ratings and images of their experiences of the routes listed on the site. This information can be viewed by both registered and non-registered users in the community and serves as a useful respository for route beta for subsequent mountaineering trips. 
 
 ## Deployment Link
 The project was deployed using Heroku and is available [here](http://bit.ly/Champeakx).
@@ -74,7 +74,7 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
 ### App.js
 
-The first part of the frontend that I built was the `BrowserRouter` and the paths.This helped me visualise the layout of the site.
+The first part of the frontend that I built was the `BrowserRouter` and the paths.This helped me visualize the layout of the site.
 
 <img width="566" alt="App.js" src="https://user-images.githubusercontent.com/114397080/210875366-3246fbfe-0fd3-4856-881f-467a25e228eb.png">
 
@@ -104,26 +104,26 @@ The search function allows the user to search for matches from the peak or route
 
 ![Filter search code snippet](https://user-images.githubusercontent.com/114397080/210779509-211f18ff-5ca1-4980-8943-6ee44e4d9bf1.png)
 
-The mountaineering index is built using a customised Chakra UI card component.
+The mountaineering index is built using a customized Chakra UI card component.
 
 ### Single mountaineering route detail page
-Clicking throught the index page brings displays `MountaineeringRouteSinglePage.js` . Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with (React and Chakra UI) icons and tooltips (Chakra UI) on hover. Below the image sits the description and infographic display. 
+Clicking through the index page brings displays `MountaineeringRouteSinglePage.js` . Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with (React and Chakra UI) icons and tooltips (Chakra UI) on hover. Below the image sits the description and infographic display. 
 
 ![Single route page detail](https://user-images.githubusercontent.com/114397080/210782712-bb7b6935-1690-4aa9-8580-295268114a6f.png)
 
-The infographic display has an accordian (`ClimbingGradesAccordian.js` component), brought in from Chakra UI,  which can be toggled to diplay more info about the climbing grades. The infographics themselves again utlise tooltips to provide greater detail. 
+The infographic display has an accordian (`ClimbingGradesAccordian.js` component), brought in from Chakra UI,  which can be toggled to display more info about the climbing grades. The infographics themselves again utlize tooltips to provide greater detail. 
 
 ![Climbing gardes accordian and IFG display](https://user-images.githubusercontent.com/114397080/210783470-c961a10f-3126-48d4-8715-3c1a7cbe9b95.png)
 
 #### Comment display
 
-The `CommentDrawer.js`component is injected into the `MountaineeringRouteSinglePage.js` to display the user comments. The "Edit Review" and "Delete Review" buttons only appear in the display if the user is authenticated and is the owner of the comment. The image display and star rating display are seperate components(`ImageDisplay.js`, `StarRating.js`).
+The `CommentDrawer.js`component is injected into the `MountaineeringRouteSinglePage.js` to display the user comments. The "Edit Review" and "Delete Review" buttons only appear in the display if the user is authenticated and is the owner of the comment. The image display and star rating display are separate components(`ImageDisplay.js`, `StarRating.js`).
 
 ![Comment display](https://user-images.githubusercontent.com/114397080/210792969-230fc5c4-14d1-4494-be94-7af62f284458.png)
 
 #### Adding and editing comments
 
-Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draws, which open when the "Add Review" or "Edit Review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in the "Add Review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding button function from non-authenticated users and encourages user registration.
+Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draws, which open when the "Add Review" or "Edit Review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in the "Add Review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding the button function from non-authenticated user and it encourages user registration.
 
 ![Add review drawer if not authenticated](https://user-images.githubusercontent.com/114397080/210788252-0136cb82-0b9f-4ea9-97b1-b7b3dd682489.png)
 
@@ -171,7 +171,7 @@ A nice graphic displays if the page is not found, and I used a spinner to show p
 This was my first experience of creating a back-end using Python. I used Django and Django REST Framework to create a PostgreSQL database with RESTful features. 
 
 ### Database Relationships
-I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualise the relationships between the models: Mountaineering Routes; Route Difficulty; Comments; Users/Authorisation
+I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visualize the relationships between the models: Mountaineering Routes; Route Difficulty; Comments; Users/Authorisation
 
 ![Quick Database Diagram](https://user-images.githubusercontent.com/114397080/210760666-3445aede-a027-4b88-9dbe-d34563728b41.png)
 
@@ -180,12 +180,12 @@ Creating the PostgreSQL database was a fairly fast process. I used [Insomnia](ht
 ### Document models
 
 #### Mountaineering route model
-This was the largest model containing a range of input types: `CharField`; `PositiveIntegerField`; `DateTimeField`; `TextField` ; `ManyToManyField`. I had wanted to make the image field and `ArrayField` to allow multiple images for each route ( and diplay these in a Carousel) but time limited my opportunity to learn about using arrays with [Cloudinary](https://cloudinary.com/), therefore I used `CharField`for a single image as this was my MVP. Furthermore I had wanted to add an average rating field  related to the rating in the user comment model, but again time was insufficient for this.
+This was the largest model containing a range of input types: `CharField`; `PositiveIntegerField`; `DateTimeField`; `TextField` ; `ManyToManyField`. I had wanted to make the image field and `ArrayField` to allow multiple images for each route (and display these in a carousel) but time limited my opportunity to learn about using arrays with [Cloudinary](https://cloudinary.com/), therefore I used `CharField`for a single image as this was my MVP. Furthermore I had wanted to add an average rating field  related to the rating in the user comment model, but again time was insufficient for this.
 
 ![Mountaineering route model](https://user-images.githubusercontent.com/114397080/210889334-3370a8da-8f55-4e1f-adef-f93bb9d26f31.png)
 
 #### Comment model
-As with the images in the `mountaineering_route` model,  using and `ArrayField` instead of multiple `Charfield`s for the images would have been preferable.
+As with the images in the `mountaineering_route` model,  using an `ArrayField` instead of multiple `Charfield`s for the images would have been preferable.
 
 ![Comment model](https://user-images.githubusercontent.com/114397080/210888580-3e11f716-6ee2-4ff5-a7fb-f6510490d97d.png)
 
@@ -195,7 +195,7 @@ This was a simple model and was useful for the difficulty filtering function on 
 ![Difficulty model](https://user-images.githubusercontent.com/114397080/210889685-841b1243-ef89-4d14-8f3f-7bb32c26eed7.png)
 
 #### User model
-The user model was relatively easy to set up as I utilised the inbuilt `AbstractUser` model, which already includes `password` and `password_confirmation`. I did add `bio` and `profile_image` fields but removed these as I did not end up creating a profile page on the frontend.  
+The user model was relatively easy to set up as I utilized the inbuilt `AbstractUser` model, which already includes `password` and `password_confirmation`. I did add `bio` and `profile_image` fields but removed these as I did not end up creating a profile page on the frontend.  
 
 ![User model](https://user-images.githubusercontent.com/114397080/210889990-31eafa80-ff24-4036-8ae3-d80e307dcd11.png)
 
@@ -238,6 +238,7 @@ The bespoke `get_mountaineering_route` function was reused in all of the `Mounta
 
 * **GET** /api/difficulty/
 * **GET** /api/difficulty/:pk/
+For the difficulty level filter on the homepage
 
 <img width="255" alt="All difficulties" src="https://user-images.githubusercontent.com/114397080/210995935-72176ab8-c856-493c-b90c-5ab3047c8186.png">
 
@@ -260,30 +261,29 @@ The bespoke `get_mountaineering_route` function was reused in all of the `Mounta
 ##### LoginView class
 ![LoginView class](https://user-images.githubusercontent.com/114397080/211007068-cd99fb56-9a83-40e3-a644-61473fe599df.png)
 
-
 ## Challenges
 * Building the app with all the features I wanted to include within the timeframe was really challenging. My aim was to try and execute the basics well. 
 
 ## Wins
-* I was able to make a full stack app after less than a weeks familiarity with Python, Django and PostgreSQL.
+* I was able to make a full stack app after less than a week of familiarity with Python, Django and PostgreSQL.
 * The app looks good with a clean design and simple user story.
-* I got to practie using React.js and making API calls.
+* I got to practice using React.js and making API calls.
 * I really enjoyed using Chakra UI- it was relatively quick to build up the front end and had some great components which I was able to implement without too much trouble. 
 
 ## Key Learnings
-* I'm much more familiar with making reauseable components if they appear in the code more than once. 
+* I'm much more familiar with making reusable components if they appear in the code more than once. 
 
 ## Known Bugs or Errors
 
-* When adding images to the comments there is a problem with the upload, whereby only the first selected image uploads. This is not a problem when updating the images on the comments, and user is able to upload four individual images of their choice.
+* When adding images to the comments there is a problem with the upload, whereby only the first selected image uploads.  This is not a problem when updating the images on the comments, and users can upload four individual images of their choice.
 * When editing the images, unless you upload all four images the comment will not display.
 
 ## Future Improvements
 
-* Imporove the image upload, enable multiple images (? `ArrayField` on backend) and ensure users can add the number of images they want to in the add and delete routes. 
+* Improve the image upload, enable multiple images (? `ArrayField` on backend) and ensure users can add the number of images they want to in the add and delete routes. 
 * Develop the front-end CRUD functionality for an admin to add/update mountaineering routes themselves. The back end is in situ for this. 
-* Add in a favorites sytem
-* Develop a user profile page, which includes an ability to add a profile picture, bio, experience  and which displays their comments, and favourites all in one place. 
-* Whilst the app is fairly responsive this could be further optimised, especially for mobile. 
+* Add in a favorites system
+* Develop a user profile page, which includes an ability to add a profile picture, bio, experience  and which displays their comments, and favorites all in one place. 
+* Whilst the app is fairly responsive this could be further optimized, especially for mobile. 
 * Build in the average rating to the back end, and display this on the mountaineering route single page, not just on the individual comment. 
 * Change the comment rating to a hover stars effect for a better UX
