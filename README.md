@@ -2,7 +2,7 @@
 ![Champeakx](https://user-images.githubusercontent.com/114397080/210755933-d9158c41-ece4-4e9d-85b0-6ebda74dec5b.png)
 
 ## Description
-Champeakx is a website which provides information about the best mountaineering in Chamonix. Users can create an account which enables them to post comments, ratings and images of their experiences of the routes listed on the site. This information can be viewed by both registered and non-registered users in the community and serves as a useful respository for route beta for subsequent mountaineering trips. 
+Champeakx is a website which provides information about the best mountaineering in Chamonix. Users can create an account which enables them to post comments, ratings and images of their experiences of the routes listed on the site. This information can be viewed by both registered and non-registered users in the community and, serves as a useful respository for route beta for subsequent mountaineering trips. 
 
 ## Deployment Link
 The project was deployed using Heroku and is available [here](http://bit.ly/Champeakx).
@@ -21,10 +21,9 @@ This was the final project built solo over 7 days for the General Assembly Engin
 
 ## Features
 * All users can browse the mountaineering routes index and refine choices with the difficulty filter, or search by route or peak name if they know what they are looking for.
-* All users can select an individual mountaineering route and click through to find out further information about it , as well as viewing comments and images left by others who have already done the route. 
-* Users can register for an account, and then log in to leave ther own comment and experiences, as well as upload up to four photos for each comment, along with a rating of their experience.
-* Users can edit their own comment (text, images or rating).
-* Users can delete their own comment. 
+* All users can select an individual mountaineering route and click through to find out further information about, and view comments left by others. 
+* Users must register for an account to be able to leave their own comments, upload four photos and ratings.
+* Users can edit and delete their own comments.  
 
 ## Technologies Used
 
@@ -37,6 +36,7 @@ This was the final project built solo over 7 days for the General Assembly Engin
 * Chakra UI
 * Chakra-ui/icons
 * buffer
+* Cloudinary (image uploads and hosting)
 
 ### Backend
 * Python
@@ -56,10 +56,8 @@ This was the final project built solo over 7 days for the General Assembly Engin
 * Github
 * Google Chrome dev tools
 * Heroku (deployment)
-* Trello Board (planning and timeline)
+* Trello Board (planning and timeline), Zoom and Slack
 * Excallidraw(wireframing)
-* Zoom
-* Slack
 * TablePlus
 
 ## Planning
@@ -109,7 +107,7 @@ The search function allows the user to search for matches from the peak or route
 The mountaineering index is built using a customised Chakra UI card component.
 
 ### Single mountaineering route detail page
-Clicking throught the index page brings displays `MountaineeringRouteSinglePage.js` . Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with (React and Chakra UI) icons, and the use of tooltips (Chakra UI) on hover. Below the image sits the description and infographic display. 
+Clicking throught the index page brings displays `MountaineeringRouteSinglePage.js` . Here they can review the route beta, including an image of the route, the peak and route names, which are highlighted with (React and Chakra UI) icons and tooltips (Chakra UI) on hover. Below the image sits the description and infographic display. 
 
 ![Screenshot 2023-01-05 at 12 42 07](https://user-images.githubusercontent.com/114397080/210782712-bb7b6935-1690-4aa9-8580-295268114a6f.png)
 
@@ -125,11 +123,11 @@ The `CommentDrawer.js`component is injected into the `MountaineeringRouteSingleP
 
 #### Adding and editing comments
 
-Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draws for each, which open when the "Add Review" or "Edit review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in "Add Review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding button function from non-authenticated users and encourages user registration.
+Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draws, which open when the "Add Review" or "Edit Review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in the "Add Review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding button function from non-authenticated users and encourages user registration.
 
 ![Screenshot 2023-01-05 at 13 13 40](https://user-images.githubusercontent.com/114397080/210788252-0136cb82-0b9f-4ea9-97b1-b7b3dd682489.png)
 
-When authenticated, the user may add their comment usig the form in the drawer. 
+When authenticated, the user may add their comment using the form in the drawer. The image upload uses [Cloudinary](https://cloudinary.com/).
 
 ![Screenshot 2023-01-05 at 13 24 07](https://user-images.githubusercontent.com/114397080/210790123-30732540-6bcb-4809-9077-af98004ace4e.png)
 
@@ -145,13 +143,13 @@ When the user clicks the "Delete Review" button, they are not able to carry out 
 
 ### User registration and login
 
-When choosing to register as a user on the site, visitors will navigate to a simple form, via clicking the "Sign Up" button in the Navbar or in the "Add Review" drawer. Users are guided to "Sign In" instead if they already have an existing account. 
+When choosing to register as a user on the site, users navigate to a simple form either by clicking the "Sign Up" button in the Navbar or in the  "Add Review" drawer. Users are guided to "Sign In" instead if they already have an existing account. 
 
 <img width="1428" alt="Screenshot 2023-01-05 at 21 18 47" src="https://user-images.githubusercontent.com/114397080/210881880-80c05206-fd5b-4cf3-b43a-57683bac9501.png">
 
 <img width="466" alt="Screenshot 2023-01-05 at 21 17 31" src="https://user-images.githubusercontent.com/114397080/210881668-b1d6c221-4bfc-4f6f-ae72-69ddd83c2e6a.png">
 
-Error handling is present and specific for each input field.
+Error handling is present and tailored to each input field.
 
 ![Screenshot 2023-01-05 at 21 42 40](https://user-images.githubusercontent.com/114397080/210885586-f3b16b95-554d-418d-915d-de1c854c110b.png)
 
@@ -160,12 +158,12 @@ Error handling is present and specific for each input field.
 The user login page has a similar form. Error handling is present but due to security reasons, does not highlight which credentials are incorrect.
 ![Screenshot 2023-01-05 at 21 35 22](https://user-images.githubusercontent.com/114397080/210884532-5d9d3218-2cda-4c90-8f22-617a765c21ff.png)
 
-On log in, a toast pop-up(Chakra UI) to welcomes that user.
+On log in, a toast pop-up (Chakra UI) to welcomes that user.
 
 ![Screenshot 2023-01-05 at 21 50 20](https://user-images.githubusercontent.com/114397080/210886971-970f35c1-0a39-4917-9bd0-1d320e387da8.png)
 
 ### Not found and loading
-A nice graphic displays if the page is not found and I used a spinner to show pages loading for both the index and single route pages. 
+A nice graphic displays if the page is not found, and I used a spinner to show pages loading for both the index and single route pages. 
 
 ![Screenshot 2023-01-05 at 22 50 01](https://user-images.githubusercontent.com/114397080/210895269-fa3edfa9-df27-407b-9ec2-0d37adf1fa26.png)
 
@@ -177,12 +175,12 @@ I used [Quick Database Diagrams](https://app.quickdatabasediagrams.com) to visua
 
 ![Quick Database Diagram](https://user-images.githubusercontent.com/114397080/210760666-3445aede-a027-4b88-9dbe-d34563728b41.png)
 
-It was an efficient process to create the PostgreSQL database. I was able to test all the views using Insomnia to making sure all relationships between models were correct and receving the correct JSON responses. 
+Creating the PostgreSQL database was a fairly fast process. I used [Insomnia](https://insomnia.rest) to test the endpoints and check the JSON response and [TablePlus](https://tableplus.com) to view the database relationships. 
 
 ### Document models
 
 #### Mountaineering route model
-this was the largest model containing a range of input types; `CharField`, `PositiveIntegerField`, `DateTimeField`, `TextField` and `ManyToManyField`. I had wanted to make the image field and `ArrayField` but time limited my ability to utilise arrys with cloudinary, so i used a `CharField` instead. I also wanted to add an average rating field , related to the rating in the user comment model. 
+This was the largest model containing a range of input types; `CharField`, `PositiveIntegerField`, `DateTimeField`, `TextField` and `ManyToManyField`. I had wanted to make the image field and `ArrayField` but time limited my opportunity to learn about using arrays with [Cloudinary](https://cloudinary.com/), so I used a `CharField` instead. I also wanted to add an average rating field , related to the rating in the user comment model. 
 ![Screenshot 2023-01-05 at 22 07 09](https://user-images.githubusercontent.com/114397080/210889334-3370a8da-8f55-4e1f-adef-f93bb9d26f31.png)
 
 #### Comment model
