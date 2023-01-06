@@ -180,47 +180,69 @@ Creating the PostgreSQL database was a fairly fast process. I used [Insomnia](ht
 ### Document models
 
 #### Mountaineering route model
-This was the largest model containing a range of input types; `CharField`, `PositiveIntegerField`, `DateTimeField`, `TextField` and `ManyToManyField`. I had wanted to make the image field and `ArrayField` but time limited my opportunity to learn about using arrays with [Cloudinary](https://cloudinary.com/), so I used a `CharField` instead. I also wanted to add an average rating field , related to the rating in the user comment model. 
+This was the largest model containing a range of input types: `CharField`; `PositiveIntegerField`; `DateTimeField`; `TextField` ; `ManyToManyField`. I had wanted to make the image field and `ArrayField` to allow multiple images for each route ( and diplay these in a Carousel) but time limited my opportunity to learn about using arrays with [Cloudinary](https://cloudinary.com/), therefore I used `CharField`for a single image as this was my MVP. Furthermore I had wanted to add an average rating field  related to the rating in the user comment model, but again time was insufficient for this.  
 ![Screenshot 2023-01-05 at 22 07 09](https://user-images.githubusercontent.com/114397080/210889334-3370a8da-8f55-4e1f-adef-f93bb9d26f31.png)
 
 #### Comment model
-Again I had wanted to use N `ArrayField` instead of charfield for the images, but time was a factor in this decision. 
+As with the images in the `mountaineering_route` model,  using and `ArrayField` instead of multiple `Charfield`s for the images would have been preferable.
 
 ![Screenshot 2023-01-05 at 22 02 06](https://user-images.githubusercontent.com/114397080/210888580-3e11f716-6ee2-4ff5-a7fb-f6510490d97d.png)
 
 #### Difficulty model
-This was a simple model and was useful in the filter on the front end. 
+This was a simple model and was useful for the difficulty filtering function on the front end. 
 
 ![Screenshot 2023-01-05 at 22 09 34](https://user-images.githubusercontent.com/114397080/210889685-841b1243-ef89-4d14-8f3f-7bb32c26eed7.png)
 
 #### User model
-The user model was relatively easy to set up as I utilised the inbuilt `AbstractUser` model, which already includes `password` and `password_confirmation`, so it was relatively easy to build . I had added `bio` and `profile_image` fields but removed these due to time limitations meaning I was unable to utilise them on the front end. 
+The user model was relatively easy to set up as I utilised the inbuilt `AbstractUser` model, which already includes `password` and `password_confirmation`. I did add `bio` and `profile_image` fields but removed these as I did not end up creating a profile page on the frontend.  
 
 ![Screenshot 2023-01-05 at 22 11 33](https://user-images.githubusercontent.com/114397080/210889990-31eafa80-ff24-4036-8ae3-d80e307dcd11.png)
 
 ### Views and API endpoints
 
-##### CommentListView class - endpoint: /comments/
+#### Mountaineering routes
+**GET** /api/mountaineering_routes/
+**GET** /api/mountaineering_routes/:mountaineeringRouteId/
+![Screenshot 2023-01-06 at 11 00 31](https://user-images.githubusercontent.com/114397080/210999455-a931fa46-7acb-4d7c-a8c2-d75d7be570e0.png)
+Also created and working in backend but not utilised: **POST**,  **PUT**  and **DELETE** 
+
+#####  Mountaineering_RouteListView class - /mountaineering_routes/
+
+![Screenshot 2023-01-06 at 11 11 24](https://user-images.githubusercontent.com/114397080/211001086-59f43698-51ce-406e-91b1-65ec808196dd.png)
+
+##### Mountaineering_RouteDetailView class - /mountaineering_routes/<int:pk>/
+The bespoke `get_mountaineering_route` function was reused in all of the `Mountaineering_RouteDetailViews`.
+
+![Screenshot 2023-01-06 at 11 14 46](https://user-images.githubusercontent.com/114397080/211001587-37f0b6db-cd22-4f35-8a9d-f5ae44fa2095.png)
+
+#### Comments
+
+![Screenshot 2023-01-06 at 10 53 53](https://user-images.githubusercontent.com/114397080/210998439-8d75ece4-404f-48b5-a071-e996bd15dc75.png)
+
+* **POST** /api/comments/
+* **PUT** /api/comments/:commentId/
+* **DELETE** /api/comments/:commentId/
+* Had also created **GET** /api/comments/ but not used on front end due to lack of time
+
+##### CommentListView class -  /comments/
 
 ![Screenshot 2023-01-05 at 22 00 02](https://user-images.githubusercontent.com/114397080/210888233-4a471681-38bf-4a1f-bd09-d1571240311c.png)
 
-
-##### CommentDetailView class - endpoint: /comments/<int:pk>/
+##### CommentDetailView class - /comments/<int:pk>/
 
 ![Screenshot 2023-01-05 at 22 00 42](https://user-images.githubusercontent.com/114397080/210888363-5cc55c7c-b1bb-496d-ad94-369b4ddddd34.png)
 
-GET/api/mountaineering_routes/
-GET/api/mountaineering_routes/:mountaineeringRouteId/
+#### Difficulty
 
-GET /api/difficulty/:selectedDifficulty/
-GET /api/difficulty/
+**GET** /api/difficulty/:selectedDifficulty/
+**GET** /api/difficulty/
 
-PUT /api/comments/${id}/
-DELETE /api/comments/:commentId/
-POST /api/comments/
+<img width="255" alt="Screenshot 2023-01-06 at 10 46 39" src="https://user-images.githubusercontent.com/114397080/210995935-72176ab8-c856-493c-b90c-5ab3047c8186.png">
 
-POST/api/auth/login/
-POST/api/auth/register/
+#### User/Auth
+
+**POST**/api/auth/login/
+**POST**/api/auth/register/
 
 ## Challenges
 * Building the app with all the features I wanted to include within the timeframe was really challenging. My aim was to try and execute the basics well. 
