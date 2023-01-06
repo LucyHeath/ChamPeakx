@@ -199,11 +199,11 @@ The user model was relatively easy to set up as I utilised the inbuilt `Abstract
 
 ![User model](https://user-images.githubusercontent.com/114397080/210889990-31eafa80-ff24-4036-8ae3-d80e307dcd11.png)
 
-### Views and API endpoints
+### Views and endpoints
 
 #### Mountaineering routes
 * **GET** /api/mountaineering_routes/
-* **GET** /api/mountaineering_routes/:mountaineeringRouteId/
+* **GET** /api/mountaineering_routes/:pk/
 * **POST**,  **PUT**  and **DELETE** also created but not used
 
 ![GET single route](https://user-images.githubusercontent.com/114397080/210999455-a931fa46-7acb-4d7c-a8c2-d75d7be570e0.png)
@@ -220,8 +220,8 @@ The bespoke `get_mountaineering_route` function was reused in all of the `Mounta
 #### Comments
 
 * **POST** /api/comments/ (secure)
-* **PUT** /api/comments/:commentId/ (secure)
-* **DELETE** /api/comments/:commentId/ (secure)
+* **PUT** /api/comments/:pk/ (secure)
+* **DELETE** /api/comments/:pk/ (secure)
 * **GET** /api/comments/ created but not used on front end due to lack of time
 
 ![PUT route](https://user-images.githubusercontent.com/114397080/210998439-8d75ece4-404f-48b5-a071-e996bd15dc75.png)
@@ -260,11 +260,15 @@ The bespoke `get_mountaineering_route` function was reused in all of the `Mounta
 ##### LoginView class
 ![LoginView class](https://user-images.githubusercontent.com/114397080/211007068-cd99fb56-9a83-40e3-a644-61473fe599df.png)
 
+
 ## Challenges
 * Building the app with all the features I wanted to include within the timeframe was really challenging. My aim was to try and execute the basics well. 
 
 ## Wins
-* Making a full stack app after less than a weeks familiarity with Python, Django and PostgreSQL.
+* I was able to make a full stack app after less than a weeks familiarity with Python, Django and PostgreSQL.
+* The app looks good with a clean design and simple user story.
+* I got to practie using React.js and making API calls.
+* I really enjoyed using Chakra UI- it was relatively quick to build up the front end and had some great components which I was able to implement without too much trouble. 
 
 ## Key Learnings
 * I'm much more familiar with making reauseable components if they appear in the code more than once. 
@@ -272,14 +276,14 @@ The bespoke `get_mountaineering_route` function was reused in all of the `Mounta
 ## Known Bugs or Errors
 
 * When adding images to the comments there is a problem with the upload, whereby only the first selected image uploads. This is not a problem when updating the images on the comments, and user is able to upload four individual images of their choice.
+* When editing the images, unless you upload all four images the comment will not display.
 
 ## Future Improvements
 
+* Imporove the image upload, enable multiple images (? `ArrayField` on backend) and ensure users can add the number of images they want to in the add and delete routes. 
 * Develop the front-end CRUD functionality for an admin to add/update mountaineering routes themselves. The back end is in situ for this. 
 * Add in a favorites sytem
 * Develop a user profile page, which includes an ability to add a profile picture, bio, experience  and which displays their comments, and favourites all in one place. 
-* Refactor the image upload function, so images upload as an array on the backend.
 * Whilst the app is fairly responsive this could be further optimised, especially for mobile. 
 * Build in the average rating to the back end, and display this on the mountaineering route single page, not just on the individual comment. 
 * Change the comment rating to a hover stars effect for a better UX
-
