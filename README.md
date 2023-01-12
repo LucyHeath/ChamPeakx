@@ -123,7 +123,7 @@ The `CommentDrawer.js`component is injected into the `MountaineeringRouteSingleP
 
 #### Adding and editing comments
 
-Rather than navigating away from this page to add (`AddCommentDrawer.js` component ) and  edit comments (`EditCommentDrawer.js` component ), I chose to implement a Chakra UI draws, which open when the "Add Review" or "Edit Review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in the "Add Review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding the button function from non-authenticated user and it encourages user registration.
+Rather than navigating away from this page to add (AddCommentDrawer.js component ) and edit comments (EditCommentDrawer.js component ), I chose to implement a Chakra UI draws, which open when the "Add Review" or "Edit Review" buttons are clicked. This fitted neatly with the clean and simple design of the project. When a user is not logged in the "Add Review" drawer displays a call to action, which prompts registration or login to access further functionality of the site. I felt this was better than hiding the button function from non-authenticated users and encouraging user registration.
 
 ![Add review drawer if not authenticated](https://user-images.githubusercontent.com/114397080/210788252-0136cb82-0b9f-4ea9-97b1-b7b3dd682489.png)
 
@@ -131,7 +131,7 @@ When authenticated, the user may add their comment using the form in the drawer.
 
 ![Add review drawer if authenticated](https://user-images.githubusercontent.com/114397080/210790123-30732540-6bcb-4809-9077-af98004ace4e.png)
 
-Error handling is built in to both add and edit routes
+Error handling is built in to both add and edit routes.
 
 ![Add error handling](https://user-images.githubusercontent.com/114397080/210883695-2b68629a-9950-41f5-8dc3-c20b0d07589d.png)
 
